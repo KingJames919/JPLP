@@ -1,0 +1,553 @@
+{
+  "menu": {
+    "mode": "menu",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Argentina",
+    "menuMode": "world",
+    "teamCount": 16,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Argentina vs Portugal",
+    "career": null,
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 120,
+    "possession": "loose",
+    "selectedPlayer": null,
+    "ball": {
+      "x": 640,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": null
+    },
+    "home": [],
+    "away": [],
+    "message": ""
+  },
+  "started": {
+    "mode": "play",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Argentina",
+    "menuMode": "world",
+    "teamCount": 16,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Argentina vs Japan",
+    "career": null,
+    "worldCup": {
+      "team": "ARG",
+      "stage": "Round of 16",
+      "roundIndex": 0,
+      "eliminated": false,
+      "champion": null,
+      "noTrading": true,
+      "lastSummary": "Sixteen nations. Single elimination. No trades, no second chances.",
+      "rounds": [
+        {
+          "label": "Round of 16",
+          "matches": [
+            {
+              "id": "R16-1",
+              "home": "#1 ARG",
+              "away": "#16 JPN",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "R16-2",
+              "home": "#8 GER",
+              "away": "#9 ITA",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "R16-3",
+              "home": "#5 BRA",
+              "away": "#12 URU",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "R16-4",
+              "home": "#4 ENG",
+              "away": "#13 MAR",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "R16-5",
+              "home": "#3 ESP",
+              "away": "#14 COL",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "R16-6",
+              "home": "#6 POR",
+              "away": "#11 CRO",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "R16-7",
+              "home": "#7 NED",
+              "away": "#10 BEL",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "R16-8",
+              "home": "#2 FRA",
+              "away": "#15 USA",
+              "played": false,
+              "score": "",
+              "winner": null
+            }
+          ]
+        }
+      ],
+      "currentMatch": {
+        "id": "R16-1",
+        "home": "#1 ARG",
+        "away": "#16 JPN",
+        "played": false,
+        "score": "",
+        "winner": null
+      }
+    },
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 119.9,
+    "possession": "home:Lautaro Martinez",
+    "selectedPlayer": {
+      "name": "Lautaro Martinez",
+      "role": "ST",
+      "rating": 93,
+      "x": 773.9,
+      "y": 358,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 801.4,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Lautaro Martinez"
+    },
+    "home": [
+      {
+        "name": "Emiliano Martinez",
+        "role": "GK",
+        "rating": 89,
+        "x": 129.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Cristian Romero",
+        "role": "DF",
+        "rating": 87,
+        "x": 330.1,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Enzo Fernandez",
+        "role": "MID",
+        "rating": 88,
+        "x": 531,
+        "y": 267.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Lionel Messi",
+        "role": "WING",
+        "rating": 96,
+        "x": 564.5,
+        "y": 452.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Lautaro Martinez",
+        "role": "ST",
+        "rating": 93,
+        "x": 773.9,
+        "y": 358,
+        "hasBall": true,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Zion Suzuki",
+        "role": "GK",
+        "rating": 78,
+        "x": 1149.8,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Takehiro Tomiyasu",
+        "role": "DF",
+        "rating": 83,
+        "x": 950.7,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Wataru Endo",
+        "role": "MID",
+        "rating": 82,
+        "x": 752.6,
+        "y": 269.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kaoru Mitoma",
+        "role": "WING",
+        "rating": 86,
+        "x": 716.4,
+        "y": 451.7,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Takefusa Kubo",
+        "role": "ST",
+        "rating": 85,
+        "x": 504.3,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "ARG v JPN"
+  },
+  "hub": {
+    "mode": "worldCupHub",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Argentina",
+    "menuMode": "world",
+    "teamCount": 16,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Argentina vs Japan",
+    "career": null,
+    "worldCup": {
+      "team": "ARG",
+      "stage": "Quarterfinal",
+      "roundIndex": 1,
+      "eliminated": false,
+      "champion": null,
+      "noTrading": true,
+      "lastSummary": "Won Round of 16 0-0 pens. Next: Quarterfinal.",
+      "rounds": [
+        {
+          "label": "Round of 16",
+          "matches": [
+            {
+              "id": "R16-1",
+              "home": "#1 ARG",
+              "away": "#16 JPN",
+              "played": true,
+              "score": "0-0 pens",
+              "winner": "ARG"
+            },
+            {
+              "id": "R16-2",
+              "home": "#8 GER",
+              "away": "#9 ITA",
+              "played": true,
+              "score": "1-2",
+              "winner": "ITA"
+            },
+            {
+              "id": "R16-3",
+              "home": "#5 BRA",
+              "away": "#12 URU",
+              "played": true,
+              "score": "2-3",
+              "winner": "URU"
+            },
+            {
+              "id": "R16-4",
+              "home": "#4 ENG",
+              "away": "#13 MAR",
+              "played": true,
+              "score": "1-1 pens",
+              "winner": "MAR"
+            },
+            {
+              "id": "R16-5",
+              "home": "#3 ESP",
+              "away": "#14 COL",
+              "played": true,
+              "score": "1-1 pens",
+              "winner": "COL"
+            },
+            {
+              "id": "R16-6",
+              "home": "#6 POR",
+              "away": "#11 CRO",
+              "played": true,
+              "score": "2-1",
+              "winner": "POR"
+            },
+            {
+              "id": "R16-7",
+              "home": "#7 NED",
+              "away": "#10 BEL",
+              "played": true,
+              "score": "3-2",
+              "winner": "NED"
+            },
+            {
+              "id": "R16-8",
+              "home": "#2 FRA",
+              "away": "#15 USA",
+              "played": true,
+              "score": "2-2 pens",
+              "winner": "USA"
+            }
+          ]
+        },
+        {
+          "label": "Quarterfinal",
+          "matches": [
+            {
+              "id": "QUARTERFINAL-1",
+              "home": "#1 ARG",
+              "away": "#9 ITA",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "QUARTERFINAL-2",
+              "home": "#12 URU",
+              "away": "#13 MAR",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "QUARTERFINAL-3",
+              "home": "#14 COL",
+              "away": "#6 POR",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "QUARTERFINAL-4",
+              "home": "#7 NED",
+              "away": "#15 USA",
+              "played": false,
+              "score": "",
+              "winner": null
+            }
+          ]
+        }
+      ],
+      "currentMatch": {
+        "id": "QUARTERFINAL-1",
+        "home": "#1 ARG",
+        "away": "#9 ITA",
+        "played": false,
+        "score": "",
+        "winner": null
+      }
+    },
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "possession": "home:Lautaro Martinez",
+    "selectedPlayer": {
+      "name": "Lautaro Martinez",
+      "role": "ST",
+      "rating": 93,
+      "x": 773.9,
+      "y": 358,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 801.4,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Lautaro Martinez"
+    },
+    "home": [
+      {
+        "name": "Emiliano Martinez",
+        "role": "GK",
+        "rating": 89,
+        "x": 122.4,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Cristian Romero",
+        "role": "DF",
+        "rating": 87,
+        "x": 453.4,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Enzo Fernandez",
+        "role": "MID",
+        "rating": 88,
+        "x": 679.2,
+        "y": 267.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Lionel Messi",
+        "role": "WING",
+        "rating": 96,
+        "x": 717.2,
+        "y": 495.4,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Lautaro Martinez",
+        "role": "ST",
+        "rating": 93,
+        "x": 773.9,
+        "y": 358,
+        "hasBall": true,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Zion Suzuki",
+        "role": "GK",
+        "rating": 78,
+        "x": 1157.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Takehiro Tomiyasu",
+        "role": "DF",
+        "rating": 83,
+        "x": 929.5,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Wataru Endo",
+        "role": "MID",
+        "rating": 82,
+        "x": 815.6,
+        "y": 355.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kaoru Mitoma",
+        "role": "WING",
+        "rating": 86,
+        "x": 696.3,
+        "y": 425.7,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Takefusa Kubo",
+        "role": "ST",
+        "rating": 85,
+        "x": 487.4,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "World Cup result saved"
+  },
+  "errors": []
+}
