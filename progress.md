@@ -51,6 +51,14 @@ Progress:
 - Fixed selected-team rating dials bleeding above their glass panels by moving/scaling the dial inside the panel and fitting nearby title/subtitle text before the dial.
 - Ran a boundary sweep across Quick Match, MLS page, World Cup, Club Career setup, Player Career setup, and Club Career Hub; screenshots/state are in `output/web-game/ui-boundary-sweep/`.
 - Verified with `node --check game.js` and a standard smoke run at `output/web-game/ui-boundary-smoke/`.
+- Split UCL and MLS into separate club pools so UCL paging cannot scroll into MLS and MLS paging cannot scroll into UCL.
+- Expanded MLS to 16 clubs by adding Orlando City SC, New York Red Bulls, Philadelphia Union, Portland Timbers, Austin FC, Toronto FC, Nashville SC, and St. Louis CITY SC.
+- Updated MLS Club Career to use the same 16-team season and six-team playoff format as UCL: top 6 advance, seeds #1 and #2 get first-round byes.
+- Added two free-play start options on the Quick Match panel: a 75-second `Quick Match` and a standard 120-second `Match`.
+- Verified with `node --check game.js`, a fake-canvas runtime check confirming Quick Match/Match lengths, and Playwright client screenshots/state for Quick Match gameplay and the updated menu.
+- Added touchscreen play support: drag on the pitch to steer the controlled player toward your finger and tap the pitch to shoot/tackle.
+- Added mobile-safe viewport/touch CSS (`viewport-fit=cover`, `touch-action: none`, `100dvh` sizing) and a touch-only in-game hint/target marker.
+- Verified touch behavior with fake-canvas tests (drag moved the player; tap shot the ball), standard Playwright smoke, and a mobile landscape Chromium screenshot/state at `output/web-game/mobile-touch/`.
 
 TODO:
 - Optional polish: make match scoring less draw-heavy during automated no-input full-season simulations.

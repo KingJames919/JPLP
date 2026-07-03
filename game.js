@@ -18,6 +18,8 @@
   FIELD.goalTop = FIELD.cy - FIELD.goalW / 2;
   FIELD.goalBottom = FIELD.cy + FIELD.goalW / 2;
 
+  const QUICK_MATCH_LENGTH = 75;
+  const STANDARD_MATCH_LENGTH = 120;
   const ROLE_ORDER = ["GK", "DF", "MID", "WING", "ST"];
   const COUNTRY_CODES = {
     England: "ENG",
@@ -493,6 +495,158 @@
         { name: "Yuya Kubo", role: "WING", number: 7, rating: 77, trait: "Runs" },
       ],
     },
+    {
+      name: "Orlando City SC",
+      short: "ORL",
+      country: "MLS",
+      colors: ["#61259e", "#ffffff", "#f5c75f"],
+      tactic: "Purple pressure",
+      players: [
+        { name: "Pedro Gallese", role: "GK", number: 1, rating: 81, trait: "Shot stop" },
+        { name: "Robin Jansson", role: "DF", number: 6, rating: 80, trait: "Command" },
+        { name: "Cesar Araujo", role: "MID", number: 5, rating: 80, trait: "Ball wins" },
+        { name: "Martin Ojeda", role: "WING", number: 10, rating: 82, trait: "Curl" },
+        { name: "Luis Muriel", role: "ST", number: 9, rating: 83, trait: "Craft" },
+      ],
+      bench: [
+        { name: "Rafael Santos", role: "DF", number: 3, rating: 77, trait: "Overlap" },
+        { name: "Wilder Cartagena", role: "MID", number: 16, rating: 78, trait: "Screen" },
+        { name: "Duncan McGuire", role: "ST", number: 13, rating: 79, trait: "Box" },
+      ],
+    },
+    {
+      name: "New York Red Bulls",
+      short: "RBNY",
+      country: "MLS",
+      colors: ["#ed1e36", "#ffffff", "#002f6c"],
+      tactic: "Energy press",
+      players: [
+        { name: "Carlos Coronel", role: "GK", number: 31, rating: 80, trait: "Reflex" },
+        { name: "Sean Nealis", role: "DF", number: 15, rating: 78, trait: "Duels" },
+        { name: "Daniel Edelman", role: "MID", number: 75, rating: 77, trait: "Bite" },
+        { name: "Emil Forsberg", role: "WING", number: 10, rating: 84, trait: "Inventive" },
+        { name: "Lewis Morgan", role: "ST", number: 9, rating: 82, trait: "Runs" },
+      ],
+      bench: [
+        { name: "Dylan Nealis", role: "DF", number: 12, rating: 77, trait: "Engine" },
+        { name: "Peter Stroud", role: "MID", number: 5, rating: 76, trait: "Tempo" },
+        { name: "Elias Manoel", role: "ST", number: 11, rating: 77, trait: "Power" },
+      ],
+    },
+    {
+      name: "Philadelphia Union",
+      short: "PHI",
+      country: "MLS",
+      colors: ["#071b45", "#b9975b", "#ffffff"],
+      tactic: "Diamond counter",
+      players: [
+        { name: "Andre Blake", role: "GK", number: 18, rating: 83, trait: "Big saves" },
+        { name: "Jakob Glesnes", role: "DF", number: 5, rating: 80, trait: "Aerial" },
+        { name: "Jack McGlynn", role: "MID", number: 16, rating: 79, trait: "Range" },
+        { name: "Quinn Sullivan", role: "WING", number: 33, rating: 78, trait: "Spark" },
+        { name: "Tai Baribo", role: "ST", number: 28, rating: 80, trait: "Poacher" },
+      ],
+      bench: [
+        { name: "Kai Wagner", role: "DF", number: 27, rating: 80, trait: "Delivery" },
+        { name: "Alejandro Bedoya", role: "MID", number: 11, rating: 77, trait: "Leader" },
+        { name: "Mikael Uhre", role: "ST", number: 7, rating: 79, trait: "Channel run" },
+      ],
+    },
+    {
+      name: "Portland Timbers",
+      short: "POR",
+      country: "MLS",
+      colors: ["#004812", "#d69a2d", "#ffffff"],
+      tactic: "Rose City attack",
+      players: [
+        { name: "Maxime Crepeau", role: "GK", number: 16, rating: 80, trait: "Reach" },
+        { name: "Kamal Miller", role: "DF", number: 4, rating: 79, trait: "Strength" },
+        { name: "Diego Chara", role: "MID", number: 21, rating: 80, trait: "Bite" },
+        { name: "Santiago Moreno", role: "WING", number: 30, rating: 81, trait: "Acceleration" },
+        { name: "Jonathan Rodriguez", role: "ST", number: 14, rating: 82, trait: "Finish" },
+      ],
+      bench: [
+        { name: "Dario Zuparic", role: "DF", number: 13, rating: 78, trait: "Cover" },
+        { name: "David Ayala", role: "MID", number: 24, rating: 77, trait: "Snap" },
+        { name: "Felipe Mora", role: "ST", number: 9, rating: 79, trait: "Box" },
+      ],
+    },
+    {
+      name: "Austin FC",
+      short: "ATX",
+      country: "MLS",
+      colors: ["#00b140", "#111111", "#ffffff"],
+      tactic: "Verde overloads",
+      players: [
+        { name: "Brad Stuver", role: "GK", number: 1, rating: 80, trait: "Reflex" },
+        { name: "Julio Cascante", role: "DF", number: 18, rating: 78, trait: "Command" },
+        { name: "Dani Pereira", role: "MID", number: 6, rating: 79, trait: "Tempo" },
+        { name: "Owen Wolff", role: "WING", number: 33, rating: 77, trait: "Engine" },
+        { name: "Brandon Vazquez", role: "ST", number: 9, rating: 82, trait: "Power" },
+      ],
+      bench: [
+        { name: "Guilherme Biro", role: "DF", number: 29, rating: 76, trait: "Overlap" },
+        { name: "Osman Bukari", role: "WING", number: 7, rating: 80, trait: "Pace" },
+        { name: "Diego Rubio", role: "ST", number: 14, rating: 78, trait: "Craft" },
+      ],
+    },
+    {
+      name: "Toronto FC",
+      short: "TOR",
+      country: "MLS",
+      colors: ["#e31937", "#1d1d1d", "#ffffff"],
+      tactic: "Italian flair",
+      players: [
+        { name: "Sean Johnson", role: "GK", number: 1, rating: 80, trait: "Claim" },
+        { name: "Richie Laryea", role: "DF", number: 22, rating: 79, trait: "Drive" },
+        { name: "Jonathan Osorio", role: "MID", number: 21, rating: 80, trait: "Late runs" },
+        { name: "Lorenzo Insigne", role: "WING", number: 24, rating: 84, trait: "Curl" },
+        { name: "Federico Bernardeschi", role: "ST", number: 10, rating: 83, trait: "Left foot" },
+      ],
+      bench: [
+        { name: "Raoul Petretta", role: "DF", number: 28, rating: 77, trait: "Balance" },
+        { name: "Deybi Flores", role: "MID", number: 20, rating: 77, trait: "Screen" },
+        { name: "Prince Owusu", role: "ST", number: 99, rating: 78, trait: "Target" },
+      ],
+    },
+    {
+      name: "Nashville SC",
+      short: "NSH",
+      country: "MLS",
+      colors: ["#ece83a", "#1f1646", "#ffffff"],
+      tactic: "Music City counters",
+      players: [
+        { name: "Joe Willis", role: "GK", number: 1, rating: 78, trait: "Stable" },
+        { name: "Walker Zimmerman", role: "DF", number: 25, rating: 82, trait: "Aerial" },
+        { name: "Sean Davis", role: "MID", number: 54, rating: 78, trait: "Balance" },
+        { name: "Hany Mukhtar", role: "WING", number: 10, rating: 85, trait: "Inventive" },
+        { name: "Sam Surridge", role: "ST", number: 9, rating: 81, trait: "Finish" },
+      ],
+      bench: [
+        { name: "Daniel Lovitz", role: "DF", number: 2, rating: 78, trait: "Delivery" },
+        { name: "Jacob Shaffelburg", role: "WING", number: 14, rating: 79, trait: "Pace" },
+        { name: "Tyler Boyd", role: "ST", number: 11, rating: 78, trait: "Direct" },
+      ],
+    },
+    {
+      name: "St. Louis CITY SC",
+      short: "STL",
+      country: "MLS",
+      colors: ["#e40046", "#0a214a", "#ffffff"],
+      tactic: "Red wave press",
+      players: [
+        { name: "Roman Burki", role: "GK", number: 1, rating: 83, trait: "Command" },
+        { name: "Tim Parker", role: "DF", number: 26, rating: 78, trait: "Duels" },
+        { name: "Eduard Lowen", role: "MID", number: 10, rating: 81, trait: "Range" },
+        { name: "Marcel Hartel", role: "WING", number: 17, rating: 82, trait: "Thread" },
+        { name: "Joao Klauss", role: "ST", number: 9, rating: 80, trait: "Hold-up" },
+      ],
+      bench: [
+        { name: "Tomas Totland", role: "DF", number: 14, rating: 77, trait: "Overlap" },
+        { name: "Indiana Vassilev", role: "MID", number: 19, rating: 77, trait: "Energy" },
+        { name: "Cedric Teuchert", role: "ST", number: 36, rating: 79, trait: "Movement" },
+      ],
+    },
   ];
 
   const CHAMPIONS_LEAGUE_TEAM_COUNT = 16;
@@ -782,6 +936,7 @@
     mode: "menu",
     selectedTeam: 0,
     opponentTeam: 1,
+    clubPool: "ucl",
     worldSelectedTeam: 0,
     worldOpponentTeam: 15,
     homeTeam: null,
@@ -791,8 +946,9 @@
     controlledIndex: 4,
     ball: createBall(),
     score: { home: 0, away: 0 },
-    timeLeft: 120,
-    matchLength: 120,
+    timeLeft: STANDARD_MATCH_LENGTH,
+    matchLength: STANDARD_MATCH_LENGTH,
+    activeMatchKind: "match",
     goalFreeze: 0,
     message: "",
     messageTimer: 0,
@@ -825,16 +981,30 @@
   const keys = new Set();
   const justPressed = new Set();
   const pointer = { x: VIEW.w / 2, y: VIEW.h / 2, down: false };
+  const touchInput = {
+    active: false,
+    id: null,
+    x: VIEW.w / 2,
+    y: VIEW.h / 2,
+    startX: VIEW.w / 2,
+    startY: VIEW.h / 2,
+    startTime: 0,
+    moved: false,
+    menuTap: null,
+    used: false,
+  };
   let hitboxes = [];
   let playerId = 1;
   let dynastyPlayerId = 1;
   let lastTimestamp = 0;
+  let suppressMouseUntil = 0;
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
   const lerp = (a, b, t) => a + (b - a) * t;
   const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
   const round = (value) => Math.round(value * 10) / 10;
   const rating01 = (rating) => clamp((rating - 60) / 40, 0, 1);
+  const pointDist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
   function difficultyName(index = state.difficulty) {
     return DIFFICULTIES[clamp(index, 1, DIFFICULTIES.length) - 1].name;
@@ -846,6 +1016,46 @@
 
   function countryCode(country) {
     return COUNTRY_CODES[country] || country.slice(0, 3).toUpperCase();
+  }
+
+  function clubLeagueForTeam(index) {
+    return index >= CHAMPIONS_LEAGUE_TEAM_COUNT ? "mls" : "ucl";
+  }
+
+  function clubLeagueName(league) {
+    return league === "mls" ? "MLS" : "Champions League";
+  }
+
+  function clubLeagueIndices(league) {
+    return league === "mls" ? MLS_TEAM_INDICES : CHAMPIONS_LEAGUE_INDICES;
+  }
+
+  function clubLeagueIndicesForTeam(index) {
+    return clubLeagueIndices(clubLeagueForTeam(index));
+  }
+
+  function clubLeagueNameForTeam(index) {
+    return clubLeagueName(clubLeagueForTeam(index));
+  }
+
+  function visibleClubIndices() {
+    return clubLeagueIndices(state.clubPool);
+  }
+
+  function playoffAdvanceCountForLeague(league) {
+    return 6;
+  }
+
+  function playoffAdvanceCountForSeason(season) {
+    return playoffAdvanceCountForLeague(season?.league || "ucl");
+  }
+
+  function playoffRuleLabel(season) {
+    return "Top 6 advance. Seeds #1 and #2 get first-round byes.";
+  }
+
+  function compactPlayoffRuleLabel(season) {
+    return "TOP 6 ADVANCE  |  #1-#2 BYE";
   }
 
   function effectiveDifficultyIndex() {
@@ -902,29 +1112,51 @@
   }
 
   function menuTeamPool() {
-    return state.menuMode === "world" ? WORLD_TEAMS : TEAMS;
+    return state.menuMode === "world" ? WORLD_TEAMS : visibleClubIndices().map((index) => TEAMS[index]);
   }
 
   function menuSelectedIndex() {
-    return state.menuMode === "world" ? state.worldSelectedTeam : state.selectedTeam;
+    if (state.menuMode === "world") return state.worldSelectedTeam;
+    const index = visibleClubIndices().indexOf(state.selectedTeam);
+    return index === -1 ? 0 : index;
   }
 
   function menuOpponentIndex() {
-    return state.menuMode === "world" ? state.worldOpponentTeam : state.opponentTeam;
+    if (state.menuMode === "world") return state.worldOpponentTeam;
+    const indices = visibleClubIndices();
+    const index = indices.indexOf(state.opponentTeam);
+    if (index !== -1) return index;
+    const fallback = indices.findIndex((teamIndex) => teamIndex !== state.selectedTeam);
+    return fallback === -1 ? 0 : fallback;
   }
 
   function setMenuSelectedIndex(index) {
     if (state.menuMode === "world") {
-      state.worldSelectedTeam = index;
+      state.worldSelectedTeam = clamp(index, 0, WORLD_TEAMS.length - 1);
     } else {
-      state.selectedTeam = index;
+      const indices = visibleClubIndices();
+      const wrappedIndex = ((index % indices.length) + indices.length) % indices.length;
+      state.selectedTeam = indices[wrappedIndex] || indices[0];
       state.careerPlayerIndex = Math.min(state.careerPlayerIndex, TEAMS[state.selectedTeam].players.length - 1);
     }
     pickOpponent();
   }
 
+  function setClubPool(pool) {
+    if (state.menuMode === "world") return;
+    state.clubPool = pool === "mls" ? "mls" : "ucl";
+    state.selectedTeam = visibleClubIndices()[0];
+    state.careerPlayerIndex = Math.min(state.careerPlayerIndex, TEAMS[state.selectedTeam].players.length - 1);
+    pickOpponent();
+  }
+
   function setMenuMode(mode) {
     state.menuMode = mode;
+    if (mode !== "world") {
+      const indices = visibleClubIndices();
+      if (!indices.includes(state.selectedTeam)) state.selectedTeam = indices[0];
+      state.careerPlayerIndex = Math.min(state.careerPlayerIndex, TEAMS[state.selectedTeam].players.length - 1);
+    }
     pickOpponent();
   }
 
@@ -933,12 +1165,18 @@
   }
 
   function createClubSeason(teamIndex) {
-    const regularSeasonLength = 10;
+    const league = clubLeagueForTeam(teamIndex);
+    const leagueTeams = clubLeagueIndices(league);
+    const regularSeasonLength = leagueTeams.length;
     return {
       stage: "regular",
+      league,
+      leagueName: clubLeagueName(league),
+      leagueTeamCount: leagueTeams.length,
+      playoffAdvanceCount: playoffAdvanceCountForLeague(league),
       regularSeasonLength,
-      schedule: createRoundRobinSchedule(TEAMS.length, regularSeasonLength),
-      standings: createStandings(),
+      schedule: createRoundRobinSchedule(leagueTeams, regularSeasonLength),
+      standings: createStandings(leagueTeams),
       seeds: [],
       playoff: null,
       championIndex: null,
@@ -947,9 +1185,9 @@
     };
   }
 
-  function createStandings() {
-    return TEAMS.map((team, index) => ({
-      teamIndex: index,
+  function createStandings(teamIndices = TEAMS.map((team, index) => index)) {
+    return teamIndices.map((teamIndex, index) => ({
+      teamIndex,
       played: 0,
       wins: 0,
       draws: 0,
@@ -962,8 +1200,9 @@
     }));
   }
 
-  function createRoundRobinSchedule(teamCount, targetRounds = teamCount - 1) {
-    const rotation = Array.from({ length: teamCount }, (_, index) => index);
+  function createRoundRobinSchedule(teamIndices, targetRounds = teamIndices.length) {
+    const rotation = teamIndices.slice();
+    const teamCount = rotation.length;
     const rounds = [];
     for (let round = 0; round < teamCount - 1; round += 1) {
       const matches = [];
@@ -1213,6 +1452,7 @@
         "tab",
         "enter",
         "e",
+        "q",
         "p",
         "f",
       ].includes(key)
@@ -1228,12 +1468,14 @@
   });
 
   canvas.addEventListener("mousemove", (event) => {
+    if (nowMs() < suppressMouseUntil) return;
     const point = toCanvasPoint(event);
     pointer.x = point.x;
     pointer.y = point.y;
   });
 
   canvas.addEventListener("mousedown", (event) => {
+    if (nowMs() < suppressMouseUntil) return;
     const point = toCanvasPoint(event);
     pointer.x = point.x;
     pointer.y = point.y;
@@ -1241,6 +1483,7 @@
   });
 
   window.addEventListener("mouseup", (event) => {
+    if (nowMs() < suppressMouseUntil) return;
     const point = toCanvasPoint(event);
     pointer.x = point.x;
     pointer.y = point.y;
@@ -1248,12 +1491,121 @@
     handleClick(point.x, point.y);
   });
 
+  canvas.addEventListener("touchstart", (event) => {
+    if (!event.changedTouches.length) return;
+    const touch = event.changedTouches[0];
+    const point = toCanvasPointFromClient(touch.clientX, touch.clientY);
+    pointer.x = point.x;
+    pointer.y = point.y;
+    pointer.down = true;
+    suppressMouseUntil = nowMs() + 700;
+    touchInput.used = true;
+    if (state.mode === "play") {
+      beginGameplayTouch(touch.identifier, point);
+    } else {
+      touchInput.menuTap = {
+        id: touch.identifier,
+        startX: point.x,
+        startY: point.y,
+        x: point.x,
+        y: point.y,
+      };
+    }
+    event.preventDefault();
+  }, { passive: false });
+
+  canvas.addEventListener("touchmove", (event) => {
+    const touch = matchingTouch(event.changedTouches, touchInput.active ? touchInput.id : touchInput.menuTap?.id);
+    if (!touch) return;
+    suppressMouseUntil = nowMs() + 700;
+    const point = toCanvasPointFromClient(touch.clientX, touch.clientY);
+    pointer.x = point.x;
+    pointer.y = point.y;
+    if (touchInput.active) {
+      updateGameplayTouch(point);
+    } else if (touchInput.menuTap) {
+      touchInput.menuTap.x = point.x;
+      touchInput.menuTap.y = point.y;
+    }
+    event.preventDefault();
+  }, { passive: false });
+
+  canvas.addEventListener("touchend", (event) => {
+    finishTouch(event);
+  }, { passive: false });
+
+  canvas.addEventListener("touchcancel", (event) => {
+    finishTouch(event, true);
+  }, { passive: false });
+
   function toCanvasPoint(event) {
+    return toCanvasPointFromClient(event.clientX, event.clientY);
+  }
+
+  function toCanvasPointFromClient(clientX, clientY) {
     const rect = canvas.getBoundingClientRect();
     return {
-      x: ((event.clientX - rect.left) / rect.width) * VIEW.w,
-      y: ((event.clientY - rect.top) / rect.height) * VIEW.h,
+      x: ((clientX - rect.left) / rect.width) * VIEW.w,
+      y: ((clientY - rect.top) / rect.height) * VIEW.h,
     };
+  }
+
+  function matchingTouch(touches, id) {
+    for (let i = 0; i < touches.length; i += 1) {
+      const touch = touches[i];
+      if (touch.identifier === id) return touch;
+    }
+    return null;
+  }
+
+  function nowMs() {
+    return typeof performance !== "undefined" && performance.now ? performance.now() : Date.now();
+  }
+
+  function beginGameplayTouch(id, point) {
+    touchInput.active = true;
+    touchInput.id = id;
+    touchInput.x = point.x;
+    touchInput.y = point.y;
+    touchInput.startX = point.x;
+    touchInput.startY = point.y;
+    touchInput.startTime = nowMs();
+    touchInput.moved = false;
+    touchInput.menuTap = null;
+  }
+
+  function updateGameplayTouch(point) {
+    touchInput.x = point.x;
+    touchInput.y = point.y;
+    if (Math.hypot(point.x - touchInput.startX, point.y - touchInput.startY) > 18) {
+      touchInput.moved = true;
+    }
+  }
+
+  function finishTouch(event, cancelled = false) {
+    const touch = matchingTouch(event.changedTouches, touchInput.active ? touchInput.id : touchInput.menuTap?.id);
+    if (!touch) return;
+    suppressMouseUntil = nowMs() + 700;
+    const point = toCanvasPointFromClient(touch.clientX, touch.clientY);
+    pointer.x = point.x;
+    pointer.y = point.y;
+    pointer.down = false;
+
+    if (touchInput.active) {
+      const moved = touchInput.moved || Math.hypot(point.x - touchInput.startX, point.y - touchInput.startY) > 18;
+      const duration = nowMs() - touchInput.startTime;
+      touchInput.active = false;
+      touchInput.id = null;
+      if (!cancelled && state.mode === "play" && !moved && duration < 360) {
+        performControlledAction();
+      }
+    } else if (touchInput.menuTap) {
+      const tap = touchInput.menuTap;
+      const moved = Math.hypot(point.x - tap.startX, point.y - tap.startY) > 18;
+      touchInput.menuTap = null;
+      if (!cancelled && !moved) handleClick(point.x, point.y);
+    }
+    event.preventDefault();
   }
 
   function handleClick(x, y) {
@@ -1271,15 +1623,19 @@
   }
 
   function pickOpponent() {
-    const teams = menuTeamPool();
-    const selected = menuSelectedIndex();
     if (state.menuMode === "world") {
-      state.worldOpponentTeam = worldCupFirstOpponentIndex(selected);
+      state.worldOpponentTeam = worldCupFirstOpponentIndex(state.worldSelectedTeam);
       return;
     }
-    const sorted = teams.map((team, index) => ({ index, power: teamPower(team) }))
-      .filter((entry) => entry.index !== selected)
+    const leagueTeams = visibleClubIndices();
+    if (!leagueTeams.includes(state.selectedTeam)) state.selectedTeam = leagueTeams[0];
+    const sorted = leagueTeams.map((index) => ({ index, power: teamPower(TEAMS[index]) }))
+      .filter((entry) => entry.index !== state.selectedTeam)
       .sort((a, b) => b.power - a.power);
+    if (!sorted.length) {
+      state.opponentTeam = state.selectedTeam;
+      return;
+    }
     const rank = clamp(selectedDifficulty().opponentRank, 0, sorted.length - 1);
     state.opponentTeam = sorted[rank].index;
   }
@@ -1290,8 +1646,29 @@
     return WORLD_BRACKET_ORDER[slot % 2 === 0 ? slot + 1 : slot - 1];
   }
 
+  function freePlayMatchLength(kind) {
+    return kind === "quick" ? QUICK_MATCH_LENGTH : STANDARD_MATCH_LENGTH;
+  }
+
+  function startFreePlayMatch(kind = "match") {
+    startMatch(state.selectedTeam, state.opponentTeam, {
+      matchKind: kind === "quick" ? "quick" : "match",
+      matchLength: freePlayMatchLength(kind),
+    });
+  }
+
   function startMatch(homeIndex = state.selectedTeam, awayIndex = state.opponentTeam, options = {}) {
     const teams = options.teams || TEAMS;
+    const freePlay = !options.career && !options.worldCup && !options.goat;
+    const matchKind = freePlay
+      ? options.matchKind || state.activeMatchKind || "match"
+      : options.career
+        ? "career"
+        : options.worldCup
+          ? "world cup"
+          : "goat mashup";
+    state.matchLength = options.matchLength || (freePlay ? freePlayMatchLength(matchKind) : STANDARD_MATCH_LENGTH);
+    if (freePlay) state.activeMatchKind = matchKind === "quick" ? "quick" : "match";
     if (!options.career && !options.worldCup && !options.goat) {
       state.career = { active: false, type: null };
       state.worldCup = { active: false };
@@ -1338,7 +1715,9 @@
     state.timeLeft = state.matchLength;
     state.extraTime = { active: false, used: false, seconds: 30 };
     state.goalFreeze = 0;
-    state.message = `${state.homeTeam.short} v ${state.awayTeam.short}`;
+    state.message = freePlay && state.activeMatchKind === "quick"
+      ? `Quick: ${state.homeTeam.short} v ${state.awayTeam.short}`
+      : `${state.homeTeam.short} v ${state.awayTeam.short}`;
     state.messageTimer = 2;
     state.winnerText = "";
     state.lastScorer = "";
@@ -1526,6 +1905,8 @@
     if (justPressed.has("2")) setMenuMode("player");
     if (justPressed.has("3")) setMenuMode("club");
     if (justPressed.has("4")) setMenuMode("world");
+    if (state.menuMode !== "world" && justPressed.has("m")) setClubPool("mls");
+    if (state.menuMode !== "world" && justPressed.has("u")) setClubPool("ucl");
     if (justPressed.has("left") || justPressed.has("a")) {
       const teams = menuTeamPool();
       setMenuSelectedIndex((menuSelectedIndex() + teams.length - 1) % teams.length);
@@ -1554,8 +1935,9 @@
       if (state.menuMode === "player") beginPlayerCareer();
       else if (state.menuMode === "club") beginClubCareer();
       else if (state.menuMode === "world") beginWorldCup();
-      else startMatch();
+      else startFreePlayMatch("match");
     }
+    if (state.menuMode === "quick" && justPressed.has("q")) startFreePlayMatch("quick");
   }
 
   function updateCareerHub() {
@@ -1587,12 +1969,16 @@
     const owner = state.ball.owner;
     const nowControlled = state.homePlayers[state.controlledIndex];
     if (justPressed.has("e") && owner === nowControlled) passBall(nowControlled, true);
-    if (justPressed.has("space")) {
-      if (owner === nowControlled) {
-        shootBall(nowControlled, true);
-      } else {
-        attemptUserTackle(nowControlled);
-      }
+    if (justPressed.has("space")) performControlledAction();
+  }
+
+  function performControlledAction() {
+    const controlled = state.homePlayers[state.controlledIndex];
+    if (!controlled) return;
+    if (state.ball.owner === controlled) {
+      shootBall(controlled, true);
+    } else {
+      attemptUserTackle(controlled);
     }
   }
 
@@ -1680,7 +2066,7 @@
       season: createClubSeason(state.selectedTeam),
       goatMashup: null,
       goatTitles: 0,
-      lastSummary: "The board expects European nights with bite.",
+      lastSummary: `${clubLeagueNameForTeam(state.selectedTeam)} season starts with league-only fixtures.`,
       history: [],
     };
     state.careerHubView = "office";
@@ -1911,8 +2297,10 @@
 
   function careerOpponentIndex() {
     const career = state.career;
+    const leagueTeams = clubLeagueIndicesForTeam(career.teamIndex);
     const candidates = TEAMS.map((team, index) => ({ index, power: teamPower(team) }))
       .filter((entry) => entry.index !== career.teamIndex)
+      .filter((entry) => leagueTeams.includes(entry.index))
       .sort((a, b) => b.power - a.power);
     if (career.type === "club") {
       if (career.season?.stage === "regular") return regularSeasonOpponentIndex(career);
@@ -1949,7 +2337,7 @@
   }
 
   function clubSeasonStatusText(career) {
-    if (career.season.stage === "champion") return `${TEAMS[career.teamIndex].short} are European champions.`;
+    if (career.season.stage === "champion") return `${TEAMS[career.teamIndex].short} are ${career.season.leagueName} champions.`;
     if (career.season.stage === "eliminated") {
       const champion = career.season.championIndex != null ? TEAMS[career.season.championIndex].short : "TBD";
       return `Season complete. Champion: ${champion}.`;
@@ -2085,20 +2473,21 @@
   }
 
   function seedPlayoff(career) {
-    const topSix = rankedStandings(career).slice(0, 6);
-    career.season.seeds = topSix.map((row) => ({ seed: row.seed, teamIndex: row.teamIndex }));
-    const qf1 = createPlayoffMatch("QF1", topSix[2], topSix[5]);
-    const qf2 = createPlayoffMatch("QF2", topSix[3], topSix[4]);
+    const advanceCount = playoffAdvanceCountForSeason(career.season);
+    const playoffSeeds = rankedStandings(career).slice(0, advanceCount);
+    career.season.seeds = playoffSeeds.map((row) => ({ seed: row.seed, teamIndex: row.teamIndex }));
+    const qf1 = createPlayoffMatch("QF1", playoffSeeds[2], playoffSeeds[5]);
+    const qf2 = createPlayoffMatch("QF2", playoffSeeds[3], playoffSeeds[4]);
     career.season.playoff = {
       round: "quarterfinal",
-      byes: [topSix[0], topSix[1]],
+      byes: [playoffSeeds[0], playoffSeeds[1]],
       quarterfinals: [qf1, qf2],
       semifinals: null,
       matches: [qf1, qf2],
       final: null,
     };
     career.season.stage = "playoff";
-    if (!topSix.some((row) => row.teamIndex === career.teamIndex)) {
+    if (!playoffSeeds.some((row) => row.teamIndex === career.teamIndex)) {
       career.season.eliminated = true;
       completeAiPlayoffs(career);
       career.season.stage = "eliminated";
@@ -2111,7 +2500,7 @@
         simulateQuarterfinalsAndCreateSemis(career);
         career.lastSummary = `Regular season complete: seed #${seed}. First-round bye earned.`;
       } else {
-        career.lastSummary = `Regular season complete: qualified for the six-team playoff as seed #${seed}.`;
+        career.lastSummary = `Regular season complete: qualified for the ${advanceCount}-team playoff as seed #${seed}.`;
       }
     }
   }
@@ -2180,7 +2569,7 @@
     career.season.stage = userWon ? "champion" : "eliminated";
     if (userWon) career.championships += 1;
     career.lastSummary = userWon
-      ? `Won final ${match.score}. Champions of Europe.`
+      ? `Won final ${match.score}. ${career.season.leagueName} champions.`
       : `Lost final ${match.score}. Champion: ${TEAMS[match.winner].short}.`;
   }
 
@@ -2671,8 +3060,9 @@
   }
 
   function updateControlledPlayer(player, dt) {
-    const input = readMovementInput();
-    const sprinting = keys.has("shift") && player.stamina > 0.08 && input.mag > 0.1;
+    const input = readMovementInput(player);
+    const touchSprint = input.source === "touch" && input.mag > 0.72;
+    const sprinting = (keys.has("shift") || touchSprint) && player.stamina > 0.08 && input.mag > 0.1;
     const ratingBoost = rating01(player.rating);
     const maxSpeed = lerp(165, 255, ratingBoost) * (sprinting ? 1.24 : 1);
     const accel = lerp(720, 1080, ratingBoost) * (sprinting ? 1.12 : 1);
@@ -2788,7 +3178,9 @@
     }
   }
 
-  function readMovementInput() {
+  function readMovementInput(player) {
+    const touch = readTouchMovementInput(player);
+    if (touch.mag > 0.05) return touch;
     let x = 0;
     let y = 0;
     if (keys.has("left") || keys.has("a")) x -= 1;
@@ -2800,7 +3192,21 @@
       x /= mag;
       y /= mag;
     }
-    return { x, y, mag };
+    return { x, y, mag, source: "keyboard" };
+  }
+
+  function readTouchMovementInput(player) {
+    if (!touchInput.active || state.mode !== "play" || !player) return { x: 0, y: 0, mag: 0, source: "touch" };
+    const dx = clamp(touchInput.x, FIELD.x + 24, FIELD.x + FIELD.w - 24) - player.x;
+    const dy = clamp(touchInput.y, FIELD.y + 24, FIELD.y + FIELD.h - 24) - player.y;
+    const distance = Math.hypot(dx, dy);
+    if (distance < 10) return { x: 0, y: 0, mag: 0, source: "touch" };
+    return {
+      x: dx / distance,
+      y: dy / distance,
+      mag: clamp(distance / 112, 0, 1),
+      source: "touch",
+    };
   }
 
   function formationTarget(player) {
@@ -3302,6 +3708,7 @@
       drawParticles();
       drawScoreboard();
       drawMessage();
+      drawTouchPlayHints();
       if (state.mode === "paused") drawPauseOverlay();
       if (state.mode === "ended") drawEndOverlay();
     }
@@ -3575,12 +3982,12 @@
     ctx.fillStyle = "#f5c75f";
     ctx.font = "900 14px Inter, system-ui, sans-serif";
     ctx.textAlign = "left";
-    ctx.fillText("Regular season leaderboard", x, y - 18);
+    ctx.fillText(`${career.season.leagueName} leaderboard`, x, y - 18);
     if (compact) {
       ctx.textAlign = "right";
       ctx.fillStyle = "rgba(139,220,211,0.68)";
       ctx.font = "900 10px Inter, system-ui, sans-serif";
-      ctx.fillText("TOP 6 ADVANCE  |  #1-#2 BYE", x + w, y - 18);
+      ctx.fillText(compactPlayoffRuleLabel(career.season), x + w, y - 18);
       ctx.textAlign = "left";
     }
     ctx.fillStyle = "rgba(247,251,255,0.48)";
@@ -3593,7 +4000,7 @@
     ctx.fillText("GD", x + w - 12, y + 4);
     ctx.textAlign = "left";
 
-    const playoffCutoff = 6;
+    const playoffCutoff = playoffAdvanceCountForSeason(career.season);
     ranked.forEach((row, index) => {
       const rowY = y + 16 + index * rowGap;
       const team = TEAMS[row.teamIndex];
@@ -3636,7 +4043,7 @@
     if (!compact) {
       ctx.fillStyle = "rgba(247,251,255,0.5)";
       ctx.font = "800 10.5px Inter, system-ui, sans-serif";
-      ctx.fillText("Top 6 advance. Seeds #1 and #2 get first-round byes.", x, y + 252);
+      ctx.fillText(playoffRuleLabel(career.season), x, y + 252);
     }
   }
 
@@ -3847,23 +4254,26 @@
   }
 
   function drawPlayoffBracket(x, y, w, career) {
+    const advanceCount = playoffAdvanceCountForSeason(career.season);
     ctx.fillStyle = "#f5c75f";
     ctx.font = "900 14px Inter, system-ui, sans-serif";
     ctx.textAlign = "left";
-    ctx.fillText("Six-team playoff", x, y - 16);
+    ctx.fillText(`${career.season.leagueName} playoff`, x, y - 16);
     if (!career.season.playoff) {
-      const projected = rankedStandings(career).slice(0, 6);
+      const projected = rankedStandings(career).slice(0, advanceCount);
       drawRoundedRect(x, y, w, 98, 12, "rgba(247,251,255,0.06)");
       ctx.fillStyle = "rgba(247,251,255,0.66)";
       ctx.font = "800 12px Inter, system-ui, sans-serif";
-      ctx.fillText("Top 6 lock after the regular season. #1/#2 get byes.", x + 14, y + 24);
+      ctx.fillText(playoffRuleLabel(career.season), x + 14, y + 24);
       projected.forEach((row, index) => {
         ctx.fillStyle = row.teamIndex === career.teamIndex ? "#f5c75f" : "#8bdcd3";
         ctx.font = "900 11px Inter, system-ui, sans-serif";
-        const col = index % 3;
-        const rowOffset = Math.floor(index / 3);
+        const colCount = 3;
+        const colGap = 142;
+        const col = index % colCount;
+        const rowOffset = Math.floor(index / colCount);
         const bye = index < 2 ? " BYE" : "";
-        ctx.fillText(`#${index + 1} ${TEAMS[row.teamIndex].short}${bye}`, x + 18 + col * 142, y + 56 + rowOffset * 24);
+        ctx.fillText(`#${index + 1} ${TEAMS[row.teamIndex].short}${bye}`, x + 18 + col * colGap, y + 56 + rowOffset * 24);
       });
       return;
     }
@@ -3871,6 +4281,23 @@
     const playoff = career.season.playoff;
     const qfs = playoff.quarterfinals || [];
     const sfs = playoff.semifinals || playoff.matches || [];
+    if (!qfs.length) {
+      ctx.fillStyle = "rgba(247,251,255,0.46)";
+      ctx.font = "900 9px Inter, system-ui, sans-serif";
+      ctx.fillText("SEMIFINALS", x, y);
+      ctx.fillText("FINAL", x + 248, y);
+      drawBracketMatch(x, y + 10, 184, sfs[0], career, 44);
+      drawBracketMatch(x, y + 62, 184, sfs[1], career, 44);
+      if (playoff.final) {
+        drawBracketMatch(x + 248, y + 36, 184, playoff.final, career, 44);
+      } else {
+        drawRoundedRect(x + 248, y + 36, 184, 44, 10, "rgba(247,251,255,0.05)");
+        ctx.fillStyle = "rgba(247,251,255,0.52)";
+        ctx.font = "800 11px Inter, system-ui, sans-serif";
+        ctx.fillText("Final TBD", x + 262, y + 62);
+      }
+      return;
+    }
     ctx.fillStyle = "rgba(247,251,255,0.46)";
     ctx.font = "900 9px Inter, system-ui, sans-serif";
     ctx.fillText("FIRST ROUND", x, y);
@@ -4031,7 +4458,28 @@
         setMenuMode(mode.id);
       });
     });
+    if (state.menuMode !== "world") drawClubPoolJump(746, y, 176, 36);
     drawDifficultySelector(946, 86, 268, 36);
+  }
+
+  function drawClubPoolJump(x, y, w, h) {
+    const mlsActive = state.clubPool === "mls";
+    drawRoundedRect(x, y, w, h, 13, "rgba(247,251,255,0.08)");
+    ctx.strokeStyle = "rgba(247,251,255,0.14)";
+    ctx.lineWidth = 1.2;
+    strokeRoundedRect(x, y, w, h, 13);
+    drawClubPoolButton(x + 4, y + 4, (w - 12) / 2, h - 8, "UCL", !mlsActive, () => setClubPool("ucl"));
+    drawClubPoolButton(x + 8 + (w - 12) / 2, y + 4, (w - 12) / 2, h - 8, "MLS", mlsActive, () => setClubPool("mls"));
+  }
+
+  function drawClubPoolButton(x, y, w, h, label, active, action) {
+    drawRoundedRect(x, y, w, h, 10, active ? "rgba(245,199,95,0.92)" : "rgba(247,251,255,0.045)");
+    ctx.fillStyle = active ? "#101820" : "#f7fbff";
+    ctx.font = "900 12px Inter, system-ui, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(label, x + w / 2, y + 19);
+    ctx.textAlign = "left";
+    addHitbox(`club-pool-${label.toLowerCase()}`, x, y, w, h, action);
   }
 
   function drawDifficultySelector(x, y, w, h) {
@@ -4255,7 +4703,7 @@
     ctx.fillText("Club Career", x + 156, y + 58);
     ctx.font = "700 14px Inter, system-ui, sans-serif";
     ctx.fillStyle = "rgba(247,251,255,0.66)";
-    ctx.fillText(`${team.name} sporting project`, x + 158, y + 84);
+    ctx.fillText(`${clubLeagueNameForTeam(state.selectedTeam)} ${clubLeagueIndicesForTeam(state.selectedTeam).length}-game season`, x + 158, y + 84);
     drawRatingDial(x + 466, y + 70, 52, teamPower(team), team.colors);
     ctx.fillStyle = "rgba(247,251,255,0.68)";
     ctx.font = "800 12px Inter, system-ui, sans-serif";
@@ -4268,7 +4716,7 @@
     ctx.textAlign = "left";
     ctx.fillStyle = "rgba(247,251,255,0.62)";
     ctx.font = "700 13px Inter, system-ui, sans-serif";
-    wrapText("Win fixtures to grow the budget and sharpen your squad for tougher European opponents.", x + 34, y + 276, 500, 16, 2);
+    wrapText(`League-only fixtures against ${clubLeagueNameForTeam(state.selectedTeam)} clubs. Win to grow budget and sharpen your squad.`, x + 34, y + 276, 500, 16, 2);
 
     const rx = 678;
     const rw = 536;
@@ -4305,7 +4753,8 @@
     drawVersusMiniPitch(x + 34, y + 104, w - 68, 112, team, opponent);
 
     drawButton(x + 34, y + 238, 194, 48, `Difficulty: ${difficultyName()}`, () => cycleDifficulty(), false);
-    drawButton(x + 248, y + 238, 254, 48, "Start Match", () => startMatch(), true);
+    drawButton(x + 242, y + 238, 154, 48, "Quick Match", () => startFreePlayMatch("quick"), false);
+    drawButton(x + 410, y + 238, 92, 48, "Match", () => startFreePlayMatch("match"), true);
   }
 
   function drawWorldCupStartPanel(team, opponent) {
@@ -4750,6 +5199,46 @@
     ctx.restore();
   }
 
+  function isTouchLikeDevice() {
+    const navTouch = typeof navigator !== "undefined" && navigator.maxTouchPoints > 0;
+    const coarsePointer = typeof window !== "undefined" && window.matchMedia?.("(pointer: coarse)")?.matches;
+    return touchInput.used || navTouch || coarsePointer;
+  }
+
+  function drawTouchPlayHints() {
+    if (state.mode !== "play" || !isTouchLikeDevice()) return;
+    ctx.save();
+    if (touchInput.active) {
+      const player = state.homePlayers[state.controlledIndex];
+      const targetX = clamp(touchInput.x, FIELD.x + 24, FIELD.x + FIELD.w - 24);
+      const targetY = clamp(touchInput.y, FIELD.y + 24, FIELD.y + FIELD.h - 24);
+      if (player) {
+        ctx.strokeStyle = "rgba(245,199,95,0.38)";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(player.x, player.y);
+        ctx.lineTo(targetX, targetY);
+        ctx.stroke();
+      }
+      ctx.fillStyle = "rgba(245,199,95,0.18)";
+      ctx.beginPath();
+      ctx.arc(targetX, targetY, 34 + Math.sin(state.crowdPulse * 9) * 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(245,199,95,0.78)";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(targetX, targetY, 18, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    drawRoundedRect(468, 642, 344, 38, 16, "rgba(6,13,17,0.58)");
+    ctx.fillStyle = "rgba(247,251,255,0.82)";
+    ctx.font = "900 13px Inter, system-ui, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("Drag player to move  |  Tap to shoot", 640, 666);
+    ctx.restore();
+  }
+
   function drawPauseOverlay() {
     drawOverlayShade();
     drawRoundedRect(430, 238, 420, 208, 22, "rgba(10,22,26,0.9)");
@@ -4787,7 +5276,7 @@
       state.mode = "menu";
       pickOpponent();
     }, false);
-    drawButton(656, 404, 172, 48, "Rematch", () => startMatch(), true);
+    drawButton(656, 404, 172, 48, "Rematch", () => startFreePlayMatch(state.activeMatchKind), true);
   }
 
   function drawOverlayShade() {
@@ -5004,9 +5493,19 @@
       field: FIELD,
       selectedMenuTeam: menuTeams[menuSelectedIndex()].name,
       menuMode: state.menuMode,
+      selectedClubLeague: state.menuMode === "world" ? null : clubLeagueName(state.clubPool),
+      selectedClubLeagueTeamCount: state.menuMode === "world" ? null : clubLeagueIndices(state.clubPool).length,
       teamCount: TEAMS.length,
       mlsTeamCount: MLS_TEAM_INDICES.length,
       worldTeamCount: WORLD_TEAMS.length,
+      activeMatchKind: state.activeMatchKind,
+      matchLength: state.matchLength,
+      touchControls: {
+        available: isTouchLikeDevice(),
+        active: touchInput.active,
+        used: touchInput.used,
+        target: touchInput.active ? { x: round(touchInput.x), y: round(touchInput.y) } : null,
+      },
       careerHubView: state.careerHubView,
       difficulty: {
         selected: difficultyName(state.difficulty),
@@ -5085,6 +5584,11 @@
     if (!career.season) return null;
     return {
       stage: career.season.stage,
+      league: career.season.league,
+      leagueName: career.season.leagueName,
+      leagueTeamCount: career.season.leagueTeamCount,
+      playoffAdvanceCount: career.season.playoffAdvanceCount || playoffAdvanceCountForSeason(career.season),
+      playoffRule: playoffRuleLabel(career.season),
       regularSeasonLength: career.season.regularSeasonLength,
       currentSeed: seedForTeam(career, career.teamIndex),
       champion: career.season.championIndex != null ? TEAMS[career.season.championIndex].name : null,
