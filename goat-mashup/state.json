@@ -1,0 +1,1644 @@
+{
+  "mlsMenu": {
+    "mode": "menu",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Chelsea",
+    "menuMode": "quick",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Chelsea vs Barcelona",
+    "career": null,
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 120,
+    "extraTime": {
+      "active": false,
+      "used": false,
+      "seconds": 30
+    },
+    "possession": "loose",
+    "selectedPlayer": null,
+    "ball": {
+      "x": 640,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": null
+    },
+    "home": [],
+    "away": [],
+    "message": ""
+  },
+  "goatReady": {
+    "mode": "careerHub",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Real Madrid",
+    "menuMode": "club",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Real Madrid vs Bayer Leverkusen",
+    "career": {
+      "type": "club",
+      "fixture": 11,
+      "record": "0-6-4",
+      "player": null,
+      "club": {
+        "budget": 132,
+        "reputation": 54,
+        "sharpness": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 8,
+        "dynasty": {
+          "year": 1,
+          "championships": 0,
+          "playoffAppearances": 0,
+          "goatTitles": 0,
+          "draftPicks": 1,
+          "rosterSize": 8,
+          "squadPower": 94,
+          "selectedLineupRole": "ST",
+          "selectedRoster": {
+            "name": "Kylian Mbappe",
+            "role": "ST",
+            "rating": 99
+          },
+          "starters": [
+            {
+              "name": "Thibaut Courtois",
+              "role": "GK",
+              "naturalRole": "GK",
+              "rating": 90
+            },
+            {
+              "name": "Antonio Rudiger",
+              "role": "DF",
+              "naturalRole": "DF",
+              "rating": 89
+            },
+            {
+              "name": "Jude Bellingham",
+              "role": "MID",
+              "naturalRole": "MID",
+              "rating": 94
+            },
+            {
+              "name": "Vinicius Junior",
+              "role": "WING",
+              "naturalRole": "WING",
+              "rating": 96
+            },
+            {
+              "name": "Kylian Mbappe",
+              "role": "ST",
+              "naturalRole": "ST",
+              "rating": 99
+            }
+          ],
+          "tradeOffer": {
+            "outgoing": "Aurelien Tchouameni",
+            "incoming": "Sergio Busquets",
+            "cost": 24
+          },
+          "draftProspect": {
+            "name": "Mateo Rivera",
+            "role": "DF",
+            "rating": 80,
+            "potential": 92
+          }
+        },
+        "season": {
+          "stage": "eliminated",
+          "regularSeasonLength": 10,
+          "currentSeed": 23,
+          "champion": "Manchester City",
+          "standings": [
+            {
+              "seed": 1,
+              "team": "NEW",
+              "played": 10,
+              "points": 21,
+              "record": "6-3-1",
+              "gd": 11
+            },
+            {
+              "seed": 2,
+              "team": "ARS",
+              "played": 10,
+              "points": 19,
+              "record": "5-4-1",
+              "gd": 7
+            },
+            {
+              "seed": 3,
+              "team": "INT",
+              "played": 10,
+              "points": 18,
+              "record": "5-3-2",
+              "gd": 6
+            },
+            {
+              "seed": 4,
+              "team": "MCI",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 3
+            },
+            {
+              "seed": 5,
+              "team": "BAR",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 2
+            },
+            {
+              "seed": 6,
+              "team": "PSG",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 2
+            },
+            {
+              "seed": 7,
+              "team": "LEV",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 1
+            },
+            {
+              "seed": 8,
+              "team": "ATL",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": 1
+            },
+            {
+              "seed": 9,
+              "team": "CHE",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": 0
+            },
+            {
+              "seed": 10,
+              "team": "LAFC",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": -2
+            },
+            {
+              "seed": 11,
+              "team": "BVB",
+              "played": 10,
+              "points": 14,
+              "record": "3-5-2",
+              "gd": 3
+            },
+            {
+              "seed": 12,
+              "team": "JUV",
+              "played": 10,
+              "points": 14,
+              "record": "4-2-4",
+              "gd": 3
+            },
+            {
+              "seed": 13,
+              "team": "ATM",
+              "played": 10,
+              "points": 14,
+              "record": "4-2-4",
+              "gd": 1
+            },
+            {
+              "seed": 14,
+              "team": "BAY",
+              "played": 10,
+              "points": 14,
+              "record": "4-2-4",
+              "gd": -1
+            },
+            {
+              "seed": 15,
+              "team": "LAG",
+              "played": 10,
+              "points": 13,
+              "record": "4-1-5",
+              "gd": -5
+            },
+            {
+              "seed": 16,
+              "team": "MIA",
+              "played": 10,
+              "points": 12,
+              "record": "3-3-4",
+              "gd": 2
+            },
+            {
+              "seed": 17,
+              "team": "SEA",
+              "played": 10,
+              "points": 12,
+              "record": "2-6-2",
+              "gd": -1
+            },
+            {
+              "seed": 18,
+              "team": "BEN",
+              "played": 10,
+              "points": 12,
+              "record": "3-3-4",
+              "gd": -3
+            },
+            {
+              "seed": 19,
+              "team": "MIL",
+              "played": 10,
+              "points": 11,
+              "record": "3-2-5",
+              "gd": -4
+            },
+            {
+              "seed": 20,
+              "team": "FCC",
+              "played": 10,
+              "points": 10,
+              "record": "2-4-4",
+              "gd": -2
+            },
+            {
+              "seed": 21,
+              "team": "NYC",
+              "played": 10,
+              "points": 9,
+              "record": "2-3-5",
+              "gd": -3
+            },
+            {
+              "seed": 22,
+              "team": "LIV",
+              "played": 10,
+              "points": 8,
+              "record": "1-5-4",
+              "gd": -4
+            },
+            {
+              "seed": 23,
+              "team": "RMA",
+              "played": 10,
+              "points": 6,
+              "record": "0-6-4",
+              "gd": -8
+            },
+            {
+              "seed": 24,
+              "team": "CLB",
+              "played": 10,
+              "points": 4,
+              "record": "1-1-8",
+              "gd": -9
+            }
+          ],
+          "playoff": {
+            "round": "complete",
+            "byes": [
+              "#1 NEW",
+              "#2 ARS"
+            ],
+            "quarterfinals": [
+              {
+                "id": "QF1",
+                "home": "#3 INT",
+                "away": "#6 PSG",
+                "played": true,
+                "score": "1-2",
+                "winner": "PSG"
+              },
+              {
+                "id": "QF2",
+                "home": "#4 MCI",
+                "away": "#5 BAR",
+                "played": true,
+                "score": "3-2",
+                "winner": "MCI"
+              }
+            ],
+            "semifinals": [
+              {
+                "id": "SF1",
+                "home": "#1 NEW",
+                "away": "#4 MCI",
+                "played": true,
+                "score": "0-2",
+                "winner": "MCI"
+              },
+              {
+                "id": "SF2",
+                "home": "#2 ARS",
+                "away": "#6 PSG",
+                "played": true,
+                "score": "3-2",
+                "winner": "ARS"
+              }
+            ],
+            "final": {
+              "id": "FINAL",
+              "home": "#2 ARS",
+              "away": "#4 MCI",
+              "played": true,
+              "score": "2-2 pens",
+              "winner": "MCI"
+            }
+          }
+        },
+        "goatMashup": null
+      },
+      "lastSummary": "Regular season complete: seed #23. Missed playoffs. Champion: MCI."
+    },
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 1
+    },
+    "timeLeft": 0,
+    "extraTime": {
+      "active": false,
+      "used": false,
+      "seconds": 30
+    },
+    "possession": "home:Jude Bellingham",
+    "selectedPlayer": {
+      "name": "Jude Bellingham",
+      "role": "MID",
+      "rating": 94,
+      "x": 350.2,
+      "y": 310.1,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 324.4,
+      "y": 319.7,
+      "vx": -33.1,
+      "vy": 12.2,
+      "owner": "Jude Bellingham"
+    },
+    "home": [
+      {
+        "name": "Thibaut Courtois",
+        "role": "GK",
+        "rating": 90,
+        "x": 135.2,
+        "y": 333.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Rudiger",
+        "role": "DF",
+        "rating": 89,
+        "x": 460.6,
+        "y": 319.5,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Jude Bellingham",
+        "role": "MID",
+        "rating": 94,
+        "x": 350.2,
+        "y": 310.1,
+        "hasBall": true,
+        "controlled": true
+      },
+      {
+        "name": "Vinicius Junior",
+        "role": "WING",
+        "rating": 96,
+        "x": 532.9,
+        "y": 435.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kylian Mbappe",
+        "role": "ST",
+        "rating": 99,
+        "x": 742.9,
+        "y": 355.5,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "away": [
+      {
+        "name": "Lukas Hradecky",
+        "role": "GK",
+        "rating": 93,
+        "x": 1156,
+        "y": 324.3,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Jonathan Tah",
+        "role": "DF",
+        "rating": 97,
+        "x": 1007.7,
+        "y": 352.2,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Granit Xhaka",
+        "role": "MID",
+        "rating": 98,
+        "x": 817.7,
+        "y": 297.2,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Alex Grimaldo",
+        "role": "WING",
+        "rating": 98,
+        "x": 783.9,
+        "y": 439,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Patrik Schick",
+        "role": "ST",
+        "rating": 96,
+        "x": 189.1,
+        "y": 335.7,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": ""
+  },
+  "goatMatch": {
+    "mode": "play",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Real Madrid",
+    "menuMode": "club",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Real Madrid vs Manchester City",
+    "career": {
+      "type": "club",
+      "fixture": 11,
+      "record": "0-6-4",
+      "player": null,
+      "club": {
+        "budget": 132,
+        "reputation": 54,
+        "sharpness": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 8,
+        "dynasty": {
+          "year": 1,
+          "championships": 0,
+          "playoffAppearances": 0,
+          "goatTitles": 0,
+          "draftPicks": 1,
+          "rosterSize": 8,
+          "squadPower": 94,
+          "selectedLineupRole": "ST",
+          "selectedRoster": {
+            "name": "Kylian Mbappe",
+            "role": "ST",
+            "rating": 99
+          },
+          "starters": [
+            {
+              "name": "Thibaut Courtois",
+              "role": "GK",
+              "naturalRole": "GK",
+              "rating": 90
+            },
+            {
+              "name": "Antonio Rudiger",
+              "role": "DF",
+              "naturalRole": "DF",
+              "rating": 89
+            },
+            {
+              "name": "Jude Bellingham",
+              "role": "MID",
+              "naturalRole": "MID",
+              "rating": 94
+            },
+            {
+              "name": "Vinicius Junior",
+              "role": "WING",
+              "naturalRole": "WING",
+              "rating": 96
+            },
+            {
+              "name": "Kylian Mbappe",
+              "role": "ST",
+              "naturalRole": "ST",
+              "rating": 99
+            }
+          ],
+          "tradeOffer": {
+            "outgoing": "Aurelien Tchouameni",
+            "incoming": "Sergio Busquets",
+            "cost": 24
+          },
+          "draftProspect": {
+            "name": "Mateo Rivera",
+            "role": "DF",
+            "rating": 80,
+            "potential": 92
+          }
+        },
+        "season": {
+          "stage": "eliminated",
+          "regularSeasonLength": 10,
+          "currentSeed": 23,
+          "champion": "Manchester City",
+          "standings": [
+            {
+              "seed": 1,
+              "team": "NEW",
+              "played": 10,
+              "points": 21,
+              "record": "6-3-1",
+              "gd": 11
+            },
+            {
+              "seed": 2,
+              "team": "ARS",
+              "played": 10,
+              "points": 19,
+              "record": "5-4-1",
+              "gd": 7
+            },
+            {
+              "seed": 3,
+              "team": "INT",
+              "played": 10,
+              "points": 18,
+              "record": "5-3-2",
+              "gd": 6
+            },
+            {
+              "seed": 4,
+              "team": "MCI",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 3
+            },
+            {
+              "seed": 5,
+              "team": "BAR",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 2
+            },
+            {
+              "seed": 6,
+              "team": "PSG",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 2
+            },
+            {
+              "seed": 7,
+              "team": "LEV",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 1
+            },
+            {
+              "seed": 8,
+              "team": "ATL",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": 1
+            },
+            {
+              "seed": 9,
+              "team": "CHE",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": 0
+            },
+            {
+              "seed": 10,
+              "team": "LAFC",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": -2
+            },
+            {
+              "seed": 11,
+              "team": "BVB",
+              "played": 10,
+              "points": 14,
+              "record": "3-5-2",
+              "gd": 3
+            },
+            {
+              "seed": 12,
+              "team": "JUV",
+              "played": 10,
+              "points": 14,
+              "record": "4-2-4",
+              "gd": 3
+            },
+            {
+              "seed": 13,
+              "team": "ATM",
+              "played": 10,
+              "points": 14,
+              "record": "4-2-4",
+              "gd": 1
+            },
+            {
+              "seed": 14,
+              "team": "BAY",
+              "played": 10,
+              "points": 14,
+              "record": "4-2-4",
+              "gd": -1
+            },
+            {
+              "seed": 15,
+              "team": "LAG",
+              "played": 10,
+              "points": 13,
+              "record": "4-1-5",
+              "gd": -5
+            },
+            {
+              "seed": 16,
+              "team": "MIA",
+              "played": 10,
+              "points": 12,
+              "record": "3-3-4",
+              "gd": 2
+            },
+            {
+              "seed": 17,
+              "team": "SEA",
+              "played": 10,
+              "points": 12,
+              "record": "2-6-2",
+              "gd": -1
+            },
+            {
+              "seed": 18,
+              "team": "BEN",
+              "played": 10,
+              "points": 12,
+              "record": "3-3-4",
+              "gd": -3
+            },
+            {
+              "seed": 19,
+              "team": "MIL",
+              "played": 10,
+              "points": 11,
+              "record": "3-2-5",
+              "gd": -4
+            },
+            {
+              "seed": 20,
+              "team": "FCC",
+              "played": 10,
+              "points": 10,
+              "record": "2-4-4",
+              "gd": -2
+            },
+            {
+              "seed": 21,
+              "team": "NYC",
+              "played": 10,
+              "points": 9,
+              "record": "2-3-5",
+              "gd": -3
+            },
+            {
+              "seed": 22,
+              "team": "LIV",
+              "played": 10,
+              "points": 8,
+              "record": "1-5-4",
+              "gd": -4
+            },
+            {
+              "seed": 23,
+              "team": "RMA",
+              "played": 10,
+              "points": 6,
+              "record": "0-6-4",
+              "gd": -8
+            },
+            {
+              "seed": 24,
+              "team": "CLB",
+              "played": 10,
+              "points": 4,
+              "record": "1-1-8",
+              "gd": -9
+            }
+          ],
+          "playoff": {
+            "round": "complete",
+            "byes": [
+              "#1 NEW",
+              "#2 ARS"
+            ],
+            "quarterfinals": [
+              {
+                "id": "QF1",
+                "home": "#3 INT",
+                "away": "#6 PSG",
+                "played": true,
+                "score": "1-2",
+                "winner": "PSG"
+              },
+              {
+                "id": "QF2",
+                "home": "#4 MCI",
+                "away": "#5 BAR",
+                "played": true,
+                "score": "3-2",
+                "winner": "MCI"
+              }
+            ],
+            "semifinals": [
+              {
+                "id": "SF1",
+                "home": "#1 NEW",
+                "away": "#4 MCI",
+                "played": true,
+                "score": "0-2",
+                "winner": "MCI"
+              },
+              {
+                "id": "SF2",
+                "home": "#2 ARS",
+                "away": "#6 PSG",
+                "played": true,
+                "score": "3-2",
+                "winner": "ARS"
+              }
+            ],
+            "final": {
+              "id": "FINAL",
+              "home": "#2 ARS",
+              "away": "#4 MCI",
+              "played": true,
+              "score": "2-2 pens",
+              "winner": "MCI"
+            }
+          }
+        },
+        "goatMashup": {
+          "round": "semifinal",
+          "champion": null,
+          "qualifiers": {
+            "championsLeague": {
+              "name": "Real Madrid",
+              "short": "RMA",
+              "power": 93
+            },
+            "worldCup": {
+              "name": "England",
+              "short": "ENG",
+              "power": 91
+            },
+            "mls": {
+              "name": "Inter Miami",
+              "short": "MIA",
+              "power": 87
+            }
+          },
+          "entries": [
+            {
+              "label": "Your Club",
+              "source": "Dynasty",
+              "team": {
+                "name": "Real Madrid",
+                "short": "RMA",
+                "power": 93
+              }
+            },
+            {
+              "label": "Champions League Rep",
+              "source": "Champions League",
+              "team": {
+                "name": "Manchester City",
+                "short": "MCI",
+                "power": 92
+              }
+            },
+            {
+              "label": "World Cup Winner",
+              "source": "World Cup",
+              "team": {
+                "name": "England",
+                "short": "ENG",
+                "power": 91
+              }
+            },
+            {
+              "label": "MLS Winner",
+              "source": "MLS",
+              "team": {
+                "name": "Inter Miami",
+                "short": "MIA",
+                "power": 87
+              }
+            }
+          ],
+          "semifinals": [
+            {
+              "id": "SF1",
+              "home": "RMA",
+              "away": "MCI",
+              "played": false,
+              "score": "",
+              "winner": null
+            },
+            {
+              "id": "SF2",
+              "home": "ENG",
+              "away": "MIA",
+              "played": true,
+              "score": "3-3 pens",
+              "winner": "ENG"
+            }
+          ],
+          "final": null,
+          "lastSummary": "GOAT Mashup loaded: Champions League, World Cup, and MLS winners simulated."
+        }
+      },
+      "lastSummary": "Regular season complete: seed #23. Missed playoffs. Champion: MCI."
+    },
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 119.3,
+    "extraTime": {
+      "active": false,
+      "used": false,
+      "seconds": 30
+    },
+    "possession": "away:Rodri",
+    "selectedPlayer": {
+      "name": "Kylian Mbappe",
+      "role": "ST",
+      "rating": 99,
+      "x": 770,
+      "y": 360.3,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 787.7,
+      "y": 370.3,
+      "vx": -44.8,
+      "vy": 81.8,
+      "owner": "Rodri"
+    },
+    "home": [
+      {
+        "name": "Thibaut Courtois",
+        "role": "GK",
+        "rating": 90,
+        "x": 123.4,
+        "y": 359.5,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Rudiger",
+        "role": "DF",
+        "rating": 89,
+        "x": 409.6,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Jude Bellingham",
+        "role": "MID",
+        "rating": 94,
+        "x": 616.1,
+        "y": 271.7,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Vinicius Junior",
+        "role": "WING",
+        "rating": 96,
+        "x": 647.1,
+        "y": 482.4,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kylian Mbappe",
+        "role": "ST",
+        "rating": 99,
+        "x": 770,
+        "y": 360.3,
+        "hasBall": false,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Ederson",
+        "role": "GK",
+        "rating": 88,
+        "x": 1156.5,
+        "y": 359.5,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Ruben Dias",
+        "role": "DF",
+        "rating": 89,
+        "x": 919.3,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Rodri",
+        "role": "MID",
+        "rating": 96,
+        "x": 800.9,
+        "y": 346.2,
+        "hasBall": true,
+        "controlled": false
+      },
+      {
+        "name": "Phil Foden",
+        "role": "WING",
+        "rating": 91,
+        "x": 679.4,
+        "y": 424.1,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Erling Haaland",
+        "role": "ST",
+        "rating": 98,
+        "x": 469.4,
+        "y": 360.8,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "Rodri intercepts"
+  },
+  "goatHub": {
+    "mode": "careerHub",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Real Madrid",
+    "menuMode": "club",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Real Madrid vs Manchester City",
+    "career": {
+      "type": "club",
+      "fixture": 11,
+      "record": "0-6-4",
+      "player": null,
+      "club": {
+        "budget": 132,
+        "reputation": 54,
+        "sharpness": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 8,
+        "dynasty": {
+          "year": 1,
+          "championships": 0,
+          "playoffAppearances": 0,
+          "goatTitles": 0,
+          "draftPicks": 1,
+          "rosterSize": 8,
+          "squadPower": 94,
+          "selectedLineupRole": "ST",
+          "selectedRoster": {
+            "name": "Kylian Mbappe",
+            "role": "ST",
+            "rating": 99
+          },
+          "starters": [
+            {
+              "name": "Thibaut Courtois",
+              "role": "GK",
+              "naturalRole": "GK",
+              "rating": 90
+            },
+            {
+              "name": "Antonio Rudiger",
+              "role": "DF",
+              "naturalRole": "DF",
+              "rating": 89
+            },
+            {
+              "name": "Jude Bellingham",
+              "role": "MID",
+              "naturalRole": "MID",
+              "rating": 94
+            },
+            {
+              "name": "Vinicius Junior",
+              "role": "WING",
+              "naturalRole": "WING",
+              "rating": 96
+            },
+            {
+              "name": "Kylian Mbappe",
+              "role": "ST",
+              "naturalRole": "ST",
+              "rating": 99
+            }
+          ],
+          "tradeOffer": {
+            "outgoing": "Aurelien Tchouameni",
+            "incoming": "Sergio Busquets",
+            "cost": 24
+          },
+          "draftProspect": {
+            "name": "Mateo Rivera",
+            "role": "DF",
+            "rating": 80,
+            "potential": 92
+          }
+        },
+        "season": {
+          "stage": "eliminated",
+          "regularSeasonLength": 10,
+          "currentSeed": 23,
+          "champion": "Manchester City",
+          "standings": [
+            {
+              "seed": 1,
+              "team": "NEW",
+              "played": 10,
+              "points": 21,
+              "record": "6-3-1",
+              "gd": 11
+            },
+            {
+              "seed": 2,
+              "team": "ARS",
+              "played": 10,
+              "points": 19,
+              "record": "5-4-1",
+              "gd": 7
+            },
+            {
+              "seed": 3,
+              "team": "INT",
+              "played": 10,
+              "points": 18,
+              "record": "5-3-2",
+              "gd": 6
+            },
+            {
+              "seed": 4,
+              "team": "MCI",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 3
+            },
+            {
+              "seed": 5,
+              "team": "BAR",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 2
+            },
+            {
+              "seed": 6,
+              "team": "PSG",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 2
+            },
+            {
+              "seed": 7,
+              "team": "LEV",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 1
+            },
+            {
+              "seed": 8,
+              "team": "ATL",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": 1
+            },
+            {
+              "seed": 9,
+              "team": "CHE",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": 0
+            },
+            {
+              "seed": 10,
+              "team": "LAFC",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": -2
+            },
+            {
+              "seed": 11,
+              "team": "BVB",
+              "played": 10,
+              "points": 14,
+              "record": "3-5-2",
+              "gd": 3
+            },
+            {
+              "seed": 12,
+              "team": "JUV",
+              "played": 10,
+              "points": 14,
+              "record": "4-2-4",
+              "gd": 3
+            },
+            {
+              "seed": 13,
+              "team": "ATM",
+              "played": 10,
+              "points": 14,
+              "record": "4-2-4",
+              "gd": 1
+            },
+            {
+              "seed": 14,
+              "team": "BAY",
+              "played": 10,
+              "points": 14,
+              "record": "4-2-4",
+              "gd": -1
+            },
+            {
+              "seed": 15,
+              "team": "LAG",
+              "played": 10,
+              "points": 13,
+              "record": "4-1-5",
+              "gd": -5
+            },
+            {
+              "seed": 16,
+              "team": "MIA",
+              "played": 10,
+              "points": 12,
+              "record": "3-3-4",
+              "gd": 2
+            },
+            {
+              "seed": 17,
+              "team": "SEA",
+              "played": 10,
+              "points": 12,
+              "record": "2-6-2",
+              "gd": -1
+            },
+            {
+              "seed": 18,
+              "team": "BEN",
+              "played": 10,
+              "points": 12,
+              "record": "3-3-4",
+              "gd": -3
+            },
+            {
+              "seed": 19,
+              "team": "MIL",
+              "played": 10,
+              "points": 11,
+              "record": "3-2-5",
+              "gd": -4
+            },
+            {
+              "seed": 20,
+              "team": "FCC",
+              "played": 10,
+              "points": 10,
+              "record": "2-4-4",
+              "gd": -2
+            },
+            {
+              "seed": 21,
+              "team": "NYC",
+              "played": 10,
+              "points": 9,
+              "record": "2-3-5",
+              "gd": -3
+            },
+            {
+              "seed": 22,
+              "team": "LIV",
+              "played": 10,
+              "points": 8,
+              "record": "1-5-4",
+              "gd": -4
+            },
+            {
+              "seed": 23,
+              "team": "RMA",
+              "played": 10,
+              "points": 6,
+              "record": "0-6-4",
+              "gd": -8
+            },
+            {
+              "seed": 24,
+              "team": "CLB",
+              "played": 10,
+              "points": 4,
+              "record": "1-1-8",
+              "gd": -9
+            }
+          ],
+          "playoff": {
+            "round": "complete",
+            "byes": [
+              "#1 NEW",
+              "#2 ARS"
+            ],
+            "quarterfinals": [
+              {
+                "id": "QF1",
+                "home": "#3 INT",
+                "away": "#6 PSG",
+                "played": true,
+                "score": "1-2",
+                "winner": "PSG"
+              },
+              {
+                "id": "QF2",
+                "home": "#4 MCI",
+                "away": "#5 BAR",
+                "played": true,
+                "score": "3-2",
+                "winner": "MCI"
+              }
+            ],
+            "semifinals": [
+              {
+                "id": "SF1",
+                "home": "#1 NEW",
+                "away": "#4 MCI",
+                "played": true,
+                "score": "0-2",
+                "winner": "MCI"
+              },
+              {
+                "id": "SF2",
+                "home": "#2 ARS",
+                "away": "#6 PSG",
+                "played": true,
+                "score": "3-2",
+                "winner": "ARS"
+              }
+            ],
+            "final": {
+              "id": "FINAL",
+              "home": "#2 ARS",
+              "away": "#4 MCI",
+              "played": true,
+              "score": "2-2 pens",
+              "winner": "MCI"
+            }
+          }
+        },
+        "goatMashup": {
+          "round": "complete",
+          "champion": "MCI",
+          "qualifiers": {
+            "championsLeague": {
+              "name": "Real Madrid",
+              "short": "RMA",
+              "power": 93
+            },
+            "worldCup": {
+              "name": "England",
+              "short": "ENG",
+              "power": 91
+            },
+            "mls": {
+              "name": "Inter Miami",
+              "short": "MIA",
+              "power": 87
+            }
+          },
+          "entries": [
+            {
+              "label": "Your Club",
+              "source": "Dynasty",
+              "team": {
+                "name": "Real Madrid",
+                "short": "RMA",
+                "power": 93
+              }
+            },
+            {
+              "label": "Champions League Rep",
+              "source": "Champions League",
+              "team": {
+                "name": "Manchester City",
+                "short": "MCI",
+                "power": 92
+              }
+            },
+            {
+              "label": "World Cup Winner",
+              "source": "World Cup",
+              "team": {
+                "name": "England",
+                "short": "ENG",
+                "power": 91
+              }
+            },
+            {
+              "label": "MLS Winner",
+              "source": "MLS",
+              "team": {
+                "name": "Inter Miami",
+                "short": "MIA",
+                "power": 87
+              }
+            }
+          ],
+          "semifinals": [
+            {
+              "id": "SF1",
+              "home": "RMA",
+              "away": "MCI",
+              "played": true,
+              "score": "0-0 pens",
+              "winner": "MCI"
+            },
+            {
+              "id": "SF2",
+              "home": "ENG",
+              "away": "MIA",
+              "played": true,
+              "score": "3-3 pens",
+              "winner": "ENG"
+            }
+          ],
+          "final": {
+            "id": "FINAL",
+            "home": "MCI",
+            "away": "ENG",
+            "played": true,
+            "score": "3-0",
+            "winner": "MCI"
+          },
+          "lastSummary": "Lost GOAT semifinal 0-0 pens. Champion: MCI."
+        }
+      },
+      "lastSummary": "Lost GOAT semifinal 0-0 pens. Champion: MCI."
+    },
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "extraTime": {
+      "active": false,
+      "used": true,
+      "seconds": 30
+    },
+    "possession": "home:Kylian Mbappe",
+    "selectedPlayer": {
+      "name": "Kylian Mbappe",
+      "role": "ST",
+      "rating": 99,
+      "x": 845.7,
+      "y": 358,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 873.2,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Kylian Mbappe"
+    },
+    "home": [
+      {
+        "name": "Thibaut Courtois",
+        "role": "GK",
+        "rating": 90,
+        "x": 122.2,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Rudiger",
+        "role": "DF",
+        "rating": 89,
+        "x": 442.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Jude Bellingham",
+        "role": "MID",
+        "rating": 94,
+        "x": 695.1,
+        "y": 267.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Vinicius Junior",
+        "role": "WING",
+        "rating": 96,
+        "x": 732,
+        "y": 468.7,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kylian Mbappe",
+        "role": "ST",
+        "rating": 99,
+        "x": 845.7,
+        "y": 358,
+        "hasBall": true,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Ederson",
+        "role": "GK",
+        "rating": 88,
+        "x": 1157.5,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Ruben Dias",
+        "role": "DF",
+        "rating": 89,
+        "x": 891.5,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Rodri",
+        "role": "MID",
+        "rating": 96,
+        "x": 721.6,
+        "y": 291.1,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Phil Foden",
+        "role": "WING",
+        "rating": 91,
+        "x": 687.3,
+        "y": 428.9,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Erling Haaland",
+        "role": "ST",
+        "rating": 98,
+        "x": 476.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": ""
+  },
+  "errors": []
+}

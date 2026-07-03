@@ -1,0 +1,1101 @@
+{
+  "clubMenu": {
+    "mode": "menu",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Real Madrid",
+    "menuMode": "club",
+    "teamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Real Madrid vs Liverpool",
+    "career": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 120,
+    "possession": "loose",
+    "selectedPlayer": null,
+    "ball": {
+      "x": 640,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": null
+    },
+    "home": [],
+    "away": [],
+    "message": ""
+  },
+  "beforeOffer": {
+    "mode": "careerHub",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Real Madrid",
+    "menuMode": "club",
+    "teamCount": 16,
+    "careerHubView": "roster",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Real Madrid vs Benfica",
+    "career": {
+      "type": "club",
+      "fixture": 2,
+      "record": "0-1-0",
+      "player": null,
+      "club": {
+        "budget": 80,
+        "reputation": 73,
+        "sharpness": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "dynasty": {
+          "year": 1,
+          "championships": 0,
+          "playoffAppearances": 0,
+          "draftPicks": 1,
+          "rosterSize": 8,
+          "squadPower": 94,
+          "selectedLineupRole": "ST",
+          "selectedRoster": {
+            "name": "Kylian Mbappe",
+            "role": "ST",
+            "rating": 99
+          },
+          "starters": [
+            {
+              "name": "Thibaut Courtois",
+              "role": "GK",
+              "naturalRole": "GK",
+              "rating": 90
+            },
+            {
+              "name": "Antonio Rudiger",
+              "role": "DF",
+              "naturalRole": "DF",
+              "rating": 89
+            },
+            {
+              "name": "Jude Bellingham",
+              "role": "MID",
+              "naturalRole": "MID",
+              "rating": 94
+            },
+            {
+              "name": "Vinicius Junior",
+              "role": "WING",
+              "naturalRole": "WING",
+              "rating": 96
+            },
+            {
+              "name": "Kylian Mbappe",
+              "role": "ST",
+              "naturalRole": "ST",
+              "rating": 99
+            }
+          ],
+          "tradeOffer": {
+            "outgoing": "Aurelien Tchouameni",
+            "incoming": "Jamal Musiala",
+            "cost": 42
+          },
+          "draftProspect": {
+            "name": "Mateo Rivera",
+            "role": "DF",
+            "rating": 78,
+            "potential": 93
+          }
+        },
+        "season": {
+          "stage": "regular",
+          "regularSeasonLength": 10,
+          "currentSeed": 10,
+          "champion": null,
+          "standings": [
+            {
+              "seed": 1,
+              "team": "ARS",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 3
+            },
+            {
+              "seed": 2,
+              "team": "BAY",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 3,
+              "team": "ATM",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 4,
+              "team": "JUV",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 5,
+              "team": "MIL",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 1
+            },
+            {
+              "seed": 6,
+              "team": "MCI",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 7,
+              "team": "INT",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 8,
+              "team": "NEW",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 9,
+              "team": "LEV",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 10,
+              "team": "RMA",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 11,
+              "team": "BEN",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 12,
+              "team": "LIV",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -1
+            },
+            {
+              "seed": 13,
+              "team": "PSG",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 14,
+              "team": "BAR",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 15,
+              "team": "BVB",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 16,
+              "team": "CHE",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -3
+            }
+          ],
+          "playoff": null
+        }
+      },
+      "lastSummary": "D 0-0: budget +$8M, reputation 73, seed #10"
+    },
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "possession": "home:Kylian Mbappe",
+    "selectedPlayer": {
+      "name": "Kylian Mbappe",
+      "role": "ST",
+      "rating": 99,
+      "x": 773.9,
+      "y": 358,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 801.4,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Kylian Mbappe"
+    },
+    "home": [
+      {
+        "name": "Thibaut Courtois",
+        "role": "GK",
+        "rating": 90,
+        "x": 122.2,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Rudiger",
+        "role": "DF",
+        "rating": 89,
+        "x": 453.6,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Jude Bellingham",
+        "role": "MID",
+        "rating": 94,
+        "x": 680.6,
+        "y": 267.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Vinicius Junior",
+        "role": "WING",
+        "rating": 96,
+        "x": 716.3,
+        "y": 513.7,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kylian Mbappe",
+        "role": "ST",
+        "rating": 99,
+        "x": 773.9,
+        "y": 358,
+        "hasBall": true,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Anatoliy Trubin",
+        "role": "GK",
+        "rating": 84,
+        "x": 1158.7,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Silva",
+        "role": "DF",
+        "rating": 85,
+        "x": 929.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Florentino Luis",
+        "role": "MID",
+        "rating": 84,
+        "x": 816,
+        "y": 356.2,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kerem Akturkoglu",
+        "role": "WING",
+        "rating": 85,
+        "x": 698.7,
+        "y": 427.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Vangelis Pavlidis",
+        "role": "ST",
+        "rating": 86,
+        "x": 487.6,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "Career result saved"
+  },
+  "afterOffer": {
+    "mode": "careerHub",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Real Madrid",
+    "menuMode": "club",
+    "teamCount": 16,
+    "careerHubView": "roster",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Real Madrid vs Benfica",
+    "career": {
+      "type": "club",
+      "fixture": 2,
+      "record": "0-1-0",
+      "player": null,
+      "club": {
+        "budget": 80,
+        "reputation": 73,
+        "sharpness": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "dynasty": {
+          "year": 1,
+          "championships": 0,
+          "playoffAppearances": 0,
+          "draftPicks": 1,
+          "rosterSize": 8,
+          "squadPower": 94,
+          "selectedLineupRole": "ST",
+          "selectedRoster": {
+            "name": "Kylian Mbappe",
+            "role": "ST",
+            "rating": 99
+          },
+          "starters": [
+            {
+              "name": "Thibaut Courtois",
+              "role": "GK",
+              "naturalRole": "GK",
+              "rating": 90
+            },
+            {
+              "name": "Antonio Rudiger",
+              "role": "DF",
+              "naturalRole": "DF",
+              "rating": 89
+            },
+            {
+              "name": "Jude Bellingham",
+              "role": "MID",
+              "naturalRole": "MID",
+              "rating": 94
+            },
+            {
+              "name": "Vinicius Junior",
+              "role": "WING",
+              "naturalRole": "WING",
+              "rating": 96
+            },
+            {
+              "name": "Kylian Mbappe",
+              "role": "ST",
+              "naturalRole": "ST",
+              "rating": 99
+            }
+          ],
+          "tradeOffer": {
+            "outgoing": "Kylian Mbappe",
+            "incoming": "Erling Haaland",
+            "cost": 24
+          },
+          "draftProspect": {
+            "name": "Mateo Rivera",
+            "role": "DF",
+            "rating": 78,
+            "potential": 93
+          }
+        },
+        "season": {
+          "stage": "regular",
+          "regularSeasonLength": 10,
+          "currentSeed": 10,
+          "champion": null,
+          "standings": [
+            {
+              "seed": 1,
+              "team": "ARS",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 3
+            },
+            {
+              "seed": 2,
+              "team": "BAY",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 3,
+              "team": "ATM",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 4,
+              "team": "JUV",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 5,
+              "team": "MIL",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 1
+            },
+            {
+              "seed": 6,
+              "team": "MCI",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 7,
+              "team": "INT",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 8,
+              "team": "NEW",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 9,
+              "team": "LEV",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 10,
+              "team": "RMA",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 11,
+              "team": "BEN",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 12,
+              "team": "LIV",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -1
+            },
+            {
+              "seed": 13,
+              "team": "PSG",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 14,
+              "team": "BAR",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 15,
+              "team": "BVB",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 16,
+              "team": "CHE",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -3
+            }
+          ],
+          "playoff": null
+        }
+      },
+      "lastSummary": "Offer ready: Mbappe for Haaland."
+    },
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "possession": "home:Kylian Mbappe",
+    "selectedPlayer": {
+      "name": "Kylian Mbappe",
+      "role": "ST",
+      "rating": 99,
+      "x": 773.9,
+      "y": 358,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 801.4,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Kylian Mbappe"
+    },
+    "home": [
+      {
+        "name": "Thibaut Courtois",
+        "role": "GK",
+        "rating": 90,
+        "x": 122.2,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Rudiger",
+        "role": "DF",
+        "rating": 89,
+        "x": 453.6,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Jude Bellingham",
+        "role": "MID",
+        "rating": 94,
+        "x": 680.6,
+        "y": 267.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Vinicius Junior",
+        "role": "WING",
+        "rating": 96,
+        "x": 716.3,
+        "y": 513.7,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kylian Mbappe",
+        "role": "ST",
+        "rating": 99,
+        "x": 773.9,
+        "y": 358,
+        "hasBall": true,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Anatoliy Trubin",
+        "role": "GK",
+        "rating": 84,
+        "x": 1158.7,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Silva",
+        "role": "DF",
+        "rating": 85,
+        "x": 929.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Florentino Luis",
+        "role": "MID",
+        "rating": 84,
+        "x": 816,
+        "y": 356.2,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kerem Akturkoglu",
+        "role": "WING",
+        "rating": 85,
+        "x": 698.7,
+        "y": 427.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Vangelis Pavlidis",
+        "role": "ST",
+        "rating": 86,
+        "x": 487.6,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "Career result saved"
+  },
+  "afterAccept": {
+    "mode": "careerHub",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Real Madrid",
+    "menuMode": "club",
+    "teamCount": 16,
+    "careerHubView": "roster",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Real Madrid vs Benfica",
+    "career": {
+      "type": "club",
+      "fixture": 2,
+      "record": "0-1-0",
+      "player": null,
+      "club": {
+        "budget": 56,
+        "reputation": 73,
+        "sharpness": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "dynasty": {
+          "year": 1,
+          "championships": 0,
+          "playoffAppearances": 0,
+          "draftPicks": 1,
+          "rosterSize": 8,
+          "squadPower": 93,
+          "selectedLineupRole": "ST",
+          "selectedRoster": {
+            "name": "Erling Haaland",
+            "role": "ST",
+            "rating": 98
+          },
+          "starters": [
+            {
+              "name": "Thibaut Courtois",
+              "role": "GK",
+              "naturalRole": "GK",
+              "rating": 90
+            },
+            {
+              "name": "Antonio Rudiger",
+              "role": "DF",
+              "naturalRole": "DF",
+              "rating": 89
+            },
+            {
+              "name": "Jude Bellingham",
+              "role": "MID",
+              "naturalRole": "MID",
+              "rating": 94
+            },
+            {
+              "name": "Vinicius Junior",
+              "role": "WING",
+              "naturalRole": "WING",
+              "rating": 96
+            },
+            {
+              "name": "Erling Haaland",
+              "role": "ST",
+              "naturalRole": "ST",
+              "rating": 98
+            }
+          ],
+          "tradeOffer": {
+            "outgoing": "Rodrygo",
+            "incoming": "Leroy Sane",
+            "cost": 21
+          },
+          "draftProspect": {
+            "name": "Mateo Rivera",
+            "role": "DF",
+            "rating": 78,
+            "potential": 93
+          }
+        },
+        "season": {
+          "stage": "regular",
+          "regularSeasonLength": 10,
+          "currentSeed": 10,
+          "champion": null,
+          "standings": [
+            {
+              "seed": 1,
+              "team": "ARS",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 3
+            },
+            {
+              "seed": 2,
+              "team": "BAY",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 3,
+              "team": "ATM",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 4,
+              "team": "JUV",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 5,
+              "team": "MIL",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 1
+            },
+            {
+              "seed": 6,
+              "team": "MCI",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 7,
+              "team": "INT",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 8,
+              "team": "NEW",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 9,
+              "team": "LEV",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 10,
+              "team": "RMA",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 11,
+              "team": "BEN",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 12,
+              "team": "LIV",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -1
+            },
+            {
+              "seed": 13,
+              "team": "PSG",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 14,
+              "team": "BAR",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 15,
+              "team": "BVB",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 16,
+              "team": "CHE",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -3
+            }
+          ],
+          "playoff": null
+        }
+      },
+      "lastSummary": "Trade complete: Mbappe out, Haaland in."
+    },
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "possession": "home:Kylian Mbappe",
+    "selectedPlayer": {
+      "name": "Kylian Mbappe",
+      "role": "ST",
+      "rating": 99,
+      "x": 773.9,
+      "y": 358,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 801.4,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Kylian Mbappe"
+    },
+    "home": [
+      {
+        "name": "Thibaut Courtois",
+        "role": "GK",
+        "rating": 90,
+        "x": 122.2,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Rudiger",
+        "role": "DF",
+        "rating": 89,
+        "x": 453.6,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Jude Bellingham",
+        "role": "MID",
+        "rating": 94,
+        "x": 680.6,
+        "y": 267.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Vinicius Junior",
+        "role": "WING",
+        "rating": 96,
+        "x": 716.3,
+        "y": 513.7,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kylian Mbappe",
+        "role": "ST",
+        "rating": 99,
+        "x": 773.9,
+        "y": 358,
+        "hasBall": true,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Anatoliy Trubin",
+        "role": "GK",
+        "rating": 84,
+        "x": 1158.7,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Silva",
+        "role": "DF",
+        "rating": 85,
+        "x": 929.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Florentino Luis",
+        "role": "MID",
+        "rating": 84,
+        "x": 816,
+        "y": 356.2,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kerem Akturkoglu",
+        "role": "WING",
+        "rating": 85,
+        "x": 698.7,
+        "y": 427.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Vangelis Pavlidis",
+        "role": "ST",
+        "rating": 86,
+        "x": 487.6,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "Career result saved"
+  },
+  "errors": []
+}

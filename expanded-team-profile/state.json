@@ -1,0 +1,399 @@
+{
+  "menu": {
+    "mode": "menu",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Chelsea",
+    "menuMode": "quick",
+    "teamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Chelsea vs Barcelona",
+    "career": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 120,
+    "possession": "loose",
+    "selectedPlayer": null,
+    "ball": {
+      "x": 640,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": null
+    },
+    "home": [],
+    "away": [],
+    "message": ""
+  },
+  "profile": {
+    "mode": "careerHub",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Chelsea",
+    "menuMode": "club",
+    "teamCount": 16,
+    "careerHubView": "team",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Chelsea vs Arsenal",
+    "career": {
+      "type": "club",
+      "fixture": 2,
+      "record": "0-1-0",
+      "player": null,
+      "club": {
+        "budget": 80,
+        "reputation": 73,
+        "sharpness": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "dynasty": {
+          "year": 1,
+          "championships": 0,
+          "playoffAppearances": 0,
+          "draftPicks": 1,
+          "rosterSize": 8,
+          "squadPower": 88,
+          "selectedLineupRole": "ST",
+          "selectedRoster": {
+            "name": "Cole Palmer",
+            "role": "WING",
+            "rating": 94
+          },
+          "starters": [
+            {
+              "name": "Robert Sanchez",
+              "role": "GK",
+              "naturalRole": "GK",
+              "rating": 83
+            },
+            {
+              "name": "Reece James",
+              "role": "DF",
+              "naturalRole": "DF",
+              "rating": 87
+            },
+            {
+              "name": "Moises Caicedo",
+              "role": "MID",
+              "naturalRole": "MID",
+              "rating": 89
+            },
+            {
+              "name": "Nicolas Jackson",
+              "role": "WING",
+              "naturalRole": "ST",
+              "rating": 86
+            },
+            {
+              "name": "Cole Palmer",
+              "role": "ST",
+              "naturalRole": "WING",
+              "rating": 94
+            }
+          ],
+          "tradeOffer": {
+            "outgoing": "Enzo Fernandez",
+            "incoming": "Vitinha",
+            "cost": 42
+          },
+          "draftProspect": {
+            "name": "Mateo Rivera",
+            "role": "DF",
+            "rating": 72,
+            "potential": 81
+          }
+        },
+        "season": {
+          "stage": "regular",
+          "regularSeasonLength": 10,
+          "currentSeed": 12,
+          "champion": null,
+          "standings": [
+            {
+              "seed": 1,
+              "team": "RMA",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 3
+            },
+            {
+              "seed": 2,
+              "team": "BAY",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 1
+            },
+            {
+              "seed": 3,
+              "team": "MIL",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 1
+            },
+            {
+              "seed": 4,
+              "team": "BAR",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 1
+            },
+            {
+              "seed": 5,
+              "team": "PSG",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 6,
+              "team": "INT",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 7,
+              "team": "NEW",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 8,
+              "team": "ATM",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 9,
+              "team": "MCI",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 10,
+              "team": "LEV",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 11,
+              "team": "ARS",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 12,
+              "team": "CHE",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 13,
+              "team": "LIV",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -1
+            },
+            {
+              "seed": 14,
+              "team": "BVB",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -1
+            },
+            {
+              "seed": 15,
+              "team": "JUV",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -1
+            },
+            {
+              "seed": 16,
+              "team": "BEN",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -3
+            }
+          ],
+          "playoff": null
+        }
+      },
+      "lastSummary": "Palmer moved into the ST slot."
+    },
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "possession": "home:Reece James",
+    "selectedPlayer": {
+      "name": "Reece James",
+      "role": "DF",
+      "rating": 87,
+      "x": 343.4,
+      "y": 380,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 364.7,
+      "y": 397.4,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Reece James"
+    },
+    "home": [
+      {
+        "name": "Robert Sanchez",
+        "role": "GK",
+        "rating": 83,
+        "x": 123.9,
+        "y": 400.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Reece James",
+        "role": "DF",
+        "rating": 87,
+        "x": 343.4,
+        "y": 380,
+        "hasBall": true,
+        "controlled": true
+      },
+      {
+        "name": "Moises Caicedo",
+        "role": "MID",
+        "rating": 89,
+        "x": 586.6,
+        "y": 274.4,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Cole Palmer",
+        "role": "WING",
+        "rating": 94,
+        "x": 622.7,
+        "y": 505.1,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Nicolas Jackson",
+        "role": "ST",
+        "rating": 86,
+        "x": 834.7,
+        "y": 377,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "away": [
+      {
+        "name": "David Raya",
+        "role": "GK",
+        "rating": 86,
+        "x": 1156,
+        "y": 400.7,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "William Saliba",
+        "role": "DF",
+        "rating": 90,
+        "x": 990.4,
+        "y": 363.3,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Declan Rice",
+        "role": "MID",
+        "rating": 92,
+        "x": 788.5,
+        "y": 295.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Martin Odegaard",
+        "role": "WING",
+        "rating": 91,
+        "x": 754.1,
+        "y": 434.3,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Bukayo Saka",
+        "role": "ST",
+        "rating": 95,
+        "x": 383.9,
+        "y": 396.8,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "Career result saved"
+  },
+  "errors": []
+}

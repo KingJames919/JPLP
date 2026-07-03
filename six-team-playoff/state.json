@@ -1,0 +1,405 @@
+{
+  "text": {
+    "mode": "careerHub",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Real Madrid",
+    "menuMode": "club",
+    "teamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Real Madrid vs Inter Milan",
+    "career": {
+      "type": "club",
+      "fixture": 11,
+      "record": "0-6-4",
+      "player": null,
+      "club": {
+        "budget": 132,
+        "reputation": 48,
+        "sharpness": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 14,
+        "dynasty": {
+          "year": 1,
+          "championships": 0,
+          "playoffAppearances": 0,
+          "draftPicks": 1,
+          "rosterSize": 8,
+          "squadPower": 94,
+          "selectedLineupRole": "ST",
+          "selectedRoster": {
+            "name": "Kylian Mbappe",
+            "role": "ST",
+            "rating": 99
+          },
+          "starters": [
+            {
+              "name": "Thibaut Courtois",
+              "role": "GK",
+              "naturalRole": "GK",
+              "rating": 90
+            },
+            {
+              "name": "Antonio Rudiger",
+              "role": "DF",
+              "naturalRole": "DF",
+              "rating": 89
+            },
+            {
+              "name": "Jude Bellingham",
+              "role": "MID",
+              "naturalRole": "MID",
+              "rating": 94
+            },
+            {
+              "name": "Vinicius Junior",
+              "role": "WING",
+              "naturalRole": "WING",
+              "rating": 96
+            },
+            {
+              "name": "Kylian Mbappe",
+              "role": "ST",
+              "naturalRole": "ST",
+              "rating": 99
+            }
+          ],
+          "tradeOffer": {
+            "outgoing": "Aurelien Tchouameni",
+            "incoming": "Jamal Musiala",
+            "cost": 42
+          },
+          "draftProspect": {
+            "name": "Mateo Rivera",
+            "role": "DF",
+            "rating": 81,
+            "potential": 95
+          }
+        },
+        "season": {
+          "stage": "eliminated",
+          "regularSeasonLength": 10,
+          "currentSeed": 15,
+          "champion": "Manchester City",
+          "standings": [
+            {
+              "seed": 1,
+              "team": "BAY",
+              "played": 10,
+              "points": 21,
+              "record": "6-3-1",
+              "gd": 6
+            },
+            {
+              "seed": 2,
+              "team": "PSG",
+              "played": 10,
+              "points": 20,
+              "record": "6-2-2",
+              "gd": 6
+            },
+            {
+              "seed": 3,
+              "team": "MCI",
+              "played": 10,
+              "points": 19,
+              "record": "6-1-3",
+              "gd": 5
+            },
+            {
+              "seed": 4,
+              "team": "LIV",
+              "played": 10,
+              "points": 17,
+              "record": "5-2-3",
+              "gd": 4
+            },
+            {
+              "seed": 5,
+              "team": "ATM",
+              "played": 10,
+              "points": 17,
+              "record": "5-2-3",
+              "gd": -1
+            },
+            {
+              "seed": 6,
+              "team": "BAR",
+              "played": 10,
+              "points": 16,
+              "record": "4-4-2",
+              "gd": 2
+            },
+            {
+              "seed": 7,
+              "team": "CHE",
+              "played": 10,
+              "points": 15,
+              "record": "4-3-3",
+              "gd": 2
+            },
+            {
+              "seed": 8,
+              "team": "INT",
+              "played": 10,
+              "points": 13,
+              "record": "2-7-1",
+              "gd": 3
+            },
+            {
+              "seed": 9,
+              "team": "LEV",
+              "played": 10,
+              "points": 13,
+              "record": "3-4-3",
+              "gd": -3
+            },
+            {
+              "seed": 10,
+              "team": "ARS",
+              "played": 10,
+              "points": 12,
+              "record": "3-3-4",
+              "gd": 2
+            },
+            {
+              "seed": 11,
+              "team": "JUV",
+              "played": 10,
+              "points": 12,
+              "record": "3-3-4",
+              "gd": -1
+            },
+            {
+              "seed": 12,
+              "team": "MIL",
+              "played": 10,
+              "points": 11,
+              "record": "3-2-5",
+              "gd": 0
+            },
+            {
+              "seed": 13,
+              "team": "NEW",
+              "played": 10,
+              "points": 9,
+              "record": "2-3-5",
+              "gd": 0
+            },
+            {
+              "seed": 14,
+              "team": "BEN",
+              "played": 10,
+              "points": 6,
+              "record": "0-6-4",
+              "gd": -4
+            },
+            {
+              "seed": 15,
+              "team": "RMA",
+              "played": 10,
+              "points": 6,
+              "record": "0-6-4",
+              "gd": -14
+            },
+            {
+              "seed": 16,
+              "team": "BVB",
+              "played": 10,
+              "points": 5,
+              "record": "0-5-5",
+              "gd": -7
+            }
+          ],
+          "playoff": {
+            "round": "complete",
+            "byes": [
+              "#1 BAY",
+              "#2 PSG"
+            ],
+            "quarterfinals": [
+              {
+                "id": "QF1",
+                "home": "#3 MCI",
+                "away": "#6 BAR",
+                "played": true,
+                "score": "2-1",
+                "winner": "MCI"
+              },
+              {
+                "id": "QF2",
+                "home": "#4 LIV",
+                "away": "#5 ATM",
+                "played": true,
+                "score": "3-1",
+                "winner": "LIV"
+              }
+            ],
+            "semifinals": [
+              {
+                "id": "SF1",
+                "home": "#1 BAY",
+                "away": "#4 LIV",
+                "played": true,
+                "score": "2-3",
+                "winner": "LIV"
+              },
+              {
+                "id": "SF2",
+                "home": "#2 PSG",
+                "away": "#3 MCI",
+                "played": true,
+                "score": "2-2 pens",
+                "winner": "MCI"
+              }
+            ],
+            "final": {
+              "id": "FINAL",
+              "home": "#3 MCI",
+              "away": "#4 LIV",
+              "played": true,
+              "score": "3-2",
+              "winner": "MCI"
+            }
+          }
+        }
+      },
+      "lastSummary": "Regular season complete: seed #15. Missed playoffs. Champion: MCI."
+    },
+    "score": {
+      "home": 0,
+      "away": 3
+    },
+    "timeLeft": 0,
+    "possession": "away:Lautaro Martinez",
+    "selectedPlayer": {
+      "name": "Antonio Rudiger",
+      "role": "DF",
+      "rating": 89,
+      "x": 429.2,
+      "y": 422.2,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 349.9,
+      "y": 358.9,
+      "vx": -232.8,
+      "vy": -67.7,
+      "owner": "Lautaro Martinez"
+    },
+    "home": [
+      {
+        "name": "Thibaut Courtois",
+        "role": "GK",
+        "rating": 90,
+        "x": 123.5,
+        "y": 361.2,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Antonio Rudiger",
+        "role": "DF",
+        "rating": 89,
+        "x": 429.2,
+        "y": 422.2,
+        "hasBall": false,
+        "controlled": true
+      },
+      {
+        "name": "Jude Bellingham",
+        "role": "MID",
+        "rating": 94,
+        "x": 521.5,
+        "y": 290.5,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Vinicius Junior",
+        "role": "WING",
+        "rating": 96,
+        "x": 556.9,
+        "y": 421.5,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Kylian Mbappe",
+        "role": "ST",
+        "rating": 99,
+        "x": 771.7,
+        "y": 379.1,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "away": [
+      {
+        "name": "Yann Sommer",
+        "role": "GK",
+        "rating": 95,
+        "x": 1156,
+        "y": 363.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Alessandro Bastoni",
+        "role": "DF",
+        "rating": 100,
+        "x": 882.5,
+        "y": 357.9,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Nicolo Barella",
+        "role": "MID",
+        "rating": 100,
+        "x": 680.7,
+        "y": 263.1,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Denzel Dumfries",
+        "role": "WING",
+        "rating": 97,
+        "x": 654.4,
+        "y": 394,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Lautaro Martinez",
+        "role": "ST",
+        "rating": 100,
+        "x": 376.3,
+        "y": 366.6,
+        "hasBall": true,
+        "controlled": false
+      }
+    ],
+    "message": ""
+  },
+  "guard": 20,
+  "errors": []
+}

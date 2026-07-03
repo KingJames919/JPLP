@@ -1,0 +1,693 @@
+{
+  "quick": {
+    "mode": "menu",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Real Madrid",
+    "menuMode": "quick",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Real Madrid vs Liverpool",
+    "career": null,
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 120,
+    "extraTime": {
+      "active": false,
+      "used": false,
+      "seconds": 30
+    },
+    "possession": "loose",
+    "selectedPlayer": null,
+    "ball": {
+      "x": 640,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": null
+    },
+    "home": [],
+    "away": [],
+    "message": ""
+  },
+  "mls": {
+    "mode": "menu",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Inter Miami",
+    "menuMode": "quick",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Inter Miami vs Barcelona",
+    "career": null,
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 120,
+    "extraTime": {
+      "active": false,
+      "used": false,
+      "seconds": 30
+    },
+    "possession": "loose",
+    "selectedPlayer": null,
+    "ball": {
+      "x": 640,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": null
+    },
+    "home": [],
+    "away": [],
+    "message": ""
+  },
+  "world": {
+    "mode": "menu",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Argentina",
+    "menuMode": "world",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Argentina vs Japan",
+    "career": null,
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 120,
+    "extraTime": {
+      "active": false,
+      "used": false,
+      "seconds": 30
+    },
+    "possession": "loose",
+    "selectedPlayer": null,
+    "ball": {
+      "x": 640,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": null
+    },
+    "home": [],
+    "away": [],
+    "message": ""
+  },
+  "club": {
+    "mode": "menu",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Inter Miami",
+    "menuMode": "club",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Inter Miami vs Barcelona",
+    "career": null,
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 120,
+    "extraTime": {
+      "active": false,
+      "used": false,
+      "seconds": 30
+    },
+    "possession": "loose",
+    "selectedPlayer": null,
+    "ball": {
+      "x": 640,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": null
+    },
+    "home": [],
+    "away": [],
+    "message": ""
+  },
+  "player": {
+    "mode": "menu",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Inter Miami",
+    "menuMode": "player",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Inter Miami vs Barcelona",
+    "career": null,
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 120,
+    "extraTime": {
+      "active": false,
+      "used": false,
+      "seconds": 30
+    },
+    "possession": "loose",
+    "selectedPlayer": null,
+    "ball": {
+      "x": 640,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": null
+    },
+    "home": [],
+    "away": [],
+    "message": ""
+  },
+  "hub": {
+    "mode": "careerHub",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Inter Miami",
+    "menuMode": "club",
+    "teamCount": 24,
+    "mlsTeamCount": 8,
+    "worldTeamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Inter Miami vs Arsenal",
+    "career": {
+      "type": "club",
+      "fixture": 2,
+      "record": "0-1-0",
+      "player": null,
+      "club": {
+        "budget": 80,
+        "reputation": 73,
+        "sharpness": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "dynasty": {
+          "year": 1,
+          "championships": 0,
+          "playoffAppearances": 0,
+          "goatTitles": 0,
+          "draftPicks": 1,
+          "rosterSize": 8,
+          "squadPower": 87,
+          "selectedLineupRole": "ST",
+          "selectedRoster": {
+            "name": "Luis Suarez",
+            "role": "ST",
+            "rating": 88
+          },
+          "starters": [
+            {
+              "name": "Drake Callender",
+              "role": "GK",
+              "naturalRole": "GK",
+              "rating": 80
+            },
+            {
+              "name": "Jordi Alba",
+              "role": "DF",
+              "naturalRole": "DF",
+              "rating": 86
+            },
+            {
+              "name": "Sergio Busquets",
+              "role": "MID",
+              "naturalRole": "MID",
+              "rating": 87
+            },
+            {
+              "name": "Lionel Messi",
+              "role": "WING",
+              "naturalRole": "WING",
+              "rating": 96
+            },
+            {
+              "name": "Luis Suarez",
+              "role": "ST",
+              "naturalRole": "ST",
+              "rating": 88
+            }
+          ],
+          "tradeOffer": {
+            "outgoing": "Benjamin Cremaschi",
+            "incoming": "Felix Nmecha",
+            "cost": 42
+          },
+          "draftProspect": {
+            "name": "Mateo Rivera",
+            "role": "DF",
+            "rating": 73,
+            "potential": 83
+          }
+        },
+        "season": {
+          "stage": "regular",
+          "regularSeasonLength": 10,
+          "currentSeed": 18,
+          "champion": null,
+          "standings": [
+            {
+              "seed": 1,
+              "team": "PSG",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 3
+            },
+            {
+              "seed": 2,
+              "team": "LEV",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 3,
+              "team": "MCI",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 2
+            },
+            {
+              "seed": 4,
+              "team": "BAR",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 1
+            },
+            {
+              "seed": 5,
+              "team": "CHE",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 1
+            },
+            {
+              "seed": 6,
+              "team": "JUV",
+              "played": 1,
+              "points": 3,
+              "record": "1-0-0",
+              "gd": 1
+            },
+            {
+              "seed": 7,
+              "team": "RMA",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 8,
+              "team": "MIL",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 9,
+              "team": "ATM",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 10,
+              "team": "FCC",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 11,
+              "team": "BAY",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 12,
+              "team": "LIV",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 13,
+              "team": "INT",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 14,
+              "team": "LAFC",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 15,
+              "team": "LAG",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 16,
+              "team": "ATL",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 17,
+              "team": "ARS",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 18,
+              "team": "MIA",
+              "played": 1,
+              "points": 1,
+              "record": "0-1-0",
+              "gd": 0
+            },
+            {
+              "seed": 19,
+              "team": "SEA",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -1
+            },
+            {
+              "seed": 20,
+              "team": "BEN",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -1
+            },
+            {
+              "seed": 21,
+              "team": "BVB",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -1
+            },
+            {
+              "seed": 22,
+              "team": "NEW",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 23,
+              "team": "NYC",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -2
+            },
+            {
+              "seed": 24,
+              "team": "CLB",
+              "played": 1,
+              "points": 0,
+              "record": "0-0-1",
+              "gd": -3
+            }
+          ],
+          "playoff": null
+        },
+        "goatMashup": null
+      },
+      "lastSummary": "D 0-0: budget +$8M, reputation 73, seed #18"
+    },
+    "worldCup": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "extraTime": {
+      "active": false,
+      "used": false,
+      "seconds": 30
+    },
+    "possession": "away:David Raya",
+    "selectedPlayer": {
+      "name": "Luis Suarez",
+      "role": "ST",
+      "rating": 88,
+      "x": 701.2,
+      "y": 376.3,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 1107.5,
+      "y": 359.4,
+      "vx": 0,
+      "vy": 0,
+      "owner": "David Raya"
+    },
+    "home": [
+      {
+        "name": "Drake Callender",
+        "role": "GK",
+        "rating": 80,
+        "x": 124,
+        "y": 356.3,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Jordi Alba",
+        "role": "DF",
+        "rating": 86,
+        "x": 393.7,
+        "y": 358.5,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Sergio Busquets",
+        "role": "MID",
+        "rating": 87,
+        "x": 593.4,
+        "y": 291.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Lionel Messi",
+        "role": "WING",
+        "rating": 96,
+        "x": 630.3,
+        "y": 430.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Luis Suarez",
+        "role": "ST",
+        "rating": 88,
+        "x": 701.2,
+        "y": 376.3,
+        "hasBall": false,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "David Raya",
+        "role": "GK",
+        "rating": 86,
+        "x": 1146.8,
+        "y": 358.2,
+        "hasBall": true,
+        "controlled": false
+      },
+      {
+        "name": "William Saliba",
+        "role": "DF",
+        "rating": 90,
+        "x": 966.7,
+        "y": 357.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Declan Rice",
+        "role": "MID",
+        "rating": 92,
+        "x": 627.2,
+        "y": 281.7,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Martin Odegaard",
+        "role": "WING",
+        "rating": 91,
+        "x": 575.1,
+        "y": 411.4,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Bukayo Saka",
+        "role": "ST",
+        "rating": 95,
+        "x": 356.1,
+        "y": 370.2,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": ""
+  },
+  "errors": []
+}

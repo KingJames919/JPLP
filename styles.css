@@ -1,0 +1,48 @@
+:root {
+  color-scheme: dark;
+  --bg: #091417;
+  --panel: #102126;
+  --gold: #f5c75f;
+  --white: #f7fbff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(245, 199, 95, 0.2), transparent 24rem),
+    radial-gradient(circle at 78% 88%, rgba(34, 168, 140, 0.22), transparent 28rem),
+    linear-gradient(135deg, #071114, #0b1a1e 42%, #070d12);
+  color: var(--white);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.game-shell {
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
+  display: grid;
+  place-items: center;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #0a2419;
+  outline: none;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+}

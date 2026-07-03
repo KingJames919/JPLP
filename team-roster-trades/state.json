@@ -1,0 +1,435 @@
+{
+  "beforeOffer": {
+    "mode": "ended",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Chelsea",
+    "menuMode": "club",
+    "teamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Chelsea vs Barcelona",
+    "career": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "possession": "home:Nicolas Jackson",
+    "selectedPlayer": {
+      "name": "Nicolas Jackson",
+      "role": "ST",
+      "rating": 86,
+      "x": 773.9,
+      "y": 358,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 801.4,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Nicolas Jackson"
+    },
+    "home": [
+      {
+        "name": "Robert Sanchez",
+        "role": "GK",
+        "rating": 83,
+        "x": 121.4,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Reece James",
+        "role": "DF",
+        "rating": 87,
+        "x": 452.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Enzo Fernandez",
+        "role": "MID",
+        "rating": 88,
+        "x": 679.2,
+        "y": 267.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Cole Palmer",
+        "role": "WING",
+        "rating": 94,
+        "x": 715.5,
+        "y": 518.3,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Nicolas Jackson",
+        "role": "ST",
+        "rating": 86,
+        "x": 773.9,
+        "y": 358,
+        "hasBall": true,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Marc-Andre ter Stegen",
+        "role": "GK",
+        "rating": 88,
+        "x": 1157.5,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Ronald Araujo",
+        "role": "DF",
+        "rating": 86,
+        "x": 931.4,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Pedri",
+        "role": "MID",
+        "rating": 93,
+        "x": 815.7,
+        "y": 355.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Raphinha",
+        "role": "WING",
+        "rating": 92,
+        "x": 697.3,
+        "y": 425.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Lamine Yamal",
+        "role": "ST",
+        "rating": 96,
+        "x": 486.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "Full time"
+  },
+  "afterOffer": {
+    "mode": "ended",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Chelsea",
+    "menuMode": "club",
+    "teamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Chelsea vs Barcelona",
+    "career": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "possession": "home:Nicolas Jackson",
+    "selectedPlayer": {
+      "name": "Nicolas Jackson",
+      "role": "ST",
+      "rating": 86,
+      "x": 773.9,
+      "y": 358,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 801.4,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Nicolas Jackson"
+    },
+    "home": [
+      {
+        "name": "Robert Sanchez",
+        "role": "GK",
+        "rating": 83,
+        "x": 121.4,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Reece James",
+        "role": "DF",
+        "rating": 87,
+        "x": 452.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Enzo Fernandez",
+        "role": "MID",
+        "rating": 88,
+        "x": 679.2,
+        "y": 267.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Cole Palmer",
+        "role": "WING",
+        "rating": 94,
+        "x": 715.5,
+        "y": 518.3,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Nicolas Jackson",
+        "role": "ST",
+        "rating": 86,
+        "x": 773.9,
+        "y": 358,
+        "hasBall": true,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Marc-Andre ter Stegen",
+        "role": "GK",
+        "rating": 88,
+        "x": 1157.5,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Ronald Araujo",
+        "role": "DF",
+        "rating": 86,
+        "x": 931.4,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Pedri",
+        "role": "MID",
+        "rating": 93,
+        "x": 815.7,
+        "y": 355.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Raphinha",
+        "role": "WING",
+        "rating": 92,
+        "x": 697.3,
+        "y": 425.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Lamine Yamal",
+        "role": "ST",
+        "rating": 96,
+        "x": 486.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "Full time"
+  },
+  "afterAccept": {
+    "mode": "ended",
+    "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+    "field": {
+      "x": 82,
+      "y": 92,
+      "w": 1116,
+      "h": 532,
+      "goalDepth": 28,
+      "goalW": 150,
+      "cx": 640,
+      "cy": 358,
+      "goalTop": 283,
+      "goalBottom": 433
+    },
+    "selectedMenuTeam": "Chelsea",
+    "menuMode": "club",
+    "teamCount": 16,
+    "careerHubView": "office",
+    "difficulty": {
+      "selected": "Medium",
+      "active": "Medium",
+      "level": 2,
+      "activeLevel": 2
+    },
+    "matchup": "Chelsea vs Barcelona",
+    "career": null,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "timeLeft": 0,
+    "possession": "home:Nicolas Jackson",
+    "selectedPlayer": {
+      "name": "Nicolas Jackson",
+      "role": "ST",
+      "rating": 86,
+      "x": 773.9,
+      "y": 358,
+      "stamina": 1
+    },
+    "ball": {
+      "x": 801.4,
+      "y": 358,
+      "vx": 0,
+      "vy": 0,
+      "owner": "Nicolas Jackson"
+    },
+    "home": [
+      {
+        "name": "Robert Sanchez",
+        "role": "GK",
+        "rating": 83,
+        "x": 121.4,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Reece James",
+        "role": "DF",
+        "rating": 87,
+        "x": 452.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Enzo Fernandez",
+        "role": "MID",
+        "rating": 88,
+        "x": 679.2,
+        "y": 267.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Cole Palmer",
+        "role": "WING",
+        "rating": 94,
+        "x": 715.5,
+        "y": 518.3,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Nicolas Jackson",
+        "role": "ST",
+        "rating": 86,
+        "x": 773.9,
+        "y": 358,
+        "hasBall": true,
+        "controlled": true
+      }
+    ],
+    "away": [
+      {
+        "name": "Marc-Andre ter Stegen",
+        "role": "GK",
+        "rating": 88,
+        "x": 1157.5,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Ronald Araujo",
+        "role": "DF",
+        "rating": 86,
+        "x": 931.4,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Pedri",
+        "role": "MID",
+        "rating": 93,
+        "x": 815.7,
+        "y": 355.6,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Raphinha",
+        "role": "WING",
+        "rating": 92,
+        "x": 697.3,
+        "y": 425.8,
+        "hasBall": false,
+        "controlled": false
+      },
+      {
+        "name": "Lamine Yamal",
+        "role": "ST",
+        "rating": 96,
+        "x": 486.9,
+        "y": 358,
+        "hasBall": false,
+        "controlled": false
+      }
+    ],
+    "message": "Full time"
+  },
+  "errors": []
+}

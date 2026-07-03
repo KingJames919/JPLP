@@ -1,0 +1,302 @@
+{
+  "mode": "careerHub",
+  "coordinateSystem": "origin top-left; x increases right; y increases down; units are canvas pixels",
+  "field": {
+    "x": 82,
+    "y": 92,
+    "w": 1116,
+    "h": 532,
+    "goalDepth": 28,
+    "goalW": 150,
+    "cx": 640,
+    "cy": 358,
+    "goalTop": 283,
+    "goalBottom": 433
+  },
+  "selectedMenuTeam": "Real Madrid",
+  "menuMode": "club",
+  "difficulty": {
+    "selected": "Medium",
+    "active": "Medium",
+    "level": 2,
+    "activeLevel": 2
+  },
+  "matchup": "Real Madrid vs Liverpool",
+  "career": {
+    "type": "club",
+    "fixture": 11,
+    "record": "0-3-7",
+    "player": null,
+    "club": {
+      "budget": 117,
+      "reputation": 36,
+      "sharpness": 0,
+      "goalsFor": 0,
+      "goalsAgainst": 11,
+      "dynasty": {
+        "year": 1,
+        "championships": 0,
+        "playoffAppearances": 0,
+        "draftPicks": 1,
+        "rosterSize": 5,
+        "squadPower": 93,
+        "starters": [
+          {
+            "name": "Thibaut Courtois",
+            "role": "GK",
+            "rating": 90
+          },
+          {
+            "name": "Federico Valverde",
+            "role": "DF",
+            "rating": 88
+          },
+          {
+            "name": "Jude Bellingham",
+            "role": "MID",
+            "rating": 94
+          },
+          {
+            "name": "Vinicius Junior",
+            "role": "WING",
+            "rating": 96
+          },
+          {
+            "name": "Kylian Mbappe",
+            "role": "ST",
+            "rating": 99
+          }
+        ],
+        "tradeOffer": {
+          "outgoing": "Jude Bellingham",
+          "incoming": "Jamal Musiala",
+          "cost": 24
+        },
+        "draftProspect": {
+          "name": "Mateo Rivera",
+          "role": "DF",
+          "rating": 78,
+          "potential": 92
+        }
+      },
+      "season": {
+        "stage": "eliminated",
+        "regularSeasonLength": 10,
+        "currentSeed": 8,
+        "champion": "Paris Saint-Germain",
+        "standings": [
+          {
+            "seed": 1,
+            "team": "MCI",
+            "played": 10,
+            "points": 20,
+            "record": "6-2-2",
+            "gd": 4
+          },
+          {
+            "seed": 2,
+            "team": "BAY",
+            "played": 10,
+            "points": 17,
+            "record": "5-2-3",
+            "gd": 5
+          },
+          {
+            "seed": 3,
+            "team": "PSG",
+            "played": 10,
+            "points": 17,
+            "record": "5-2-3",
+            "gd": 3
+          },
+          {
+            "seed": 4,
+            "team": "ARS",
+            "played": 10,
+            "points": 16,
+            "record": "4-4-2",
+            "gd": 4
+          },
+          {
+            "seed": 5,
+            "team": "BAR",
+            "played": 10,
+            "points": 13,
+            "record": "4-1-5",
+            "gd": -2
+          },
+          {
+            "seed": 6,
+            "team": "LIV",
+            "played": 10,
+            "points": 12,
+            "record": "3-3-4",
+            "gd": -1
+          },
+          {
+            "seed": 7,
+            "team": "INT",
+            "played": 10,
+            "points": 12,
+            "record": "3-3-4",
+            "gd": -2
+          },
+          {
+            "seed": 8,
+            "team": "RMA",
+            "played": 10,
+            "points": 3,
+            "record": "0-3-7",
+            "gd": -11
+          }
+        ],
+        "playoff": {
+          "round": "complete",
+          "semifinals": [
+            {
+              "id": "SF1",
+              "home": "#1 MCI",
+              "away": "#4 ARS",
+              "played": true,
+              "score": "3-3 pens",
+              "winner": "MCI"
+            },
+            {
+              "id": "SF2",
+              "home": "#2 BAY",
+              "away": "#3 PSG",
+              "played": true,
+              "score": "1-3",
+              "winner": "PSG"
+            }
+          ],
+          "final": {
+            "id": "FINAL",
+            "home": "#1 MCI",
+            "away": "#3 PSG",
+            "played": true,
+            "score": "3-3 pens",
+            "winner": "PSG"
+          }
+        }
+      }
+    },
+    "lastSummary": "Regular season complete: seed #8. Missed playoffs. Champion: PSG."
+  },
+  "score": {
+    "home": 0,
+    "away": 3
+  },
+  "timeLeft": 0,
+  "possession": "away:Mohamed Salah",
+  "selectedPlayer": {
+    "name": "Federico Valverde",
+    "role": "DF",
+    "rating": 88,
+    "x": 285.6,
+    "y": 380.2,
+    "stamina": 1
+  },
+  "ball": {
+    "x": 198.7,
+    "y": 388.8,
+    "vx": -195.5,
+    "vy": 67.4,
+    "owner": "Mohamed Salah"
+  },
+  "home": [
+    {
+      "name": "Thibaut Courtois",
+      "role": "GK",
+      "rating": 90,
+      "x": 190.2,
+      "y": 390.3,
+      "hasBall": false,
+      "controlled": false
+    },
+    {
+      "name": "Federico Valverde",
+      "role": "DF",
+      "rating": 88,
+      "x": 285.6,
+      "y": 380.2,
+      "hasBall": false,
+      "controlled": true
+    },
+    {
+      "name": "Jude Bellingham",
+      "role": "MID",
+      "rating": 94,
+      "x": 527.4,
+      "y": 277,
+      "hasBall": false,
+      "controlled": false
+    },
+    {
+      "name": "Vinicius Junior",
+      "role": "WING",
+      "rating": 96,
+      "x": 567.8,
+      "y": 493.9,
+      "hasBall": false,
+      "controlled": false
+    },
+    {
+      "name": "Kylian Mbappe",
+      "role": "ST",
+      "rating": 99,
+      "x": 798.5,
+      "y": 301.3,
+      "hasBall": false,
+      "controlled": false
+    }
+  ],
+  "away": [
+    {
+      "name": "Alisson",
+      "role": "GK",
+      "rating": 100,
+      "x": 1156,
+      "y": 391.5,
+      "hasBall": false,
+      "controlled": false
+    },
+    {
+      "name": "Virgil van Dijk",
+      "role": "DF",
+      "rating": 100,
+      "x": 951.8,
+      "y": 359.4,
+      "hasBall": false,
+      "controlled": false
+    },
+    {
+      "name": "Dominik Szoboszlai",
+      "role": "MID",
+      "rating": 96,
+      "x": 737.5,
+      "y": 292.2,
+      "hasBall": false,
+      "controlled": false
+    },
+    {
+      "name": "Florian Wirtz",
+      "role": "WING",
+      "rating": 100,
+      "x": 722.2,
+      "y": 409.5,
+      "hasBall": false,
+      "controlled": false
+    },
+    {
+      "name": "Mohamed Salah",
+      "role": "ST",
+      "rating": 100,
+      "x": 224.7,
+      "y": 379.9,
+      "hasBall": true,
+      "controlled": false
+    }
+  ],
+  "message": ""
+}

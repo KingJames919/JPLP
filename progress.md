@@ -1,0 +1,57 @@
+Original prompt: make a high quality fifa soccer browser game with real players in the champions leage with real teams and each player has a unique rating from 1-100 and the better the player the better the team
+
+Progress:
+- Confirmed working directory is the intended project folder: `/Users/bridgetharrington/Projects/James/LennoxAndJames`.
+- Project was empty and not a Git repository, so the game is being built as a static browser app.
+- Using a top-down five-a-side arcade soccer design with real Champions League club/player names and custom 1-100 ratings.
+- User expanded the request: make it feel like a modern FC26-style playable game and add Player Career and Club Career modes.
+- Implemented `index.html`, `styles.css`, and `game.js`.
+- Added Quick Match, Player Career, and Club Career menu modes.
+- Added player lock, XP/stat tracking, club budget/reputation/sharpness, career history, and post-match career hub state.
+- Ran `node --check game.js` successfully.
+- Ran Playwright client checks for Quick Match, Player Career match entry, Club Career match entry, and career setup menus; screenshots are under `output/web-game/`.
+- User requested regular-season leaderboard and seeded playoff.
+- Added Club Career season state with an 8-team round-robin table, points/goal-difference standings, top-4 seeded playoff, semifinals/final bracket, and simulated AI results.
+- Added leaderboard and playoff bracket drawing in the Club Career hub.
+- Added club season details to `render_game_to_text`.
+- User requested ten regular-season games; updated Club Career regular season to 10 fixtures by extending the round-robin schedule with reversed repeat fixtures.
+- User renamed the game to `JPLP. Soccer`; updated browser title, page label, canvas label, and in-game title.
+- Verified with `node --check game.js`.
+- Verified with the web-game Playwright client after the rename; final clean screenshot is at `output/web-game/jplp-title-check-clean/shot-0.png`.
+- Verified the 10-game regular season: after 7 games the season remains regular, and after 10 games playoff seeds/bracket are generated.
+- User requested Easy/Medium/Hard/Impossible difficulty levels.
+- Added four difficulty tiers, visible in the menu, with Easy/Medium/Hard/Impossible changing opponent selection, opponent rating boost, AI speed, aggression, passing accuracy, tackling, and shot power.
+- Career matches now ramp upward over time; Club Career playoffs use Impossible difficulty.
+- User requested trades, adding players, dynasty years, and a draft.
+- Added persistent Club Career dynasty roster, trade offers, draft prospects, draft picks, championships/playoff appearances, year rollover, player development, and edited-squad lineups.
+- Verified dynasty state in `render_game_to_text`: roster, starters, trade offer, draft prospect, draft picks, year, championships, and season state.
+- Verified trade + draft interactions: trade changes starter pool and budget; draft adds a new player and consumes the pick.
+- Verified dynasty year rollover: after season completion, `Start Next Year` resets standings/fixture/score, keeps roster, adds a draft pick, and increments the year.
+- Latest screenshots: `output/web-game/dynasty-hub-clean/shot.png`, `output/web-game/dynasty-trade-draft/shot.png`, and `output/web-game/dynasty-year-rollover-2/shot.png`.
+- Tightened the visual design after the user noted graphics overlapping on lines: removed menu background rays, made glass panels more opaque, cleaned the Quick Match panel copy, tightened Dynasty/Playoff spacing, and added fitted text for generated trade/draft labels.
+- Verified with `node --check game.js`, a menu screenshot at `output/web-game/design-tight-menu-final/shot-0.png`, and a Club Career hub screenshot at `output/web-game/design-tight-hub/shot.png`.
+- Expanded the club pool to 16 teams, adding Chelsea, Newcastle United, AC Milan, Juventus, Borussia Dortmund, Atletico Madrid, Bayer Leverkusen, and Benfica, with bench/depth players for Club Career roster management.
+- Added the Club Career `Team Roster` view with editable starting slots, roster selection, Auto XI, selected-player trade offers, and accept-trade flow.
+- Updated the regular-season playoff format: top 6 advance, seeds #1 and #2 get first-round byes, #3 vs #6 and #4 vs #5 play first round, then semifinals and final.
+- Cleaned the compact 16-team leaderboard and six-team playoff bracket spacing so scores, winner markers, and footer text do not overlap.
+- Verified with `node --check game.js`, roster trade screenshots at `output/web-game/team-roster-trades-final/`, and six-team playoff screenshot/state at `output/web-game/six-team-playoff/`.
+- Added a separate World Cup mode with 16 national teams, a single-elimination bracket, locked no-trade squads, and a World Cup hub/bracket.
+- Added knockout tie handling: World Cup and Club Career playoff ties now enter a 30-second extra-time period first; if still tied, the result is resolved by penalties and marked with `pens`.
+- Verified World Cup extra time and penalties with screenshots/state at `output/web-game/world-cup-extra-time/`.
+- Performed a page-by-page UI/UX sweep across Quick Match, Player Career, Club Career setup, Club Career Hub, Team Roster, World Cup setup, and World Cup Hub.
+- Cleaned the team picker header by moving difficulty to the top-right header space, replacing clipped club country names with compact country codes, and keeping page labels clear of tabs/cards.
+- Fixed Club Career and World Cup setup polish: wrapped long panel text, reset drifting preview-caption alignment, corrected the World Cup first-round opponent preview to match the actual bracket, and made national team cards use clean `NATION` labels.
+- Updated the Club Career leaderboard visual cue so the highlighted playoff zone matches the six-team advance rule.
+- Verified with `node --check game.js`, final screenshot sweep/state at `output/web-game/ui-sweep-final/`, and a standard playable smoke run at `output/web-game/ui-sweep-client-smoke/`.
+- Added MLS clubs to the playable club pool, bringing the club picker to 24 clubs across three pages. The MLS page includes Inter Miami, LAFC, LA Galaxy, Seattle Sounders, Atlanta United, Columbus Crew, NYCFC, and FC Cincinnati with rated real-player-style squads.
+- Added the post-playoff `GOAT Mashup` option to Club Career. After the season/playoffs are complete, it simulates Champions League, World Cup, and MLS winners, then creates a four-team bracket with the dynasty club, Champions League representative, World Cup winner, and MLS winner.
+- GOAT Mashup matches use the existing extra-time/penalty knockout flow, save back into the Club Career hub, and award a GOAT title plus budget/reputation if the dynasty club wins.
+- Tightened the 24-team leaderboard density so the expanded table fits cleanly inside the career hub panel.
+- Verified with `node --check game.js`, MLS/GOAT screenshots and state at `output/web-game/goat-mashup/`, and a standard smoke run at `output/web-game/goat-mashup-smoke/`.
+- Fixed selected-team rating dials bleeding above their glass panels by moving/scaling the dial inside the panel and fitting nearby title/subtitle text before the dial.
+- Ran a boundary sweep across Quick Match, MLS page, World Cup, Club Career setup, Player Career setup, and Club Career Hub; screenshots/state are in `output/web-game/ui-boundary-sweep/`.
+- Verified with `node --check game.js` and a standard smoke run at `output/web-game/ui-boundary-smoke/`.
+
+TODO:
+- Optional polish: make match scoring less draw-heavy during automated no-input full-season simulations.
+- Optional polish: add roster scrolling for very large future squads beyond the current top-eight roster list.
