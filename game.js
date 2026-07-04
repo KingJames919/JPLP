@@ -21,6 +21,15 @@
   const QUICK_MATCH_LENGTH = 75;
   const STANDARD_MATCH_LENGTH = 120;
   const ROLE_ORDER = ["GK", "DF", "MID", "WING", "ST"];
+  const FIELD_DESIGNS = [
+    { id: "classic", name: "Classic Grass" },
+    { id: "team", name: "Team Colors" },
+    { id: "glow", name: "Creator Glow" },
+  ];
+  const PENALTY_DIRECTIONS = ["left", "center", "right"];
+  const TROPHY_STORAGE_KEY = "jplp-soccer-trophy-room";
+  const PROGRESS_STORAGE_KEY = "jplp-soccer-progress-save";
+  const PROGRESS_SAVE_VERSION = 1;
   const COUNTRY_CODES = {
     England: "ENG",
     France: "FRA",
@@ -932,6 +941,8 @@
     },
   ];
 
+  const initialProgressSave = loadProgressSave();
+
   const state = {
     mode: "menu",
     selectedTeam: 0,
@@ -949,6 +960,11 @@
     timeLeft: STANDARD_MATCH_LENGTH,
     matchLength: STANDARD_MATCH_LENGTH,
     activeMatchKind: "match",
+    fieldDesign: 0,
+    trophies: loadTrophyRoom(),
+    progressSave: initialProgressSave,
+    savedProgress: summarizeProgressSave(initialProgressSave),
+    penaltyShootout: null,
     goalFreeze: 0,
     message: "",
     messageTimer: 0,
@@ -1078,6 +1094,369 @@
   function cycleDifficulty() {
     state.difficulty = (state.difficulty % DIFFICULTIES.length) + 1;
     pickOpponent();
+  }
+
+  function activeFieldDesign() {
+    return FIELD_DESIGNS[state.fieldDesign] || FIELD_DESIGNS[0];
+  }
+
+  function activeFieldTeam() {
+    if (state.homeTeam) return state.homeTeam;
+    if (state.menuMode === "world") return WORLD_TEAMS[state.worldSelectedTeam] || WORLD_TEAMS[0];
+    return TEAMS[state.selectedTeam] || TEAMS[0];
+  }
+
+  function cycleFieldDesign() {
+    state.fieldDesign = (state.fieldDesign + 1) % FIELD_DESIGNS.length;
+    state.message = `Field colors: ${activeFieldDesign().name}`;
+    state.messageTimer = 1.6;
+    if (state.career?.active || state.worldCup?.active) {
+      saveProgress("field-colors");
+    } else if (state.mode === "menu" && state.menuMode === "world" && hasSavedWorldCup()) {
+      saveFieldDesignPreference("field-colors");
+    }
+  }
+
+  function normalizeHex(hex, fallback = "#f7fbff") {
+    if (typeof hex !== "string") return fallback;
+    const raw = hex.trim().replace("#", "");
+    return /^[0-9a-f]{6}$/i.test(raw) ? `#${raw}` : fallback;
+  }
+
+  function hexToRgb(hex, fallback = "#f7fbff") {
+    const raw = normalizeHex(hex, fallback).replace("#", "");
+    return [
+      parseInt(raw.slice(0, 2), 16),
+      parseInt(raw.slice(2, 4), 16),
+      parseInt(raw.slice(4, 6), 16),
+    ];
+  }
+
+  function componentToHex(value) {
+    return clamp(Math.round(value), 0, 255).toString(16).padStart(2, "0");
+  }
+
+  function rgbToHex(rgb) {
+    return `#${componentToHex(rgb[0])}${componentToHex(rgb[1])}${componentToHex(rgb[2])}`;
+  }
+
+  function mixHex(a, b, amount) {
+    const left = hexToRgb(a);
+    const right = hexToRgb(b);
+    return rgbToHex(left.map((value, index) => lerp(value, right[index], clamp(amount, 0, 1))));
+  }
+
+  function rgbaFromHex(hex, alpha) {
+    const [r, g, b] = hexToRgb(hex);
+    return `rgba(${r},${g},${b},${alpha})`;
+  }
+
+  function readableLineHex(hex) {
+    const [r, g, b] = hexToRgb(hex);
+    const brightness = r * 0.299 + g * 0.587 + b * 0.114;
+    return brightness > 118 ? normalizeHex(hex) : mixHex(hex, "#ffffff", 0.72);
+  }
+
+  function fieldThemeFor(team = activeFieldTeam()) {
+    const design = activeFieldDesign().id;
+    if (design === "classic") {
+      return {
+        stripeA: "#176b43",
+        stripeB: "#125f3b",
+        border: "#062318",
+        line: "rgba(247,251,255,0.84)",
+        boxLine: "rgba(247,251,255,0.72)",
+        center: "#f7fbff",
+        goalFill: "rgba(247,251,255,0.08)",
+        stadiumTop: "#071014",
+        stadiumMid: "#0c1c22",
+        stadiumBottom: "#081115",
+        light: "rgba(255,255,255,0.22)",
+      };
+    }
+
+    const colors = team?.colors || ["#176b43", "#125f3b", "#f7fbff"];
+    const primary = normalizeHex(colors[0], "#176b43");
+    const secondary = normalizeHex(colors[1], "#125f3b");
+    const trim = readableLineHex(colors[2] || "#f7fbff");
+    const glow = design === "glow";
+    return {
+      stripeA: mixHex(glow ? "#102028" : "#176b43", primary, glow ? 0.62 : 0.38),
+      stripeB: mixHex(glow ? "#071114" : "#125f3b", secondary, glow ? 0.58 : 0.34),
+      border: mixHex("#062318", primary, glow ? 0.42 : 0.24),
+      line: rgbaFromHex(trim, 0.88),
+      boxLine: rgbaFromHex(trim, 0.72),
+      center: trim,
+      goalFill: rgbaFromHex(primary, 0.11),
+      stadiumTop: mixHex("#071014", primary, glow ? 0.34 : 0.2),
+      stadiumMid: mixHex("#0c1c22", secondary, glow ? 0.28 : 0.18),
+      stadiumBottom: mixHex("#081115", primary, glow ? 0.24 : 0.14),
+      light: rgbaFromHex(trim, glow ? 0.32 : 0.22),
+    };
+  }
+
+  function loadTrophyRoom() {
+    try {
+      const storage = typeof window !== "undefined" ? window.localStorage : null;
+      const raw = storage?.getItem(TROPHY_STORAGE_KEY);
+      const trophies = raw ? JSON.parse(raw) : [];
+      return Array.isArray(trophies) ? trophies.slice(0, 36) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveTrophyRoom() {
+    try {
+      const storage = typeof window !== "undefined" ? window.localStorage : null;
+      storage?.setItem(TROPHY_STORAGE_KEY, JSON.stringify(state.trophies.slice(0, 36)));
+    } catch {
+      // Local storage can be unavailable in private browsing; the current session still keeps trophies.
+    }
+  }
+
+  function trophyTemplate(type) {
+    const templates = {
+      worldCup: { title: "World Cup", metal: "#f5c75f", accent: "#8bdcd3" },
+      mls: { title: "MLS Cup", metal: "#d7edf7", accent: "#f05d5e" },
+      ucl: { title: "UCL Trophy", metal: "#f4f7ff", accent: "#6aa8ff" },
+      goat: { title: "GOAT Mashup", metal: "#f5c75f", accent: "#ff7ab6" },
+    };
+    return templates[type] || { title: "Trophy", metal: "#f5c75f", accent: "#8bdcd3" };
+  }
+
+  function awardTrophy(type, teamName, note, colors = ["#f5c75f", "#8bdcd3", "#f7fbff"]) {
+    const template = trophyTemplate(type);
+    state.trophies.unshift({
+      id: `${type}-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+      type,
+      title: template.title,
+      teamName,
+      note,
+      colors,
+      wonAt: new Date().toLocaleDateString(),
+    });
+    state.trophies = state.trophies.slice(0, 36);
+    saveTrophyRoom();
+  }
+
+  function loadProgressSave() {
+    try {
+      const storage = typeof window !== "undefined" ? window.localStorage : null;
+      const raw = storage?.getItem(PROGRESS_STORAGE_KEY);
+      if (!raw) return null;
+      const save = JSON.parse(raw);
+      return save?.version === PROGRESS_SAVE_VERSION ? save : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function clonePlain(value) {
+    return value == null ? value : JSON.parse(JSON.stringify(value));
+  }
+
+  function saveProgress(reason = "progress") {
+    const save = {
+      version: PROGRESS_SAVE_VERSION,
+      savedAt: Date.now(),
+      reason,
+      selectedTeam: state.selectedTeam,
+      opponentTeam: state.opponentTeam,
+      clubPool: state.clubPool,
+      worldSelectedTeam: state.worldSelectedTeam,
+      worldOpponentTeam: state.worldOpponentTeam,
+      careerPlayerIndex: state.careerPlayerIndex,
+      difficulty: state.difficulty,
+      fieldDesign: state.fieldDesign,
+      activeMatchKind: state.activeMatchKind,
+      careerHubView: state.careerHubView,
+      selectedLineupRole: state.selectedLineupRole,
+      selectedRosterUid: state.selectedRosterUid,
+      career: state.career?.active ? clonePlain(state.career) : { active: false },
+      worldCup: state.worldCup?.active ? clonePlain(state.worldCup) : { active: false },
+    };
+    try {
+      const storage = typeof window !== "undefined" ? window.localStorage : null;
+      storage?.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(save));
+      state.progressSave = save;
+      state.savedProgress = summarizeProgressSave(save);
+    } catch {
+      state.progressSave = save;
+      state.savedProgress = summarizeProgressSave(save);
+    }
+  }
+
+  function saveFieldDesignPreference(reason = "field-colors") {
+    const save = loadProgressSave();
+    if (!save) return;
+    save.fieldDesign = state.fieldDesign;
+    save.reason = reason;
+    save.savedAt = Date.now();
+    try {
+      const storage = typeof window !== "undefined" ? window.localStorage : null;
+      storage?.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(save));
+    } catch {
+      // Keep the current-session state even if local storage is unavailable.
+    }
+    state.progressSave = save;
+    state.savedProgress = summarizeProgressSave(save);
+  }
+
+  function summarizeProgressSave(save) {
+    if (!save) return null;
+    const career = save.career?.active
+      ? {
+          active: true,
+          type: save.career.type,
+          teamIndex: save.career.teamIndex,
+          team: TEAMS[save.career.teamIndex]?.short || "TBD",
+          fixture: save.career.fixture,
+          record: `${save.career.wins || 0}-${save.career.draws || 0}-${save.career.losses || 0}`,
+          stage: save.career.type === "club" ? save.career.season?.stage || "regular" : "career",
+          leagueName: save.career.type === "club" ? save.career.season?.leagueName || clubLeagueNameForTeam(save.career.teamIndex) : null,
+          year: save.career.year || null,
+        }
+      : null;
+    const worldCup = save.worldCup?.active
+      ? {
+          active: true,
+          teamIndex: save.worldCup.teamIndex,
+          team: WORLD_TEAMS[save.worldCup.teamIndex]?.short || "TBD",
+          roundIndex: save.worldCup.roundIndex || 0,
+          stage: savedWorldCupStageLabel(save.worldCup),
+          eliminated: Boolean(save.worldCup.eliminated),
+          champion: save.worldCup.championIndex != null ? WORLD_TEAMS[save.worldCup.championIndex]?.short || "TBD" : null,
+        }
+      : null;
+    return {
+      savedAt: save.savedAt,
+      savedLabel: formatSavedAt(save.savedAt),
+      career,
+      worldCup,
+    };
+  }
+
+  function savedWorldCupStageLabel(cup) {
+    if (cup.championIndex === cup.teamIndex) return "World Champions";
+    if (cup.championIndex != null) return `Champion: ${WORLD_TEAMS[cup.championIndex]?.short || "TBD"}`;
+    if (cup.eliminated) return "Eliminated";
+    return cup.rounds?.[cup.roundIndex]?.label || "Knockout";
+  }
+
+  function formatSavedAt(timestamp) {
+    if (!timestamp) return "";
+    try {
+      return new Date(timestamp).toLocaleString([], {
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+      });
+    } catch {
+      return "";
+    }
+  }
+
+  function hasSavedCareer(type = null) {
+    const career = state.savedProgress?.career;
+    return Boolean(career?.active && (!type || career.type === type));
+  }
+
+  function hasSavedWorldCup() {
+    return Boolean(state.savedProgress?.worldCup?.active);
+  }
+
+  function continueSavedCareer(type = null) {
+    const save = loadProgressSave();
+    if (!save?.career?.active || (type && save.career.type !== type)) {
+      state.message = "No saved season found";
+      state.messageTimer = 1.8;
+      state.progressSave = save;
+      state.savedProgress = summarizeProgressSave(save);
+      return;
+    }
+    restoreProgressSave(save);
+    state.career = clonePlain(save.career);
+    state.worldCup = { active: false };
+    state.menuMode = state.career.type === "club" ? "club" : "player";
+    state.selectedTeam = state.career.teamIndex;
+    state.clubPool = clubLeagueForTeam(state.selectedTeam);
+    state.careerHubView = state.career.type === "club" ? save.careerHubView || "office" : "office";
+    state.selectedLineupRole = save.selectedLineupRole || "ST";
+    state.selectedRosterUid = save.selectedRosterUid || null;
+    if (state.career.type === "club") {
+      ensureCareerLineup(state.career);
+      syncDynastyPlayerId(state.career);
+    }
+    state.mode = "careerHub";
+    state.message = state.career.type === "club" ? "Season loaded" : "Career loaded";
+    state.messageTimer = 1.8;
+    pickOpponent();
+  }
+
+  function continueSavedWorldCup() {
+    const save = loadProgressSave();
+    if (!save?.worldCup?.active) {
+      state.message = "No saved tournament found";
+      state.messageTimer = 1.8;
+      state.progressSave = save;
+      state.savedProgress = summarizeProgressSave(save);
+      return;
+    }
+    restoreProgressSave(save);
+    state.worldCup = clonePlain(save.worldCup);
+    state.career = { active: false, type: null };
+    state.menuMode = "world";
+    state.worldSelectedTeam = state.worldCup.teamIndex;
+    state.mode = "worldCupHub";
+    state.message = "Tournament loaded";
+    state.messageTimer = 1.8;
+    pickOpponent();
+  }
+
+  function restoreProgressSave(save) {
+    state.progressSave = save;
+    state.savedProgress = summarizeProgressSave(save);
+    state.selectedTeam = clamp(save.selectedTeam ?? state.selectedTeam, 0, TEAMS.length - 1);
+    state.opponentTeam = clamp(save.opponentTeam ?? state.opponentTeam, 0, TEAMS.length - 1);
+    state.clubPool = save.clubPool === "mls" ? "mls" : "ucl";
+    state.worldSelectedTeam = clamp(save.worldSelectedTeam ?? state.worldSelectedTeam, 0, WORLD_TEAMS.length - 1);
+    state.worldOpponentTeam = clamp(save.worldOpponentTeam ?? state.worldOpponentTeam, 0, WORLD_TEAMS.length - 1);
+    state.careerPlayerIndex = clamp(save.careerPlayerIndex ?? state.careerPlayerIndex, 0, 4);
+    state.difficulty = clamp(save.difficulty ?? state.difficulty, 1, DIFFICULTIES.length);
+    state.fieldDesign = clamp(save.fieldDesign ?? state.fieldDesign, 0, FIELD_DESIGNS.length - 1);
+    state.activeMatchKind = save.activeMatchKind === "quick" ? "quick" : "match";
+    state.homeTeam = null;
+    state.awayTeam = null;
+    state.homePlayers = [];
+    state.awayPlayers = [];
+    state.controlledIndex = 4;
+    state.ball = createBall();
+    state.score = { home: 0, away: 0 };
+    state.matchLength = STANDARD_MATCH_LENGTH;
+    state.timeLeft = state.matchLength;
+    state.penaltyShootout = null;
+    state.currentCareerMatch = false;
+    state.currentWorldCupMatch = false;
+    state.currentGoatMatch = false;
+    state.currentGoatMatchId = null;
+    state.extraTime = { active: false, used: false, seconds: 30 };
+    state.lockedPlayerId = null;
+    state.matchStats = createMatchStats();
+    state.potentialAssist = null;
+    state.particles = [];
+    state.trail = [];
+  }
+
+  function syncDynastyPlayerId(career) {
+    if (!career?.roster) return;
+    let maxId = 0;
+    for (const player of career.roster) {
+      const match = /^dyn-(\d+)$/.exec(player.uid || "");
+      if (match) maxId = Math.max(maxId, Number(match[1]));
+    }
+    dynastyPlayerId = Math.max(dynastyPlayerId, maxId + 1);
   }
 
   function createBall() {
@@ -1330,12 +1709,14 @@
     state.selectedLineupRole = role;
     state.selectedRosterUid = playerUid;
     career.lastSummary = `${lastName(player.name)} moved into the ${role} slot.`;
+    saveProgress("lineup");
   }
 
   function autoFillLineup(career) {
     career.lineup = {};
     ensureCareerLineup(career);
     career.lastSummary = "Team profile set to the strongest balanced starting five.";
+    saveProgress("lineup");
   }
 
   function lineupDataFor(team, side) {
@@ -1451,7 +1832,11 @@
         "shift",
         "tab",
         "enter",
+        "1",
+        "2",
+        "3",
         "e",
+        "c",
         "q",
         "p",
         "f",
@@ -1714,6 +2099,7 @@
     state.score = { home: 0, away: 0 };
     state.timeLeft = state.matchLength;
     state.extraTime = { active: false, used: false, seconds: 30 };
+    state.penaltyShootout = null;
     state.goalFreeze = 0;
     state.message = freePlay && state.activeMatchKind === "quick"
       ? `Quick: ${state.homeTeam.short} v ${state.awayTeam.short}`
@@ -1853,6 +2239,18 @@
       return;
     }
 
+    if (state.mode === "trophyRoom") {
+      updateTrophyRoom();
+      updateParticles(dt);
+      return;
+    }
+
+    if (state.mode === "penalties") {
+      updatePenaltyShootout(dt);
+      updateParticles(dt);
+      return;
+    }
+
     if (state.mode === "paused") {
       if (justPressed.has("p") || justPressed.has("enter")) state.mode = "play";
       updateParticles(dt);
@@ -1907,6 +2305,7 @@
     if (justPressed.has("4")) setMenuMode("world");
     if (state.menuMode !== "world" && justPressed.has("m")) setClubPool("mls");
     if (state.menuMode !== "world" && justPressed.has("u")) setClubPool("ucl");
+    if (justPressed.has("c")) cycleFieldDesign();
     if (justPressed.has("left") || justPressed.has("a")) {
       const teams = menuTeamPool();
       setMenuSelectedIndex((menuSelectedIndex() + teams.length - 1) % teams.length);
@@ -2018,6 +2417,7 @@
   function beginPlayerCareer() {
     const team = TEAMS[state.selectedTeam];
     const chosen = team.players[state.careerPlayerIndex] || team.players[team.players.length - 1];
+    state.worldCup = { active: false };
     state.career = {
       active: true,
       type: "player",
@@ -2037,10 +2437,12 @@
       lastSummary: "Make your debut under the lights.",
       history: [],
     };
+    saveProgress("player-career-start");
     startNextCareerMatch();
   }
 
   function beginClubCareer() {
+    state.worldCup = { active: false };
     state.career = {
       active: true,
       type: "club",
@@ -2075,6 +2477,7 @@
     ensureCareerLineup(state.career);
     state.career.tradeOffers = createTradeMarket(state.career);
     state.career.draftProspects = createDraftBoard(state.career);
+    saveProgress("club-career-start");
     startNextCareerMatch();
   }
 
@@ -2085,6 +2488,7 @@
     state.currentWorldCupMatch = false;
     state.currentGoatMatch = false;
     state.currentGoatMatchId = null;
+    saveProgress("world-cup-start");
     startNextWorldCupMatch();
   }
 
@@ -2153,7 +2557,7 @@
     startMatch(cup.teamIndex, opponent, { worldCup: true, teams: WORLD_TEAMS });
   }
 
-  function applyWorldCupResult(wentToExtraTime = false) {
+  function applyWorldCupResult(wentToExtraTime = false, forcedWinner = null, penaltyScore = "") {
     const cup = state.worldCup;
     const round = currentWorldCupRound();
     const match = currentWorldCupMatch();
@@ -2161,8 +2565,16 @@
     const userIsHomeSeed = match.homeTeam === cup.teamIndex;
     const matchHomeGoals = userIsHomeSeed ? state.score.home : state.score.away;
     const matchAwayGoals = userIsHomeSeed ? state.score.away : state.score.home;
-    const winner = resolveWorldCupWinner(match.homeTeam, match.awayTeam, matchHomeGoals, matchAwayGoals);
-    finishWorldCupMatch(match, matchHomeGoals, matchAwayGoals, winner, matchHomeGoals === matchAwayGoals, wentToExtraTime);
+    const winner = forcedWinner ?? resolveWorldCupWinner(match.homeTeam, match.awayTeam, matchHomeGoals, matchAwayGoals);
+    finishWorldCupMatch(
+      match,
+      matchHomeGoals,
+      matchAwayGoals,
+      winner,
+      matchHomeGoals === matchAwayGoals,
+      wentToExtraTime,
+      penaltyScore
+    );
     const userWon = winner === cup.teamIndex;
     cup.history.unshift({
       round: round.label,
@@ -2180,19 +2592,21 @@
     simulateWorldCupRound(round, cup.teamIndex);
     if (!advanceWorldCupRound(cup)) {
       cup.championIndex = cup.teamIndex;
+      awardTrophy("worldCup", WORLD_TEAMS[cup.teamIndex].name, "World Cup champions", WORLD_TEAMS[cup.teamIndex].colors);
       cup.lastSummary = `Won the Final ${match.score}. World Cup champions.`;
       return;
     }
     cup.lastSummary = `Won ${round.label} ${match.score}. Next: ${currentWorldCupRound().label}.`;
   }
 
-  function finishWorldCupMatch(match, homeGoals, awayGoals, winner, shootout, extraTime = false) {
+  function finishWorldCupMatch(match, homeGoals, awayGoals, winner, shootout, extraTime = false, penaltyScore = "") {
     match.played = true;
-    match.score = `${homeGoals}-${awayGoals}${shootout ? " pens" : extraTime ? " ET" : ""}`;
+    match.score = `${homeGoals}-${awayGoals}${shootout ? ` pens${penaltyScore ? ` ${penaltyScore}` : ""}` : extraTime ? " ET" : ""}`;
     match.winner = winner;
     match.loser = winner === match.homeTeam ? match.awayTeam : match.homeTeam;
     match.shootout = shootout;
     match.extraTime = extraTime;
+    match.penaltyScore = penaltyScore;
   }
 
   function resolveWorldCupWinner(teamA, teamB, goalsA, goalsB) {
@@ -2284,6 +2698,18 @@
     return isKnockoutMatchActive() && state.score.home === state.score.away && !state.extraTime.used;
   }
 
+  function shouldStartPenaltyShootout() {
+    return (
+      state.score.home === state.score.away &&
+      state.extraTime.used &&
+      (state.currentWorldCupMatch ||
+        (state.currentCareerMatch &&
+          state.career.active &&
+          state.career.type === "club" &&
+          state.career.season?.stage === "playoff"))
+    );
+  }
+
   function startExtraTime() {
     state.extraTime.active = true;
     state.extraTime.used = true;
@@ -2292,6 +2718,189 @@
     resetPositions();
     setupKickoff("home");
     state.message = "Extra time";
+    state.messageTimer = 2;
+  }
+
+  function startPenaltyShootout() {
+    const worldCupMatch = state.currentWorldCupMatch && state.worldCup.active ? currentWorldCupMatch() : null;
+    const playoffMatch =
+      state.currentCareerMatch && state.career.active && state.career.type === "club"
+        ? currentPlayablePlayoffMatch(state.career)
+        : null;
+    const context = worldCupMatch ? "worldCup" : "playoff";
+    const homeIndex = worldCupMatch ? state.worldCup.teamIndex : state.career.teamIndex;
+    const awayIndex = worldCupMatch
+      ? worldCupMatch.homeTeam === state.worldCup.teamIndex
+        ? worldCupMatch.awayTeam
+        : worldCupMatch.homeTeam
+      : playoffMatch?.homeTeam === state.career.teamIndex
+        ? playoffMatch.awayTeam
+        : playoffMatch?.homeTeam;
+
+    state.extraTime.active = false;
+    state.penaltyShootout = {
+      context,
+      homeIndex,
+      awayIndex,
+      homePens: 0,
+      awayPens: 0,
+      homeTaken: 0,
+      awayTaken: 0,
+      homeSeq: [],
+      awaySeq: [],
+      maxKicks: 5,
+      turn: "home",
+      complete: false,
+      winnerIndex: null,
+      penaltyScore: "",
+      live: null,
+      log: ["Penalty shootout begins"],
+      last: "Choose a side to shoot first.",
+    };
+    state.mode = "penalties";
+    state.message = "Penalty shootout";
+    state.messageTimer = 2;
+    spawnBurst(FIELD.cx, FIELD.cy, ["#f5c75f", "#ffffff", "#8bdcd3"], 42);
+  }
+
+  function updatePenaltyShootout(dt = 1 / 60) {
+    const shootout = state.penaltyShootout;
+    if (!shootout) {
+      state.mode = state.currentWorldCupMatch ? "worldCupHub" : "careerHub";
+      return;
+    }
+    if (shootout.live) {
+      updateLivePenalty(shootout, dt);
+      return;
+    }
+    if (shootout.complete) {
+      if (justPressed.has("enter") || justPressed.has("space")) exitPenaltyShootout();
+      return;
+    }
+    if (justPressed.has("left") || justPressed.has("a") || justPressed.has("1")) takePenalty("left");
+    if (justPressed.has("down") || justPressed.has("s") || justPressed.has("2") || justPressed.has("space")) takePenalty("center");
+    if (justPressed.has("right") || justPressed.has("d") || justPressed.has("3")) takePenalty("right");
+  }
+
+  function takePenalty(choice) {
+    const shootout = state.penaltyShootout;
+    if (!shootout || shootout.complete || shootout.live || !PENALTY_DIRECTIONS.includes(choice)) return;
+    const homePower = teamPower(state.homeTeam);
+    const awayPower = teamPower(state.awayTeam);
+    const homeTurn = shootout.turn === "home";
+    const shotDirection = homeTurn ? choice : randomPenaltyDirection();
+    const keeperDirection = homeTurn ? randomPenaltyDirection() : choice;
+    const powerEdge = homeTurn ? (homePower - awayPower) / 230 : (awayPower - homePower) / 230;
+    const baseChance = homeTurn ? 0.78 : 0.76;
+    const readPenalty = shotDirection === keeperDirection ? (homeTurn ? 0.29 : 0.34) : 0;
+    const chance = clamp(baseChance + powerEdge - readPenalty, homeTurn ? 0.42 : 0.38, homeTurn ? 0.92 : 0.9);
+    const scored = Math.random() < chance;
+    const saved = !scored && shotDirection === keeperDirection;
+
+    shootout.live = {
+      t: 0,
+      duration: 1.08,
+      homeTurn,
+      shotDirection,
+      keeperDirection,
+      scored,
+      saved,
+      result: scored ? "GOAL" : saved ? "SAVE" : "MISS",
+    };
+    shootout.last = homeTurn
+      ? `${state.homeTeam.short} shot ${shotDirection.toUpperCase()}`
+      : `${state.awayTeam.short} shot ${shotDirection.toUpperCase()}`;
+  }
+
+  function updateLivePenalty(shootout, dt) {
+    shootout.live.t += dt;
+    if (shootout.live.t < shootout.live.duration) return;
+    commitLivePenalty(shootout);
+  }
+
+  function commitLivePenalty(shootout) {
+    const live = shootout.live;
+    if (!live) return;
+    const { homeTurn, shotDirection, scored, saved } = live;
+    if (homeTurn) {
+      shootout.homeTaken += 1;
+      shootout.homeSeq.push(scored);
+      if (scored) shootout.homePens += 1;
+      shootout.last = `${state.homeTeam.short} ${scored ? "score" : saved ? "saved" : "miss"} ${shotDirection.toUpperCase()}`;
+      shootout.turn = "away";
+    } else {
+      shootout.awayTaken += 1;
+      shootout.awaySeq.push(scored);
+      if (scored) shootout.awayPens += 1;
+      shootout.last = `${state.awayTeam.short} ${scored ? "score" : saved ? "saved" : "miss"} ${shotDirection.toUpperCase()}`;
+      shootout.turn = "home";
+    }
+
+    shootout.log.unshift(shootout.last);
+    shootout.log = shootout.log.slice(0, 5);
+    shootout.live = null;
+    evaluatePenaltyShootout();
+  }
+
+  function randomPenaltyDirection() {
+    return PENALTY_DIRECTIONS[Math.floor(Math.random() * PENALTY_DIRECTIONS.length)];
+  }
+
+  function evaluatePenaltyShootout() {
+    const shootout = state.penaltyShootout;
+    const homeRemaining = shootout.maxKicks - shootout.homeTaken;
+    const awayRemaining = shootout.maxKicks - shootout.awayTaken;
+    if (shootout.homePens > shootout.awayPens + awayRemaining) {
+      completePenaltyShootout("home");
+      return;
+    }
+    if (shootout.awayPens > shootout.homePens + homeRemaining) {
+      completePenaltyShootout("away");
+      return;
+    }
+    if (shootout.homeTaken >= shootout.maxKicks && shootout.awayTaken >= shootout.maxKicks) {
+      if (shootout.homePens > shootout.awayPens) completePenaltyShootout("home");
+      else if (shootout.awayPens > shootout.homePens) completePenaltyShootout("away");
+      else {
+        shootout.maxKicks += 1;
+        shootout.last = "Sudden death";
+        shootout.log.unshift("Sudden death");
+        shootout.log = shootout.log.slice(0, 5);
+      }
+    }
+  }
+
+  function completePenaltyShootout(winnerSide) {
+    const shootout = state.penaltyShootout;
+    if (!shootout || shootout.complete) return;
+    const winnerIndex = winnerSide === "home" ? shootout.homeIndex : shootout.awayIndex;
+    shootout.complete = true;
+    shootout.winnerIndex = winnerIndex;
+    shootout.penaltyScore = `${shootout.homePens}-${shootout.awayPens}`;
+    shootout.last = `${winnerSide === "home" ? state.homeTeam.short : state.awayTeam.short} win on PKs`;
+
+    if (shootout.context === "worldCup") {
+      applyWorldCupResult(true, winnerIndex, shootout.penaltyScore);
+      state.currentWorldCupMatch = false;
+      state.extraTime.active = false;
+      saveProgress("world-cup-penalties");
+    } else {
+      applyCareerResult(true, winnerIndex, shootout.penaltyScore);
+      state.currentCareerMatch = false;
+      state.extraTime.active = false;
+      state.lockedPlayerId = null;
+      saveProgress("playoff-penalties");
+    }
+    state.message = shootout.last;
+    state.messageTimer = 2.4;
+    spawnBurst(FIELD.cx, FIELD.cy, ["#f5c75f", "#ffffff", "#8bdcd3"], 72);
+  }
+
+  function exitPenaltyShootout() {
+    const context = state.penaltyShootout?.context;
+    state.penaltyShootout = null;
+    state.mode = context === "worldCup" ? "worldCupHub" : "careerHub";
+    state.message = context === "worldCup" ? "World Cup result saved" : "Playoff result saved";
     state.messageTimer = 2;
   }
 
@@ -2357,11 +2966,12 @@
     return state.difficulty;
   }
 
-  function applyCareerResult(wentToExtraTime = false) {
+  function applyCareerResult(wentToExtraTime = false, forcedWinner = null, penaltyScore = "") {
     const career = state.career;
     const home = state.score.home;
     const away = state.score.away;
-    const result = home > away ? "W" : home < away ? "L" : "D";
+    const result = forcedWinner != null ? (forcedWinner === career.teamIndex ? "W" : "L") : home > away ? "W" : home < away ? "L" : "D";
+    const scoreLabel = penaltyScore ? `${home}-${away} pens ${penaltyScore}` : `${home}-${away}`;
     if (result === "W") career.wins += 1;
     else if (result === "D") career.draws += 1;
     else career.losses += 1;
@@ -2381,12 +2991,12 @@
       career.assists += state.matchStats.assists;
       career.ratingBoost = Math.min(8, Math.floor(career.xp / 180));
       const overall = Math.min(100, career.baseRating + career.ratingBoost);
-      career.lastSummary = `${result} ${home}-${away}: +${xpGain} XP, ${state.matchStats.goals} G, ${state.matchStats.assists} A, OVR ${overall}`;
+      career.lastSummary = `${result} ${scoreLabel}: +${xpGain} XP, ${state.matchStats.goals} G, ${state.matchStats.assists} A, OVR ${overall}`;
       career.history.unshift({
         fixture: career.fixture,
         opponent: state.awayTeam.short,
         result,
-        score: `${home}-${away}`,
+        score: scoreLabel,
         note: `XP +${xpGain}`,
       });
     } else {
@@ -2397,18 +3007,18 @@
       career.sharpness = clamp(career.sharpness + (result === "W" ? 1 : 0), 0, 7);
       career.goalsFor += home;
       career.goalsAgainst += away;
-      career.lastSummary = `${result} ${home}-${away}: budget +$${prize + home * 2}M, reputation ${career.reputation}`;
+      career.lastSummary = `${result} ${scoreLabel}: budget +$${prize + home * 2}M, reputation ${career.reputation}`;
       career.history.unshift({
         fixture: career.fixture,
         opponent: state.awayTeam.short,
         result,
-        score: `${home}-${away}`,
+        score: scoreLabel,
         note: `$${career.budget}M budget`,
       });
       if (career.season.stage === "regular") {
         applyRegularSeasonRound(career, home, away);
       } else if (career.season.stage === "playoff") {
-        applyPlayoffResult(career, home, away, wentToExtraTime);
+        applyPlayoffResult(career, home, away, wentToExtraTime, forcedWinner, penaltyScore);
       }
     }
     career.history = career.history.slice(0, 5);
@@ -2520,12 +3130,23 @@
     };
   }
 
-  function applyPlayoffResult(career, homeGoals, awayGoals, wentToExtraTime = false) {
+  function applyPlayoffResult(career, homeGoals, awayGoals, wentToExtraTime = false, forcedWinner = null, penaltyScore = "") {
     const match = currentPlayablePlayoffMatch(career);
     if (!match) return;
     const opponent = match.homeTeam === career.teamIndex ? match.awayTeam : match.homeTeam;
-    const userWon = resolveKnockoutWinner(career.teamIndex, opponent, homeGoals, awayGoals) === career.teamIndex;
-    finishPlayoffMatch(match, career.teamIndex, opponent, homeGoals, awayGoals, userWon ? career.teamIndex : opponent, homeGoals === awayGoals, wentToExtraTime);
+    const winner = forcedWinner ?? resolveKnockoutWinner(career.teamIndex, opponent, homeGoals, awayGoals);
+    const userWon = winner === career.teamIndex;
+    finishPlayoffMatch(
+      match,
+      career.teamIndex,
+      opponent,
+      homeGoals,
+      awayGoals,
+      winner,
+      homeGoals === awayGoals,
+      wentToExtraTime,
+      penaltyScore
+    );
 
     if (career.season.playoff.round === "quarterfinal") {
       for (const other of career.season.playoff.matches) {
@@ -2567,7 +3188,15 @@
 
     career.season.championIndex = match.winner;
     career.season.stage = userWon ? "champion" : "eliminated";
-    if (userWon) career.championships += 1;
+    if (userWon) {
+      career.championships += 1;
+      awardTrophy(
+        career.season.league === "mls" ? "mls" : "ucl",
+        TEAMS[career.teamIndex].name,
+        `${career.season.leagueName} champions`,
+        TEAMS[career.teamIndex].colors
+      );
+    }
     career.lastSummary = userWon
       ? `Won final ${match.score}. ${career.season.leagueName} champions.`
       : `Lost final ${match.score}. Champion: ${TEAMS[match.winner].short}.`;
@@ -2579,13 +3208,14 @@
     finishPlayoffMatch(match, match.homeTeam, match.awayTeam, score.home, score.away, winner, score.home === score.away);
   }
 
-  function finishPlayoffMatch(match, teamA, teamB, goalsA, goalsB, winner, shootout, extraTime = false) {
+  function finishPlayoffMatch(match, teamA, teamB, goalsA, goalsB, winner, shootout, extraTime = false, penaltyScore = "") {
     match.played = true;
-    match.score = `${goalsA}-${goalsB}${shootout ? " pens" : extraTime ? " ET" : ""}`;
+    match.score = `${goalsA}-${goalsB}${shootout ? ` pens${penaltyScore ? ` ${penaltyScore}` : ""}` : extraTime ? " ET" : ""}`;
     match.winner = winner;
     match.loser = winner === teamA ? teamB : teamA;
     match.shootout = shootout;
     match.extraTime = extraTime;
+    match.penaltyScore = penaltyScore;
   }
 
   function resolveKnockoutWinner(teamA, teamB, goalsA, goalsB) {
@@ -2781,11 +3411,15 @@
   }
 
   function startNextGoatMashupMatch(career) {
-    if (!career.goatMashup) career.goatMashup = createGoatMashup(career);
+    if (!career.goatMashup) {
+      career.goatMashup = createGoatMashup(career);
+      saveProgress("goat-created");
+    }
     const match = currentPlayableGoatMatch(career);
     if (!match) {
       career.goatMashup.lastSummary = goatMashupStatusText(career.goatMashup);
       career.lastSummary = career.goatMashup.lastSummary;
+      saveProgress("goat-status");
       return;
     }
     state.selectedTeam = career.teamIndex;
@@ -2831,6 +3465,7 @@
       career.goatTitles = (career.goatTitles || 0) + 1;
       career.budget += 35;
       career.reputation = clamp(career.reputation + 7, 20, 100);
+      awardTrophy("goat", TEAMS[career.teamIndex].name, "GOAT Mashup champion", TEAMS[career.teamIndex].colors);
       mashup.lastSummary = `Won the GOAT Mashup ${match.score}. Budget +$35M, reputation ${career.reputation}.`;
     } else {
       mashup.lastSummary = `Lost GOAT final ${match.score}. Champion: ${goatTeamLabel(mashup, winner)}.`;
@@ -2894,6 +3529,7 @@
     career.sharpness = clamp(career.sharpness + 1, 0, 7);
     career.reputation = clamp(career.reputation + 1, 20, 100);
     career.lastSummary = `Training block complete: sharpness +1, budget $${career.budget}M.`;
+    saveProgress("training");
   }
 
   function applyTradeOffer() {
@@ -2939,6 +3575,7 @@
     ensureCareerLineup(career);
     career.tradeOffers = createTradeMarket(career);
     career.lastSummary = `Trade complete: ${lastName(outgoing.name)} out, ${lastName(offer.incoming.name)} in.`;
+    saveProgress("trade");
   }
 
   function offerTradeForSelected() {
@@ -2953,6 +3590,7 @@
     );
     state.selectedRosterUid = selected.uid;
     career.lastSummary = `Offer ready: ${lastName(selected.name)} for ${lastName(offer.incoming.name)}.`;
+    saveProgress("trade-offer");
   }
 
   function tradeOfferForSelected(career) {
@@ -2983,6 +3621,7 @@
     state.selectedRosterUid = prospect.uid;
     ensureCareerLineup(career);
     career.lastSummary = `Drafted ${prospect.name}, ${prospect.role}, ${prospect.rating} OVR.`;
+    saveProgress("draft");
   }
 
   function clubSeasonComplete(career) {
@@ -3030,6 +3669,7 @@
     career.tradeOffers = createTradeMarket(career);
     career.draftProspects = createDraftBoard(career);
     career.lastSummary = `Year ${career.year} begins. Draft pick added and squad development applied.`;
+    saveProgress("next-dynasty-year");
     state.score = { home: 0, away: 0 };
     state.timeLeft = state.matchLength;
     state.ball = createBall();
@@ -3613,6 +4253,10 @@
       startExtraTime();
       return;
     }
+    if (shouldStartPenaltyShootout()) {
+      startPenaltyShootout();
+      return;
+    }
     const wentToExtraTime = state.extraTime.used;
     if (state.currentWorldCupMatch && state.worldCup.active) {
       applyWorldCupResult(wentToExtraTime);
@@ -3621,6 +4265,7 @@
       state.mode = "worldCupHub";
       state.message = "World Cup result saved";
       state.messageTimer = 2;
+      saveProgress("world-cup-result");
       spawnBurst(FIELD.cx, FIELD.cy, ["#f5c75f", "#ffffff", "#8bdcd3"], 70);
       return;
     }
@@ -3633,6 +4278,7 @@
       state.mode = "careerHub";
       state.message = "GOAT Mashup result saved";
       state.messageTimer = 2;
+      saveProgress("goat-result");
       spawnBurst(FIELD.cx, FIELD.cy, ["#f5c75f", "#ffffff", "#8bdcd3"], 70);
       return;
     }
@@ -3644,6 +4290,7 @@
       state.mode = "careerHub";
       state.message = "Career result saved";
       state.messageTimer = 2;
+      saveProgress("career-result");
       spawnBurst(FIELD.cx, FIELD.cy, ["#f5c75f", "#ffffff", "#8bdcd3"], 70);
       return;
     }
@@ -3699,6 +4346,8 @@
     if (state.mode === "menu") drawMenu();
     else if (state.mode === "careerHub") drawCareerHub();
     else if (state.mode === "worldCupHub") drawWorldCupHub();
+    else if (state.mode === "trophyRoom") drawTrophyRoom();
+    else if (state.mode === "penalties") drawPenaltyShootout();
     else {
       drawStadium();
       drawPitch();
@@ -3829,7 +4478,8 @@
     ctx.fillStyle = "rgba(247,251,255,0.74)";
     ctx.font = "800 13px Inter, system-ui, sans-serif";
     wrapText(cup.lastSummary, 850, 258, 294, 18, 3);
-    drawWorldCupSquad(704, 440, 460, team);
+    drawFieldCreatorButton(704, 402, 460, 30, team);
+    drawWorldCupSquad(704, 452, 460, team);
 
     drawButton(68, 642, 180, 46, "Main Menu", () => {
       state.mode = "menu";
@@ -3838,6 +4488,340 @@
     drawButton(1010, 642, 202, 46, worldCupActionLabel(cup), () => startNextWorldCupMatch(), !cup.eliminated && cup.championIndex == null);
     ctx.restore();
     drawParticles();
+  }
+
+  function updateTrophyRoom() {
+    if (justPressed.has("escape") || justPressed.has("enter") || justPressed.has("space")) {
+      state.mode = "menu";
+    }
+  }
+
+  function drawTrophyRoom() {
+    drawMenuBackground();
+    const counts = state.trophies.reduce((acc, trophy) => {
+      acc[trophy.type] = (acc[trophy.type] || 0) + 1;
+      return acc;
+    }, {});
+    ctx.save();
+    ctx.fillStyle = "#f7fbff";
+    ctx.font = "900 50px Inter, system-ui, sans-serif";
+    ctx.textAlign = "left";
+    ctx.fillText("Trophy Room", 66, 82);
+    ctx.font = "700 15px Inter, system-ui, sans-serif";
+    ctx.fillStyle = "rgba(247,251,255,0.7)";
+    ctx.fillText("Your World Cup, MLS, UCL, and GOAT Mashup trophies live here.", 70, 112);
+
+    drawGlassPanel(68, 150, 342, 466);
+    ctx.fillStyle = "#f5c75f";
+    ctx.font = "900 14px Inter, system-ui, sans-serif";
+    ctx.fillText("CABINET", 100, 190);
+    drawTrophySummaryRow(100, 232, "World Cup", counts.worldCup || 0, trophyTemplate("worldCup"));
+    drawTrophySummaryRow(100, 292, "MLS Cup", counts.mls || 0, trophyTemplate("mls"));
+    drawTrophySummaryRow(100, 352, "UCL Trophy", counts.ucl || 0, trophyTemplate("ucl"));
+    drawTrophySummaryRow(100, 412, "GOAT Mashup", counts.goat || 0, trophyTemplate("goat"));
+    ctx.fillStyle = "rgba(247,251,255,0.62)";
+    ctx.font = "800 12px Inter, system-ui, sans-serif";
+    wrapText("Win finals in career, World Cup, and the GOAT Mashup to fill the shelves.", 100, 494, 262, 17, 3);
+
+    drawGlassPanel(438, 150, 774, 466);
+    ctx.fillStyle = "#f7fbff";
+    ctx.font = "900 26px Inter, system-ui, sans-serif";
+    ctx.fillText("Latest Wins", 474, 194);
+    ctx.fillStyle = "rgba(247,251,255,0.6)";
+    ctx.font = "800 12px Inter, system-ui, sans-serif";
+    ctx.fillText(`${state.trophies.length} trophies collected`, 476, 218);
+
+    const display = state.trophies.length
+      ? state.trophies.slice(0, 8)
+      : [
+          { type: "worldCup", title: "World Cup", teamName: "Locked", note: "Win the World Cup", wonAt: "", locked: true },
+          { type: "mls", title: "MLS Cup", teamName: "Locked", note: "Win the MLS playoffs", wonAt: "", locked: true },
+          { type: "ucl", title: "UCL Trophy", teamName: "Locked", note: "Win the UCL playoffs", wonAt: "", locked: true },
+          { type: "goat", title: "GOAT Mashup", teamName: "Locked", note: "Win the GOAT Mashup", wonAt: "", locked: true },
+        ];
+    display.forEach((trophy, index) => {
+      const col = index % 2;
+      const row = Math.floor(index / 2);
+      drawTrophyCard(474 + col * 356, 250 + row * 82, 326, 68, trophy, trophy.locked);
+    });
+
+    drawButton(68, 642, 180, 46, "Main Menu", () => {
+      state.mode = "menu";
+    }, false);
+    ctx.restore();
+    drawParticles();
+  }
+
+  function drawTrophySummaryRow(x, y, label, count, template) {
+    drawRoundedRect(x, y - 28, 250, 44, 12, "rgba(247,251,255,0.06)");
+    drawTrophyCup(x + 12, y - 22, 30, 34, template, null, count === 0);
+    ctx.fillStyle = "#f7fbff";
+    ctx.font = "900 15px Inter, system-ui, sans-serif";
+    ctx.textAlign = "left";
+    ctx.fillText(label, x + 58, y - 4);
+    ctx.fillStyle = count ? "#8bdcd3" : "rgba(247,251,255,0.42)";
+    ctx.font = "900 18px Inter, system-ui, sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillText(String(count), x + 226, y - 4);
+    ctx.textAlign = "left";
+  }
+
+  function drawTrophyCard(x, y, w, h, trophy, locked = false) {
+    const template = trophyTemplate(trophy.type);
+    const colors = trophy.colors || [template.metal, template.accent, "#f7fbff"];
+    drawRoundedRect(x, y, w, h, 12, locked ? "rgba(247,251,255,0.04)" : "rgba(247,251,255,0.07)");
+    ctx.strokeStyle = locked ? "rgba(247,251,255,0.08)" : "rgba(245,199,95,0.24)";
+    ctx.lineWidth = 1.1;
+    strokeRoundedRect(x, y, w, h, 12);
+    drawTrophyCup(x + 14, y + 10, 44, 48, template, colors, locked);
+    ctx.fillStyle = locked ? "rgba(247,251,255,0.46)" : "#f7fbff";
+    ctx.font = "900 15px Inter, system-ui, sans-serif";
+    ctx.textAlign = "left";
+    fillFittedText(trophy.title || template.title, x + 72, y + 25, w - 92);
+    ctx.fillStyle = locked ? "rgba(247,251,255,0.38)" : "#8bdcd3";
+    ctx.font = "800 12px Inter, system-ui, sans-serif";
+    fillFittedText(trophy.teamName || "Locked", x + 72, y + 43, w - 160);
+    ctx.fillStyle = "rgba(247,251,255,0.54)";
+    ctx.font = "700 10.5px Inter, system-ui, sans-serif";
+    fillFittedText(trophy.note || "", x + 72, y + 58, w - 96);
+    if (trophy.wonAt) {
+      ctx.textAlign = "right";
+      ctx.fillStyle = "rgba(247,251,255,0.48)";
+      ctx.font = "800 10px Inter, system-ui, sans-serif";
+      ctx.fillText(trophy.wonAt, x + w - 14, y + 43);
+      ctx.textAlign = "left";
+    }
+  }
+
+  function drawTrophyCup(x, y, w, h, template, colors, locked = false) {
+    const metal = locked ? "rgba(247,251,255,0.2)" : template.metal;
+    const accent = locked ? "rgba(247,251,255,0.12)" : colors?.[2] || template.accent;
+    ctx.save();
+    ctx.strokeStyle = locked ? "rgba(247,251,255,0.22)" : template.accent;
+    ctx.lineWidth = Math.max(1.4, w * 0.05);
+    ctx.beginPath();
+    ctx.arc(x + w * 0.18, y + h * 0.32, w * 0.18, Math.PI * 0.75, Math.PI * 1.65);
+    ctx.arc(x + w * 0.82, y + h * 0.32, w * 0.18, Math.PI * 1.35, Math.PI * 0.25, true);
+    ctx.stroke();
+    ctx.fillStyle = metal;
+    ctx.beginPath();
+    ctx.moveTo(x + w * 0.22, y + h * 0.1);
+    ctx.lineTo(x + w * 0.78, y + h * 0.1);
+    ctx.lineTo(x + w * 0.66, y + h * 0.54);
+    ctx.quadraticCurveTo(x + w * 0.5, y + h * 0.7, x + w * 0.34, y + h * 0.54);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = accent;
+    ctx.fillRect(x + w * 0.35, y + h * 0.24, w * 0.3, h * 0.08);
+    ctx.fillStyle = metal;
+    ctx.fillRect(x + w * 0.44, y + h * 0.58, w * 0.12, h * 0.2);
+    drawRoundedRect(x + w * 0.28, y + h * 0.78, w * 0.44, h * 0.12, h * 0.04, metal);
+    drawRoundedRect(x + w * 0.2, y + h * 0.9, w * 0.6, h * 0.1, h * 0.04, accent);
+    ctx.restore();
+  }
+
+  function drawPenaltyShootout() {
+    drawStadium();
+    drawPitch();
+    drawOverlayShade();
+    drawParticles();
+    const shootout = state.penaltyShootout;
+    if (!shootout) return;
+    const x = 318;
+    const y = 86;
+    const w = 644;
+    const h = 548;
+    drawGlassPanel(x, y, w, h);
+    ctx.fillStyle = "#f7fbff";
+    ctx.font = "900 38px Inter, system-ui, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("Penalty Shootout", x + w / 2, y + 58);
+    ctx.fillStyle = "rgba(247,251,255,0.66)";
+    ctx.font = "800 13px Inter, system-ui, sans-serif";
+    ctx.fillText(`${state.homeTeam.short} ${state.score.home}-${state.score.away} ${state.awayTeam.short}`, x + w / 2, y + 84);
+
+    drawPenaltyGoalGraphic(x + 110, y + 112, w - 220, 142, shootout);
+    ctx.fillStyle = "#f5c75f";
+    ctx.font = "900 58px Inter, system-ui, sans-serif";
+    ctx.fillText(`${shootout.homePens} - ${shootout.awayPens}`, x + w / 2, y + 308);
+
+    drawPenaltyDots(x + 122, y + 342, state.homeTeam.short, shootout.homeSeq, shootout.maxKicks, state.homeTeam.colors);
+    drawPenaltyDots(x + 122, y + 392, state.awayTeam.short, shootout.awaySeq, shootout.maxKicks, state.awayTeam.colors);
+
+    ctx.fillStyle = shootout.complete ? "#8bdcd3" : "rgba(247,251,255,0.82)";
+    ctx.font = "900 17px Inter, system-ui, sans-serif";
+    ctx.fillText(
+      shootout.complete
+        ? shootout.last
+        : shootout.live
+          ? shootout.live.homeTurn
+            ? "Live PK: your shot is flying"
+            : "Live PK: your keeper is diving"
+          : shootout.turn === "home"
+          ? "Pick your shot direction"
+          : "Pick your keeper dive",
+      x + w / 2,
+      y + 464
+    );
+    ctx.fillStyle = "rgba(247,251,255,0.54)";
+    ctx.font = "800 11px Inter, system-ui, sans-serif";
+    fillFittedText(shootout.log.slice(0, 3).join("  |  "), x + 90, y + 488, w - 180);
+
+    if (shootout.complete) {
+      drawButton(x + 228, y + 506, 188, 48, "Continue", () => exitPenaltyShootout(), true);
+    } else if (shootout.live) {
+      drawButton(x + 228, y + 506, 188, 48, "Live PK...", () => {}, false);
+    } else {
+      drawButton(x + 130, y + 506, 116, 48, "Left", () => takePenalty("left"), false);
+      drawButton(x + 264, y + 506, 116, 48, "Center", () => takePenalty("center"), true);
+      drawButton(x + 398, y + 506, 116, 48, "Right", () => takePenalty("right"), false);
+    }
+  }
+
+  function drawPenaltyGoalGraphic(x, y, w, h, shootout) {
+    drawRoundedRect(x, y, w, h, 18, "rgba(247,251,255,0.055)");
+    ctx.strokeStyle = "rgba(247,251,255,0.34)";
+    ctx.lineWidth = 3;
+    strokeRoundedRect(x + 28, y + 24, w - 56, h - 42, 8);
+    ctx.strokeStyle = "rgba(247,251,255,0.16)";
+    ctx.lineWidth = 1.2;
+    for (let i = 1; i < 3; i += 1) {
+      ctx.beginPath();
+      ctx.moveTo(x + 28 + ((w - 56) / 3) * i, y + 24);
+      ctx.lineTo(x + 28 + ((w - 56) / 3) * i, y + h - 18);
+      ctx.stroke();
+    }
+    PENALTY_DIRECTIONS.forEach((direction, index) => {
+      ctx.fillStyle = shootout.turn === "home" ? "rgba(245,199,95,0.18)" : "rgba(139,220,211,0.16)";
+      const zoneW = (w - 56) / 3;
+      drawRoundedRect(x + 28 + index * zoneW + 8, y + 38, zoneW - 16, h - 76, 8, ctx.fillStyle);
+      ctx.fillStyle = "#f7fbff";
+      ctx.font = "900 11px Inter, system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(direction.toUpperCase(), x + 28 + index * zoneW + zoneW / 2, y + h - 34);
+    });
+    drawLivePenaltyActors(x, y, w, h, shootout);
+  }
+
+  function smoothstep(value) {
+    const t = clamp(value, 0, 1);
+    return t * t * (3 - 2 * t);
+  }
+
+  function penaltyDirectionPoint(direction, goalX, goalY, goalW, goalH, outside = false) {
+    const xRatio = direction === "left" ? 0.2 : direction === "right" ? 0.8 : 0.5;
+    const yRatio = outside ? 0.08 : 0.38;
+    return {
+      x: goalX + goalW * xRatio + (outside && direction !== "center" ? (direction === "left" ? -16 : 16) : 0),
+      y: goalY + goalH * yRatio,
+    };
+  }
+
+  function drawLivePenaltyActors(x, y, w, h, shootout) {
+    const goalX = x + 28;
+    const goalY = y + 24;
+    const goalW = w - 56;
+    const goalH = h - 42;
+    const live = shootout.live;
+    const ballStart = { x: x + w / 2, y: y + h - 8 };
+    const keeperStart = { x: goalX + goalW / 2, y: goalY + goalH * 0.58 };
+    const shotDirection = live?.shotDirection || "center";
+    const keeperDirection = live?.keeperDirection || "center";
+    const missOutside = live && !live.scored && !live.saved;
+    const target = penaltyDirectionPoint(shotDirection, goalX, goalY, goalW, goalH, missOutside);
+    const keeperTarget = penaltyDirectionPoint(keeperDirection, goalX, goalY, goalW, goalH, false);
+    const t = live ? clamp(live.t / live.duration, 0, 1) : 0;
+    const ballT = smoothstep(Math.min(1, t * 1.18));
+    const keeperT = smoothstep(clamp((t - 0.08) / 0.72, 0, 1));
+    const ballX = live ? lerp(ballStart.x, target.x, ballT) : ballStart.x;
+    const ballY = live ? lerp(ballStart.y, target.y, ballT) : ballStart.y;
+    const keeperX = live ? lerp(keeperStart.x, keeperTarget.x, keeperT) : keeperStart.x;
+    const keeperY = live ? lerp(keeperStart.y, keeperTarget.y, keeperT) : keeperStart.y;
+    const keeperColor = shootout.turn === "home" ? state.awayTeam.colors[2] : state.homeTeam.colors[2];
+
+    ctx.save();
+    ctx.strokeStyle = "rgba(245,199,95,0.28)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(ballStart.x, ballStart.y);
+    ctx.quadraticCurveTo(x + w / 2, y + h * 0.5, target.x, target.y);
+    if (live) ctx.stroke();
+
+    ctx.fillStyle = "rgba(0,0,0,0.32)";
+    ctx.beginPath();
+    ctx.ellipse(keeperX, keeperY + 14, 22, 7, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = keeperColor;
+    ctx.lineWidth = 5;
+    ctx.lineCap = "round";
+    const diveLean = keeperDirection === "left" ? -14 : keeperDirection === "right" ? 14 : 0;
+    ctx.beginPath();
+    ctx.moveTo(keeperX - 24 + diveLean, keeperY + 4);
+    ctx.lineTo(keeperX, keeperY - 8);
+    ctx.lineTo(keeperX + 24 + diveLean, keeperY + 4);
+    ctx.stroke();
+    drawRoundedRect(keeperX - 14 + diveLean * 0.2, keeperY - 7, 28, 24, 9, "rgba(139,220,211,0.9)");
+    ctx.fillStyle = "#f7fbff";
+    ctx.beginPath();
+    ctx.arc(keeperX + diveLean * 0.34, keeperY - 18, 8, 0, Math.PI * 2);
+    ctx.fill();
+
+    const ballR = live ? lerp(8.5, 5.8, ballT) : 8;
+    ctx.fillStyle = "rgba(0,0,0,0.34)";
+    ctx.beginPath();
+    ctx.ellipse(ballX + 3, ballY + 9, ballR * 1.2, ballR * 0.48, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#f7fbff";
+    ctx.beginPath();
+    ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#101820";
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(ballX - ballR * 0.75, ballY);
+    ctx.lineTo(ballX + ballR * 0.75, ballY);
+    ctx.moveTo(ballX, ballY - ballR * 0.75);
+    ctx.lineTo(ballX, ballY + ballR * 0.75);
+    ctx.stroke();
+
+    if (live && t > 0.66) {
+      const resultColor = live.scored ? "#8bdcd3" : live.saved ? "#f5c75f" : "#f05d5e";
+      ctx.font = "900 16px Inter, system-ui, sans-serif";
+      const labelW = ctx.measureText(live.result).width + 28;
+      drawRoundedRect(x + w / 2 - labelW / 2, y + 8, labelW, 28, 12, "rgba(6,13,17,0.78)");
+      ctx.fillStyle = resultColor;
+      ctx.textAlign = "center";
+      ctx.fillText(live.result, x + w / 2, y + 28);
+    }
+    ctx.restore();
+  }
+
+  function drawPenaltyDots(x, y, label, sequence, maxKicks, colors) {
+    ctx.fillStyle = "rgba(247,251,255,0.7)";
+    ctx.font = "900 13px Inter, system-ui, sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillText(label, x + 52, y + 5);
+    ctx.textAlign = "left";
+    const visibleSlots = Math.min(8, Math.max(5, maxKicks));
+    for (let i = 0; i < visibleSlots; i += 1) {
+      const cx = x + 76 + i * 28;
+      ctx.beginPath();
+      ctx.arc(cx, y, 8, 0, Math.PI * 2);
+      if (i < sequence.length) {
+        ctx.fillStyle = sequence[i] ? "#8bdcd3" : "#f05d5e";
+      } else {
+        ctx.fillStyle = "rgba(247,251,255,0.13)";
+      }
+      ctx.fill();
+      ctx.strokeStyle = i < sequence.length ? colors[2] : "rgba(247,251,255,0.18)";
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+    }
+    if (maxKicks > visibleSlots) {
+      ctx.fillStyle = "rgba(247,251,255,0.54)";
+      ctx.font = "900 11px Inter, system-ui, sans-serif";
+      ctx.fillText(`+${maxKicks - visibleSlots}`, x + 76 + visibleSlots * 28, y + 5);
+    }
   }
 
   function worldCupStageLabel(cup) {
@@ -4460,6 +5444,9 @@
     });
     if (state.menuMode !== "world") drawClubPoolJump(746, y, 176, 36);
     drawDifficultySelector(946, 86, 268, 36);
+    drawButton(946, y, 268, 36, "Trophy Room", () => {
+      state.mode = "trophyRoom";
+    }, false);
   }
 
   function drawClubPoolJump(x, y, w, h) {
@@ -4683,11 +5670,16 @@
     ctx.fillText(`${chosen.role}  |  #${chosen.number}  |  ${chosen.trait}`, rx + 232, y + 86);
     drawCareerObjective(rx + 232, y + 122, "Match XP", "Goals, assists, passes, tackles, and touches raise your overall.");
     drawCareerObjective(rx + 232, y + 176, "Control Lock", "You play only this footballer while your team AI supports you.");
-    drawButton(rx + 232, y + 244, 244, 48, "Begin Player Career", () => beginPlayerCareer(), true);
-    ctx.fillStyle = "rgba(247,251,255,0.52)";
-    ctx.font = "700 12px Inter, system-ui, sans-serif";
-    ctx.textAlign = "left";
-    ctx.fillText(`Next opponent preview: ${opponent.short}`, rx + 232, y + 312);
+    if (hasSavedCareer("player")) {
+      drawButton(rx + 232, y + 232, 244, 42, "Continue Career", () => continueSavedCareer("player"), true);
+      drawButton(rx + 232, y + 282, 244, 34, "New Player Career", () => beginPlayerCareer(), false);
+    } else {
+      drawButton(rx + 232, y + 244, 244, 48, "Begin Player Career", () => beginPlayerCareer(), true);
+      ctx.fillStyle = "rgba(247,251,255,0.52)";
+      ctx.font = "700 12px Inter, system-ui, sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText(`Next opponent preview: ${opponent.short}`, rx + 232, y + 312);
+    }
   }
 
   function drawClubCareerPanel(team, opponent) {
@@ -4728,12 +5720,17 @@
     ctx.font = "900 30px Inter, system-ui, sans-serif";
     ctx.fillText("Build a dynasty", rx + 36, y + 78);
     drawVersusMiniPitch(rx + 36, y + 102, rw - 72, 112, team, opponent);
-    drawCareerObjective(rx + 38, y + 240, "Training", "Spend budget between matches for permanent squad sharpness.");
-    drawButton(rx + 286, y + 244, 202, 48, "Begin Club Career", () => beginClubCareer(), true);
+    if (hasSavedCareer("club")) {
+      drawButton(rx + 36, y + 244, 224, 48, "Continue Season", () => continueSavedCareer("club"), true);
+      drawButton(rx + 286, y + 244, 202, 48, "New Club Career", () => beginClubCareer(), false);
+    } else {
+      drawCareerObjective(rx + 38, y + 240, "Training", "Spend budget between matches for permanent squad sharpness.");
+      drawButton(rx + 286, y + 244, 202, 48, "Begin Club Career", () => beginClubCareer(), true);
+    }
     ctx.fillStyle = "rgba(247,251,255,0.52)";
     ctx.font = "700 12px Inter, system-ui, sans-serif";
     ctx.textAlign = "left";
-    ctx.fillText(`Opening fixture preview: ${team.short} vs ${opponent.short}`, rx + 36, y + 312);
+    ctx.fillText(hasSavedCareer("club") ? `Saved: ${state.savedProgress.savedLabel}` : `Opening fixture preview: ${team.short} vs ${opponent.short}`, rx + 36, y + 312);
   }
 
   function drawStartPanel(team, opponent) {
@@ -4752,9 +5749,45 @@
 
     drawVersusMiniPitch(x + 34, y + 104, w - 68, 112, team, opponent);
 
-    drawButton(x + 34, y + 238, 194, 48, `Difficulty: ${difficultyName()}`, () => cycleDifficulty(), false);
-    drawButton(x + 242, y + 238, 154, 48, "Quick Match", () => startFreePlayMatch("quick"), false);
-    drawButton(x + 410, y + 238, 92, 48, "Match", () => startFreePlayMatch("match"), true);
+    drawButton(x + 34, y + 238, 182, 48, `Difficulty: ${difficultyName()}`, () => cycleDifficulty(), false);
+    drawButton(x + 228, y + 238, 142, 48, "Quick Match", () => startFreePlayMatch("quick"), false);
+    drawButton(x + 382, y + 238, 120, 48, "Normal Match", () => startFreePlayMatch("match"), true);
+    drawFieldCreatorButton(x + 34, y + 294, w - 68, 34, team);
+  }
+
+  function drawFieldCreatorButton(x, y, w, h, team) {
+    const design = activeFieldDesign();
+    const theme = fieldThemeFor(team);
+    const hover = pointer.x >= x && pointer.x <= x + w && pointer.y >= y && pointer.y <= y + h;
+    drawRoundedRect(x, y, w, h, 12, hover ? "rgba(247,251,255,0.16)" : "rgba(247,251,255,0.08)");
+    ctx.strokeStyle = hover ? "rgba(245,199,95,0.42)" : "rgba(247,251,255,0.16)";
+    ctx.lineWidth = 1.2;
+    strokeRoundedRect(x, y, w, h, 12);
+
+    ctx.fillStyle = "rgba(247,251,255,0.62)";
+    ctx.font = "900 10px Inter, system-ui, sans-serif";
+    ctx.textAlign = "left";
+    ctx.fillText("FIELD COLORS", x + 14, y + 21);
+    ctx.fillStyle = "#f7fbff";
+    ctx.font = "900 13px Inter, system-ui, sans-serif";
+    fillFittedText(design.name, x + 118, y + 21, 160);
+
+    const previewX = x + w - 162;
+    const previewY = y + 7;
+    for (let i = 0; i < 6; i += 1) {
+      ctx.fillStyle = i % 2 === 0 ? theme.stripeA : theme.stripeB;
+      ctx.fillRect(previewX + i * 18, previewY, 18, 20);
+    }
+    ctx.strokeStyle = theme.line;
+    ctx.lineWidth = 1.1;
+    ctx.strokeRect(previewX, previewY, 108, 20);
+    team.colors.slice(0, 3).forEach((color, index) => {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(x + w - 36 + index * 13, y + h / 2, 4.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    addHitbox("field-colors", x, y, w, h, () => cycleFieldDesign());
   }
 
   function drawWorldCupStartPanel(team, opponent) {
@@ -4773,12 +5806,14 @@
     ctx.fillText(`${team.short} knockout run`, x + 34, y + 78);
 
     drawVersusMiniPitch(x + 34, y + 104, w - 68, 112, team, opponent);
-    drawCareerObjective(x + 34, y + 240, "Single elimination", "Win to advance. Lose once and you are out.");
-    drawButton(x + 286, y + 238, 216, 48, "Start World Cup", () => beginWorldCup(), true);
-    ctx.fillStyle = "rgba(247,251,255,0.54)";
-    ctx.font = "800 11px Inter, system-ui, sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillText("No trades. National squads stay locked.", x + w / 2, y + 314);
+    if (hasSavedWorldCup()) {
+      drawButton(x + 34, y + 238, 226, 48, "Continue Tournament", () => continueSavedWorldCup(), true);
+      drawButton(x + 286, y + 238, 216, 48, "New World Cup", () => beginWorldCup(), false);
+    } else {
+      drawCareerObjective(x + 34, y + 240, "Single elimination", "Win to advance. Lose once and you are out.");
+      drawButton(x + 286, y + 238, 216, 48, "Start World Cup", () => beginWorldCup(), true);
+    }
+    drawFieldCreatorButton(x + 34, y + 288, w - 68, 28, team);
     ctx.textAlign = "left";
   }
 
@@ -4894,10 +5929,11 @@
   }
 
   function drawStadium() {
+    const theme = fieldThemeFor();
     const grad = ctx.createLinearGradient(0, 0, 0, VIEW.h);
-    grad.addColorStop(0, "#071014");
-    grad.addColorStop(0.42, "#0c1c22");
-    grad.addColorStop(1, "#081115");
+    grad.addColorStop(0, theme.stadiumTop);
+    grad.addColorStop(0.42, theme.stadiumMid);
+    grad.addColorStop(1, theme.stadiumBottom);
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, VIEW.w, VIEW.h);
 
@@ -4911,23 +5947,23 @@
     }
 
     const light = ctx.createRadialGradient(FIELD.cx, 80, 80, FIELD.cx, 210, 760);
-    light.addColorStop(0, "rgba(255,255,255,0.22)");
+    light.addColorStop(0, theme.light);
     light.addColorStop(1, "rgba(255,255,255,0)");
     ctx.fillStyle = light;
     ctx.fillRect(0, 0, VIEW.w, 430);
   }
 
   function drawPitch() {
+    const theme = fieldThemeFor();
     ctx.save();
     ctx.shadowColor = "rgba(0,0,0,0.55)";
     ctx.shadowBlur = 24;
-    drawRoundedRect(FIELD.x - 8, FIELD.y - 8, FIELD.w + 16, FIELD.h + 16, 28, "#062318");
+    drawRoundedRect(FIELD.x - 8, FIELD.y - 8, FIELD.w + 16, FIELD.h + 16, 28, theme.border);
     ctx.shadowBlur = 0;
 
     for (let i = 0; i < 12; i += 1) {
       const stripeW = FIELD.w / 12;
-      const green = i % 2 === 0 ? "#176b43" : "#125f3b";
-      ctx.fillStyle = green;
+      ctx.fillStyle = i % 2 === 0 ? theme.stripeA : theme.stripeB;
       ctx.fillRect(FIELD.x + i * stripeW, FIELD.y, stripeW + 1, FIELD.h);
     }
 
@@ -4938,7 +5974,7 @@
     ctx.fillStyle = mow;
     ctx.fillRect(FIELD.x, FIELD.y, FIELD.w, FIELD.h);
 
-    ctx.strokeStyle = "rgba(247,251,255,0.84)";
+    ctx.strokeStyle = theme.line;
     ctx.lineWidth = 3;
     ctx.strokeRect(FIELD.x, FIELD.y, FIELD.w, FIELD.h);
     ctx.beginPath();
@@ -4950,18 +5986,18 @@
     ctx.stroke();
     ctx.beginPath();
     ctx.arc(FIELD.cx, FIELD.cy, 4, 0, Math.PI * 2);
-    ctx.fillStyle = "#f7fbff";
+    ctx.fillStyle = theme.center;
     ctx.fill();
 
-    drawBox(FIELD.x, FIELD.cy, 160, 248, "left");
-    drawBox(FIELD.x + FIELD.w, FIELD.cy, 160, 248, "right");
-    drawGoal(FIELD.x - FIELD.goalDepth, FIELD.goalTop, FIELD.goalDepth, FIELD.goalW, "left");
-    drawGoal(FIELD.x + FIELD.w, FIELD.goalTop, FIELD.goalDepth, FIELD.goalW, "right");
+    drawBox(FIELD.x, FIELD.cy, 160, 248, "left", theme.boxLine);
+    drawBox(FIELD.x + FIELD.w, FIELD.cy, 160, 248, "right", theme.boxLine);
+    drawGoal(FIELD.x - FIELD.goalDepth, FIELD.goalTop, FIELD.goalDepth, FIELD.goalW, "left", theme.boxLine, theme.goalFill);
+    drawGoal(FIELD.x + FIELD.w, FIELD.goalTop, FIELD.goalDepth, FIELD.goalW, "right", theme.boxLine, theme.goalFill);
     ctx.restore();
   }
 
-  function drawBox(x, y, depth, height, side) {
-    ctx.strokeStyle = "rgba(247,251,255,0.72)";
+  function drawBox(x, y, depth, height, side, lineColor = "rgba(247,251,255,0.72)") {
+    ctx.strokeStyle = lineColor;
     ctx.lineWidth = 3;
     const left = side === "left" ? x : x - depth;
     ctx.strokeRect(left, y - height / 2, depth, height);
@@ -4972,11 +6008,11 @@
     ctx.stroke();
   }
 
-  function drawGoal(x, y, w, h, side) {
+  function drawGoal(x, y, w, h, side, lineColor = "rgba(247,251,255,0.55)", fill = "rgba(247,251,255,0.08)") {
     ctx.save();
-    ctx.fillStyle = "rgba(247,251,255,0.08)";
+    ctx.fillStyle = fill;
     ctx.fillRect(x, y, w, h);
-    ctx.strokeStyle = "rgba(247,251,255,0.55)";
+    ctx.strokeStyle = lineColor;
     ctx.lineWidth = 2;
     ctx.strokeRect(x, y, w, h);
     ctx.strokeStyle = "rgba(247,251,255,0.2)";
@@ -4993,7 +6029,7 @@
       ctx.stroke();
     }
     const postX = side === "left" ? x + w : x;
-    ctx.strokeStyle = "#f7fbff";
+    ctx.strokeStyle = lineColor;
     ctx.lineWidth = 5;
     ctx.beginPath();
     ctx.moveTo(postX, y);
@@ -5498,6 +6534,17 @@
       teamCount: TEAMS.length,
       mlsTeamCount: MLS_TEAM_INDICES.length,
       worldTeamCount: WORLD_TEAMS.length,
+      fieldDesign: activeFieldDesign(),
+      trophyRoom: {
+        count: state.trophies.length,
+        latest: state.trophies.slice(0, 5).map((trophy) => ({
+          title: trophy.title,
+          team: trophy.teamName,
+          type: trophy.type,
+          wonAt: trophy.wonAt,
+        })),
+      },
+      savedProgress: state.savedProgress,
       activeMatchKind: state.activeMatchKind,
       matchLength: state.matchLength,
       touchControls: {
@@ -5555,6 +6602,24 @@
         used: state.extraTime.used,
         seconds: state.extraTime.seconds,
       },
+      penaltyShootout: state.penaltyShootout
+        ? {
+            context: state.penaltyShootout.context,
+            complete: state.penaltyShootout.complete,
+            score: `${state.penaltyShootout.homePens}-${state.penaltyShootout.awayPens}`,
+            kicks: `${state.penaltyShootout.homeTaken}-${state.penaltyShootout.awayTaken}`,
+            turn: state.penaltyShootout.turn,
+            last: state.penaltyShootout.last,
+            live: state.penaltyShootout.live
+              ? {
+                  progress: round(state.penaltyShootout.live.t / state.penaltyShootout.live.duration),
+                  shotDirection: state.penaltyShootout.live.shotDirection,
+                  keeperDirection: state.penaltyShootout.live.keeperDirection,
+                  result: state.penaltyShootout.live.result,
+                }
+              : null,
+          }
+        : null,
       possession,
       selectedPlayer: selected
         ? {

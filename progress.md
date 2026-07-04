@@ -54,11 +54,19 @@ Progress:
 - Split UCL and MLS into separate club pools so UCL paging cannot scroll into MLS and MLS paging cannot scroll into UCL.
 - Expanded MLS to 16 clubs by adding Orlando City SC, New York Red Bulls, Philadelphia Union, Portland Timbers, Austin FC, Toronto FC, Nashville SC, and St. Louis CITY SC.
 - Updated MLS Club Career to use the same 16-team season and six-team playoff format as UCL: top 6 advance, seeds #1 and #2 get first-round byes.
-- Added two free-play start options on the Quick Match panel: a 75-second `Quick Match` and a standard 120-second `Match`.
-- Verified with `node --check game.js`, a fake-canvas runtime check confirming Quick Match/Match lengths, and Playwright client screenshots/state for Quick Match gameplay and the updated menu.
+- Added two free-play start options on the Quick Match panel: a 75-second `Quick Match` and a standard 120-second `Normal Match`.
+- Verified with `node --check game.js`, a fake-canvas runtime check confirming Quick Match/Normal Match lengths, and Playwright client screenshots/state for Quick Match gameplay and the updated menu.
 - Added touchscreen play support: drag on the pitch to steer the controlled player toward your finger and tap the pitch to shoot/tackle.
 - Added mobile-safe viewport/touch CSS (`viewport-fit=cover`, `touch-action: none`, `100dvh` sizing) and a touch-only in-game hint/target marker.
 - Verified touch behavior with fake-canvas tests (drag moved the player; tap shot the ball), standard Playwright smoke, and a mobile landscape Chromium screenshot/state at `output/web-game/mobile-touch/`.
+- Added a browser localStorage save slot for ongoing Player Career, Club Career seasons/dynasties, World Cup tournaments, and GOAT Mashup progress.
+- Added `Continue Career`, `Continue Season`, and `Continue Tournament` buttons to the relevant setup panels when a save exists.
+- Save slot now updates after career/world cup match results, playable penalty shootouts, dynasty year rollover, training, lineup edits, trades, draft picks, and GOAT Mashup bracket creation/results.
+- Verified save/reload behavior with fake-canvas runtime tests: Club Career saved after a 2-0 win and continued at fixture 2 with a 1-0-0 record; World Cup saved after a Round of 16 win and continued at the Quarterfinal.
+- Verified with `node --check game.js` and web-game client smoke output at `output/web-game/shot-0.png` / `output/web-game/state-0.json`.
+- Added clickable `Field Colors` controls to the World Cup setup panel and World Cup hub, using the selected national team colors.
+- World Cup field color changes now persist into active/saved World Cup progress.
+- Verified with `node --check game.js`, fake-canvas runtime checks for World Cup start/continue field colors, and screenshot/state at `output/web-game/world-cup-field-colors-final/`.
 
 TODO:
 - Optional polish: make match scoring less draw-heavy during automated no-input full-season simulations.
